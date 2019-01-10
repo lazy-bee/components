@@ -1,0 +1,29 @@
+language: node_js
+node_js:
+  - "8"
+cache:
+  yarn: true
+  directories:
+    - "node_modules"
+before_install:
+  - export TZ=Asia/Taipei
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s
+  - export PATH="$HOME/.yarn/bin:$PATH"
+before_script:
+  - yarn bootstrap
+script:
+  - yarn test
+  - yarn build-bundle
+before_deploy:
+  - git config --global user.email ${GITHUB_EMAIL}
+  - git config --global user.name ${GITHUB_USER}
+  - git remote set-url origin "https://${GITHUB_TOKEN}@github.com/YOUR/PROJECT.git" > /dev/null 2>&1
+  - git checkout release
+  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
+deploy:
+  provider: script
+  script: "yarn run lerna:publish"
+  skip_cleanup: true
+  on:
+    node: "10"
+    branch: release
