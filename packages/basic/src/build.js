@@ -1,36 +1,33 @@
-// Import vue component
-import HelloWorld from "./components/HelloWorld.vue";
+import VueBus from 'vue-bus';
 
-const Components = {
-  HelloWorld,
+import Vuetify from 'vuetify';
+import 'vuetify/dist/vuetify.min.css'
+
+import ECharts from 'vue-echarts/components/ECharts';
+import 'echarts/lib/chart/bar';
+import 'echarts/lib/chart/line';
+import 'echarts/lib/chart/pie';
+import 'echarts/lib/component/tooltip';
+import './styles/base.styl';
+import components from './components';
+
+const install = function(Vue) {
+  Vue.use(VueBus);
+  Vue.use(Vuetify);
+
+  Vue.component('chart', ECharts);
+
+  components.forEach((component) => {
+    if (component.name) {
+      Vue.component(component.name, component);
+    }
+  });
 };
 
-// Declare install function executed by Vue.use()
-export function install(Vue) {
-  if (install.installed) return;
-  install.installed = true;
-
-  Components.forEach(component => {
-    Vue.component(component.name, component);
-  });
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue);
 }
 
-// Create module definition for Vue.use()
-const plugin = {
+export default {
   install
 };
-
-// Auto-install when vue is found (eg. in browser via <script> tag)
-let GlobalVue = null;
-if (typeof window !== "undefined") {
-  GlobalVue = window.Vue;
-} else if (typeof global !== "undefined") {
-  GlobalVue = global.Vue;
-}
-if (GlobalVue) {
-  GlobalVue.use(plugin);
-}
-
-// To allow use as module (npm/webpack/etc.) export component
-export default Components;
-export {HelloWorld}

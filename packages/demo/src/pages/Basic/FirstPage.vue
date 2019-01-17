@@ -1,19 +1,15 @@
 <template>
   <section class='componentContainer'>
     <h1>DatePicker </h1>
-    <HelloWorld />
+    <x-button content='peter'/>
   </section>
 </template>
 
 
 <script>
-import {HelloWorld} from "@lazy-bee/basic";
-
-console.log('HelloWorld: ', HelloWorld)
 
 export default {
   name: "firstpage",
-  components: { HelloWorld },
   data: function() {
     return {
     };

@@ -1273,6 +1273,12 @@ async-limiter@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.0.tgz#78faed8c3d074ab81f22b4e985d79e8738f720f8"
 
+async-validator@~1.8.1:
+  version "1.8.5"
+  resolved "https://registry.yarnpkg.com/async-validator/-/async-validator-1.8.5.tgz#dc3e08ec1fd0dddb67e60842f02c0cd1cec6d7f0"
+  dependencies:
+    babel-runtime "6.x"
+
 async@^1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
@@ -1370,7 +1376,7 @@ babel-generator@^6.18.0, babel-generator@^6.26.0:
     source-map "^0.5.7"
     trim-right "^1.0.1"
 
-babel-helper-vue-jsx-merge-props@^2.0.3:
+babel-helper-vue-jsx-merge-props@^2.0.0, babel-helper-vue-jsx-merge-props@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/babel-helper-vue-jsx-merge-props/-/babel-helper-vue-jsx-merge-props-2.0.3.tgz#22aebd3b33902328e513293a8e4992b384f9f1b6"
 
@@ -1467,7 +1473,7 @@ babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
-babel-runtime@^6.22.0, babel-runtime@^6.26.0:
+babel-runtime@6.x, babel-runtime@^6.22.0, babel-runtime@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
@@ -1540,6 +1546,10 @@ bcrypt-pbkdf@^1.0.0:
   resolved "https://registry.yarnpkg.com/bcrypt-pbkdf/-/bcrypt-pbkdf-1.0.2.tgz#a4301d389b6a43f9b67ff3ca11a3f6637e360e9e"
   dependencies:
     tweetnacl "^0.14.3"
+
+bezier-easing@^2.0.3:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/bezier-easing/-/bezier-easing-2.1.0.tgz#c04dfe8b926d6ecaca1813d69ff179b7c2025d86"
 
 bfj@^6.1.1:
   version "6.1.1"
@@ -2630,7 +2640,7 @@ deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
 
-deepmerge@^1.5.2:
+deepmerge@^1.2.0, deepmerge@^1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-1.5.2.tgz#10499d868844cdad4fee0842df8c7f6f0c95a753"
 
@@ -2869,6 +2879,18 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
+echarts@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/echarts/-/echarts-4.1.0.tgz#d588c95f73c1a9928b9c73d5b769751c3185bcdc"
+  dependencies:
+    zrender "4.0.4"
+
+echarts@^4.2.0-rc.2:
+  version "4.2.0-rc.2"
+  resolved "https://registry.yarnpkg.com/echarts/-/echarts-4.2.0-rc.2.tgz#6a98397aafa81b65cbf0bc15d9afdbfb244df91e"
+  dependencies:
+    zrender "4.0.5"
+
 editorconfig@^0.15.2:
   version "0.15.2"
   resolved "https://registry.yarnpkg.com/editorconfig/-/editorconfig-0.15.2.tgz#047be983abb9ab3c2eefe5199cb2b7c5689f0702"
@@ -2895,6 +2917,17 @@ electron-to-chromium@^1.3.47, electron-to-chromium@^1.3.96:
 elegant-spinner@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
+
+element-ui@^2.4.11:
+  version "2.4.11"
+  resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-2.4.11.tgz#db6a2d37001b8fe5fff9f176fb58bb3908cfa9c9"
+  dependencies:
+    async-validator "~1.8.1"
+    babel-helper-vue-jsx-merge-props "^2.0.0"
+    deepmerge "^1.2.0"
+    normalize-wheel "^1.0.1"
+    resize-observer-polyfill "^1.5.0"
+    throttle-debounce "^1.0.1"
 
 elliptic@^6.0.0:
   version "6.4.1"
@@ -6016,6 +6049,10 @@ normalize-url@^3.0.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
 
+normalize-wheel@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/normalize-wheel/-/normalize-wheel-1.0.1.tgz#aec886affdb045070d856447df62ecf86146ec45"
+
 npm-bundled@^1.0.1:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/npm-bundled/-/npm-bundled-1.0.5.tgz#3c1732b7ba936b3a10325aef616467c0ccbcc979"
@@ -7255,6 +7292,14 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
 
+resize-detector@^0.1.7:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/resize-detector/-/resize-detector-0.1.9.tgz#69c4222e9c0d3740c995522b4a1cf2656a6526aa"
+
+resize-observer-polyfill@^1.5.0:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
+
 resolve-cwd@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/resolve-cwd/-/resolve-cwd-2.0.0.tgz#00a9f7387556e27038eae232caa372a6a59b665a"
@@ -7657,6 +7702,10 @@ sockjs@0.3.19:
   dependencies:
     faye-websocket "^0.10.0"
     uuid "^3.0.1"
+
+sortablejs@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/sortablejs/-/sortablejs-1.8.1.tgz#d19b66cf10aab9521a565b79766f2f3291c18278"
 
 source-list-map@^2.0.0:
   version "2.0.1"
@@ -8144,6 +8193,10 @@ throat@^4.0.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/throat/-/throat-4.1.0.tgz#89037cbc92c56ab18926e6ba4cbb200e15672a6a"
 
+throttle-debounce@^1.0.1:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-1.1.0.tgz#51853da37be68a155cb6e827b3514a3c422e89cd"
+
 through2@^2.0.0:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
@@ -8495,9 +8548,21 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
+vue-bus@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/vue-bus/-/vue-bus-1.2.0.tgz#7743302ee6670139f620f9787ac5a14238a5eee7"
+
 vue-cli-plugin-vuetify@^0.4.6:
   version "0.4.6"
   resolved "https://registry.yarnpkg.com/vue-cli-plugin-vuetify/-/vue-cli-plugin-vuetify-0.4.6.tgz#91c4534d17bc04bbd6f41eacdb6ff49be0f59f2b"
+
+vue-echarts@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/vue-echarts/-/vue-echarts-3.1.3.tgz#a65de7fe31e2d18bf38928ccde83e144667ea9e6"
+  dependencies:
+    echarts "^4.1.0"
+    lodash "^4.17.10"
+    resize-detector "^0.1.7"
 
 vue-eslint-parser@^2.0.3:
   version "2.0.3"
@@ -8553,6 +8618,12 @@ vue-loader@^15.4.2:
 vue-router@^3.0.1:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.0.2.tgz#dedc67afe6c4e2bc25682c8b1c2a8c0d7c7e56be"
+
+vue-scrollto@^2.13.0:
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/vue-scrollto/-/vue-scrollto-2.13.0.tgz#fe23c9e5d684271c48154e8d504370cd40a8d6fd"
+  dependencies:
+    bezier-easing "^2.0.3"
 
 vue-style-loader@^4.1.0:
   version "4.1.2"
@@ -8971,3 +9042,11 @@ yorkie@^2.0.0:
     is-ci "^1.0.10"
     normalize-path "^1.0.0"
     strip-indent "^2.0.0"
+
+zrender@4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/zrender/-/zrender-4.0.4.tgz#910e60d888f00c9599073f23758dd23345fe48fd"
+
+zrender@4.0.5:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/zrender/-/zrender-4.0.5.tgz#6e8f738971ce2cd624aac82b2156729b1c0e5a82"
