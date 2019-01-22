@@ -1,34 +1,29 @@
-# x-menu
+# menu
 
 
-## Demo
-<!-- STORY -->
-
-
-
-## Usage
+### Usage
 ```html
-<x-menu v-bind="scheme"></x-menu>
+<x-menu v-bind="scheme"/>
 ```
 
 
-## Scheme
+### Scheme
 | name      | type   | default   | accepted values                     | description                                 |
 | --------- | ------ | --------- | ----------------------------------- | ------------------------------------------- |
 | openType  | String | click     | click / hover                       | open menu in click trigger or hover trigger |
 | menuList  | Array  | -         | -                                   | menu list, just list list component         |
 | authority | String | available | available / unavailable / invisible | component authority                         |
 
-## Slot
+### Slot
 | name    | description                |
 | ------- | -------------------------- |
 | trigger | which element trigger menu |
 
 
-## Example
+### Example
 ```html
 <template>
-  <x-menu v-bind="menuScheme"></x-menu>
+  <x-menu v-bind="menuScheme"/>
 </template>
 
 <script>

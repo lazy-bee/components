@@ -1,11 +1,309 @@
-:focus {
-  outline: 0 !important;
-}
+@import './_variables.styl';
 
 html, body {
   overflow: auto !important;
+  font-size: 14px !important;
 }
 
-img {
-  max-width: 100%;
+.application {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+}
+
+.application.theme--light {
+  background: #fff;
+}
+
+/* ---------- v-list ---------- */
+.v-menu__content {
+  box-shadow: 0 0 18px rgba(145, 145, 145, 0.2) !important;
+
+  .v-select-list {
+    .v-list {
+      .v-list__tile {
+        color: $dark;
+
+        &.primary--text {
+          color: $secondary-01 !important;
+          caret-color: $secondary-01 !important;
+        }
+      }
+
+      /* multiple select input style */
+      .v-input--selection-controls__input {
+        i.primary--text {
+          color: $secondary-01 !important;
+          caret-color: $secondary-01 !important;
+        }
+      }
+    }
+  }
+}
+
+/* ---------- v-overlay ---------- */
+.v-overlay:before {
+  background-color: #2B3040 !important;
+}
+
+.v-overlay--active:before {
+  opacity: 0.5 !important;
+}
+
+.v-dialog {
+  box-shadow: 0 2px 60px rgba(50, 75, 100, 0.35);
+}
+
+/* ---------- date picker modal ---------- */
+.v-picker.v-picker--date {
+  width: 350px;
+  border-radius: $border-radius;
+
+  // header section
+  .v-picker__title {
+    display: none;
+  }
+
+  // main section
+  .v-picker__body {
+    width: 350px !important;
+
+    .v-date-picker-header {
+      padding: 30px;
+
+      .v-date-picker-header__value:not(.v-date-picker-header__value--disabled) strong {
+        color: $secondary-01 !important;
+        font-size: 18px;
+        font-weight: 600;
+
+        &:not(:hover) {
+          color: $slate-grey !important;
+        }
+      }
+
+      .v-btn {
+        background: $pale-grey;
+        border-radius: $border-radius;
+
+        &:hover {
+          background: $secondary-01;
+
+          .v-btn__content {
+            .v-icon {
+              color: white !important;
+            }
+          }
+        }
+
+        .v-btn__content {
+          .v-icon {
+            color: $slate-grey !important;
+          }
+        }
+      }
+    }
+
+    .v-date-picker-table {
+      height: auto;
+
+      table {
+        thead {
+          tr {
+            th {
+              color: $silver;
+            }
+          }
+        }
+
+        tbody {
+          tr {
+            td {
+              .v-btn {
+                width: 36px;
+                height: 36px;
+                color: $slate-grey;
+                font-weight: 600;
+                font-size: 14px;
+
+                &.v-btn--active {
+                  color: white;
+                  background-color: $secondary-01 !important;
+                  border-color: $secondary-01 !important;
+
+                  &:before {
+                    opacity: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // button section
+  .v-picker__actions {
+    padding: 14px 30px 22px 30px;
+
+    .v-btn {
+      background: $primary-01;
+      color: white;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+  }
+}
+
+/* ---------- time picker modal ---------- */
+@keyframes clockAnimation {
+  50% {
+    border-radius: 43% 57% 32% 68% / 50% 36% 64% 50%;
+  }
+
+  100% {
+    border-radius: 57% 43% 66% 34% / 50% 56% 44% 50%;
+  }
+}
+
+.v-picker.v-picker--time {
+  width: 350px;
+  border-radius: $border-radius;
+
+  // header
+  .v-picker__title {
+    padding: 30px 0 0 0;
+
+    &.primary {
+      background: white !important;
+
+      .v-time-picker-title {
+        color: $dark !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .v-time-picker-title__time {
+          .v-picker__title__btn {
+            font-weight: 300;
+            font-size: 30px;
+            height: 50px;
+            opacity: 1;
+            padding: 6px;
+            margin: 6px;
+
+            &.v-picker__title__btn--active {
+              background-image: -webkit-linear-gradient(top, #4CA0FF 0%, #4C84FF 100%) !important;
+              color: white;
+              border-radius: 3px;
+            }
+          }
+
+          span {
+            font-weight: 300;
+            font-size: 40px;
+            height: 50px;
+          }
+        }
+
+        .v-time-picker-title__ampm {
+          margin: 8px 0 14px 8px;
+
+          .v-picker__title__btn {
+            font-weight: 700;
+            color: $silver;
+            opacity: 1;
+
+            &.v-picker__title__btn--active {
+              color: $secondary-01;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // main section
+  .v-picker__body {
+    width: 350px !important;
+    padding: 10px 0;
+
+    .v-time-picker-clock__container {
+      &:before {
+        content: '';
+        border-radius: 50% 56% 44% 50% / 57% 43% 66% 34%;
+        animation: clockAnimation 6s ease-in-out alternate infinite;
+        background-image: -webkit-linear-gradient(left, #FF77E2 0%, #B42CF4 100%), -webkit-linear-gradient(left, #FF77E2 0%, #B42CF4 100%);
+        position: absolute;
+        width: 280px;
+        height: 280px;
+      }
+
+      &:after {
+        content: '';
+        border-radius: 50% 56% 44% 50% / 57% 43% 66% 34%;
+        animation: clockAnimation 15s ease-in-out alternate infinite;
+        background-image: -webkit-linear-gradient(left, #717DF9 0%, #4CA8FF 100%), -webkit-linear-gradient(left, #717DF9 0%, #4CA8FF 100%);
+        position: absolute;
+        width: 280px;
+        height: 280px;
+      }
+
+      .v-time-picker-clock {
+        background: white;
+        z-index: 1;
+        box-shadow: 0 0 40px $silver;
+
+        span {
+          color: $slate-grey;
+          font-size: 16px;
+        }
+
+        .v-time-picker-clock__hand {
+          box-shadow: 4px 0 6px $silver;
+          background: $dark;
+
+          &.accent {
+            background: $slate-grey !important;
+          }
+
+          &:before {
+            background: $slate-grey;
+            border: none;
+            box-shadow: 8px 0 12px $silver;
+          }
+
+          &:after {
+            width: 10px;
+            height: 10px;
+            background: $slate-grey !important;
+            border: none !important;
+            box-shadow: 5px 0 10px $silver;
+          }
+        }
+
+        .active {
+          background-image: -webkit-linear-gradient(top, #4CA0FF 0%, #4C84FF 100%) !important;
+          box-shadow: 5px 0 10px $silver;
+
+          span {
+            color: white;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+
+  // button section
+  .v-picker__actions {
+    padding: 14px 30px 22px 30px;
+    margin: 20px 0;
+
+    .v-btn {
+      background: $primary-01;
+      color: white;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+  }
 }

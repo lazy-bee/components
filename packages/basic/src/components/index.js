@@ -1,25 +1,38 @@
 import XLayout from './XLayout';
 import XTable from './XTable';
 import XForm from './XForm';
-import XCard from './XCard';
 import XButton from './XButton';
-import XList from './XList';
 import XMenu from './XMenu';
 import XTabs from './XTabs';
-import XTooltip from './XTooltip';
 import XApp from './XApp';
 import XIcon from './XIcon';
-import XLine from './XLine';
-import XPie from './XPie';
-import XBar from './XBar';
 import XTree from './XTree';
 import XSpin from './XSpin';
-import XPagination from './XPagination';
 import XSteps from './XSteps';
 import XDialog from './XDialog';
-import XAlert from './XAlert';
 import XNotification from './XNotification';
-import XIframe from './XIframe';
+import XTextField from './XTextField';
+import XTextArea from './XTextArea';
+import XRadio from './XRadio';
+import XCheckbox from './XCheckbox';
+import XSelect from './XSelect';
+import XSelectFilter from './XSelectFilter';
+import XFormGroup from './XFormGroup';
+import XPagination from './XPagination';
+import XTooltip from './XTooltip';
+import XDateTimePicker from './XDateTimePicker';
+import XTimePicker from './XTimePicker';
+import XBar from './XChartBar';
+import XPie from './XChartPie';
+import XDonut from './XChartDonut';
+import XLine from './XChartLine';
+import XGeo from './XChartGeo';
+
+// deprecated
+import XAlert from '../deprecated/XAlert';
+import XIframe from '../deprecated/XIframe';
+import XList from '../deprecated/XList';
+import XCard from '../deprecated/XCard';
 
 export default [
   XLayout,
@@ -30,18 +43,29 @@ export default [
   XList,
   XMenu,
   XTabs,
-  XTooltip,
   XApp,
   XIcon,
-  XLine,
-  XPie,
-  XBar,
   XTree,
   XSpin,
-  XPagination,
   XSteps,
   XDialog,
   XAlert,
   XNotification,
-  XIframe
+  XIframe,
+  XTextField,
+  XTextArea,
+  XRadio,
+  XCheckbox,
+  XSelect,
+  XSelectFilter,
+  XFormGroup,
+  XPagination,
+  XTooltip,
+  XDateTimePicker,
+  XTimePicker,
+  XPie,
+  XDonut,
+  XBar,
+  XLine,
+  XGeo
 ];

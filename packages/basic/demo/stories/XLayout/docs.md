@@ -1,17 +1,13 @@
-# x-layout
+# Layout
 
 
-## Demo
-<!-- STORY -->
-
-
-## Usage
+### Usage
 ```html
 <x-layout v-bind="scheme" ></x-layout>
 ```
 
 
-## Scheme
+### Scheme
 | name         | type    | default | accepted values        | description                                        |
 | ------------ | ------- | ------- | ---------------------- | -------------------------------------------------- |
 | type         | String  | admin   | admin / simple / error | -                                                  |
@@ -21,7 +17,7 @@
 | drawerRight  | Boolean | false   | -                      | places navigation drawer on the right              |
 | clipped      | Boolean | true    | -                      | places clipped navigation drawer under the toolbar |
 
-## Slot
+### Slot
 | name    | description                         |
 | ------- | ----------------------------------- |
 | toolbar | app toolbar                         |
@@ -31,7 +27,7 @@
 | footer  | app footer (only for simple layout) |
 
 
-## Example
+### Example
 ```html
 <template>
   <x-layout v-bind="layoutScheme">

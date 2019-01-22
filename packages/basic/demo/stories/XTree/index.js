@@ -1,89 +1,30 @@
-import { storiesOf } from '@storybook/vue';
-import {
-  withKnobs,
-  text,
-  boolean,
-  number,
-  select,
-  object
-} from '@storybook/addon-knobs/vue';
-import { withDocs, withReadme } from 'storybook-readme';
+import { boolean, object } from '@storybook/addon-knobs/vue';
+import { withReadme } from 'storybook-readme';
 import docs from './docs.md';
-import wrapper from '../../wrapper.js';
+import XTree from '../../../src/components/XTree';
+import { generateStory } from '../../utils/generateStory';
 
-let tree = storiesOf('XTree', module)
-  .addDecorator(wrapper)
-  .addDecorator(withKnobs);
-
-tree.add(
-  'Tree',
-  withDocs(docs, () => ({
-    data() {
+const genChilds = (n, depth, prefix) =>
+  new Array(n).fill(1).map((_, i) => {
+    const label = prefix ? `${prefix}-${i + 1}` : `Item ${i + 1}`;
+    if (depth === 1) {
       return {
-        scheme: {
-          draggable: boolean('draggable', true),
-          data: object('data', [
-            {
-              label: '一级 1',
-              children: [
-                {
-                  label: '二级 1-1',
-                  children: [
-                    {
-                      label: '三级 1-1-1'
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              label: '一级 2',
-              children: [
-                {
-                  label: '二级 2-1',
-                  children: [
-                    {
-                      label: '三级 2-1-1'
-                    }
-                  ]
-                },
-                {
-                  label: '二级 2-2',
-                  children: [
-                    {
-                      label: '三级 2-2-1'
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              label: '一级 3',
-              children: [
-                {
-                  label: '二级 3-1',
-                  children: [
-                    {
-                      label: '三级 3-1-1'
-                    }
-                  ]
-                },
-                {
-                  label: '二级 3-2',
-                  children: [
-                    {
-                      label: '三级 3-2-1'
-                    }
-                  ]
-                }
-              ]
-            }
-          ])
-        }
+        label: label
       };
-    },
-    template: `
-    <x-tree v-bind="scheme" ></x-tree>
-    `
-  }))
+    }
+    return {
+      label: label,
+      children: genChilds(n, depth - 1, label)
+    };
+  });
+
+export default withReadme(docs, () =>
+  generateStory(
+    XTree,
+    {},
+    {
+      draggable: boolean('draggable', true),
+      data: object('data', genChilds(2, 3))
+    }
+  )
 );

@@ -1,5 +1,7 @@
 import Vue from 'vue';
 
+export const oneOf = (options) => (value) => options.includes(value);
+
 export default {
   methods: {
     getTextColor(bg = '#ffffff') {

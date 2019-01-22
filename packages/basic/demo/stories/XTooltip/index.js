@@ -1,43 +1,20 @@
-import { storiesOf } from '@storybook/vue';
-import {
-  withKnobs,
-  text,
-  boolean,
-  number,
-  select
-} from '@storybook/addon-knobs/vue';
-import { withDocs } from 'storybook-readme';
+import { boolean } from '@storybook/addon-knobs/vue';
+import { withReadme } from 'storybook-readme';
 import docs from './docs.md';
-import wrapper from '../../wrapper.js';
+import XTooltip, { propOptions } from '../../../src/components/XTooltip';
+import { generateStory } from '../../utils/generateStory';
 
-let tooltip = storiesOf('XTooltip', module)
-  .addDecorator(wrapper)
-  .addDecorator(withKnobs);
-
-tooltip.add(
-  'Tooltip',
-  withDocs(docs, () => ({
-    data() {
-      return {
-        scheme: {
-          direction: select(
-            'direction',
-            {
-              left: 'left',
-              right: 'right',
-              top: 'top',
-              bottom: 'bottom'
-            },
-            'right'
-          ),
-          content: text('content', 'this is tooltip content')
-        }
-      };
+export default withReadme(docs, () =>
+  generateStory(
+    XTooltip,
+    propOptions,
+    {
+      value: boolean('value', true)
     },
-    template: `
-    <x-tooltip v-bind="scheme">
-      <span slot="trigger">This is trigger</span>
-    </x-tooltip>
     `
-  }))
+    <x-tooltip v-bind="scheme">
+      <div slot="activator">Trigger</div>
+    </x-tooltip>  
+    `
+  )
 );

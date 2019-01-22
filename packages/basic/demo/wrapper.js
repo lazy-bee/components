@@ -9,5 +9,4 @@ function wrapper() {
     `
   };
 }
-
 export default wrapper;

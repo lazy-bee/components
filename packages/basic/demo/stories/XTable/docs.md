@@ -1,120 +1,190 @@
-# x-table
+# Table
 
+### Usage
 
-## Demo
-<!-- STORY -->
-
-
-## Usage
 ```html
-<x-table v-bind="scheme"></x-table>
+<x-table v-bind="scheme" />
 ```
 
+### Scheme
 
-## Scheme
-| name            | type    | default | description             |
-| --------------- | ------- | ------- | ----------------------- |
-| headers         | Array   | -       | table header col        |
-| items           | Array   | -       | table data              |
-| actions         | Array   | -       | table action col        |
-| multiSelectable | Boolean | true   | select multiple item    |
-| selectCallback | Function | -   | select item callback    |
-| draggable       | Boolean | false   | draggable               |
-| loading         | Boolean | false   | Loading status of table |
-| authority | String | available | component authority (available / unavailable / invisible) |
+| name            | type     | default | description             |
+| --------------- | -------- | ------- | ----------------------- |
+| headers         | Array    | -       | table header column     |
+| items           | Array    | -       | table data              |
+| actions         | Array    | -       | table action coloumn    |
+| multiSelectable | Boolean  | true    | select multiple item    |
+| selectCallback  | Function | -       | select item callback    |
+| draggable       | Boolean  | false   | draggable               |
+| loading         | Boolean  | false   | Loading status of table |
 
+### Headers
 
-## Headers
 ```javascript
 headers: [
   { value: 'id', text: 'ID' },
   { value: 'name', text: 'Name' },
   { value: 'age', text: 'Age' },
-  { value: 'sexy', text: 'Sexy' },
+  { value: 'status', text: 'Status' },
   { value: 'action', text: 'Actions' }
-]
+];
 ```
 
+### Items
 
-## Items
 ```javascript
 items: [
-  { value: false, id: '1', name: 'a', age: '1', sexy: '1' },
-  { value: false, id: '2', name: 'b', age: '2', sexy: '2' },
-  { value: false, id: '3', name: 'c', age: '3', sexy: '3' },
-  { value: false, id: '4', name: 'd', age: '4', sexy: '4' }
-]
+  {
+    value: false,
+    id: '001',
+    name: 'Ashley',
+    age: '25',
+    status: 'fail',
+    tooltipContent: 'Ashley Foster'
+  },
+  {
+    value: false,
+    id: '002',
+    name: 'Kathryn',
+    age: '35',
+    status: 'inprogress',
+    tooltipContent: 'Kathryn Spencer'
+  },
+  {
+    value: false,
+    id: '003',
+    name: 'Howard',
+    age: '30',
+    status: 'complete',
+    tooltipContent: 'Howard Stanley'
+  },
+  {
+    value: false,
+    id: '004',
+    name: 'Nathan',
+    age: '28',
+    status: 'pending',
+    tooltipContent: 'Nathan Tucker'
+  }
+];
 ```
 
+### Actions
 
-## Actions
+> Refer to Material Icon to get the content of icon: https://material.io/tools/icons
+
 ```javascript
 actions: [
   {
-    content: 'add',
-    size: 'small',
-    color: '#1565C0',
-    click: (item) => {
-      console.log(item);
+    content: 'search', // Material icon name
+    click: function(item, event) {
+      console.log(this); // XTable component
+      console.log(this.getSelected()); // XTable method
+      console.log(item); // Row item object
+      console.log(event); // Click event
     }
   },
   {
-    content: 'delete',
-    size: 'small',
-    color: '#FF5252',
+    content: 'delete_outline',
     click: (item) => {
       console.log(item);
     }
   }
-]
+];
 ```
 
+### Example
 
-## Example
 ```html
 <template>
-  <x-table v-bind="tableScheme"></x-table>
+  <x-table v-bind="tableScheme" />
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      tableScheme: {
-        headers: [
-          { value: 'id', text: 'ID' },
-          { value: 'name', text: 'Name' },
-          { value: 'age', text: 'Age' },
-          { value: 'sexy', text: 'Sexy' },
-          { value: 'action', text: 'Actions' }
-        ],
-        items: [
-          { value: false, id: '1', name: 'a', age: '1', sexy: '1' },
-          { value: false, id: '2', name: 'b', age: '2', sexy: '2' },
-          { value: false, id: '3', name: 'c', age: '3', sexy: '3' },
-          { value: false, id: '4', name: 'd', age: '4', sexy: '4' }
-        ],
-        actions: [
-          {
-            content: 'add',
-            size: 'small',
-            color: '#1565C0',
-            click: (item) => {
-              console.log(item);
+  export default {
+    data () {
+      return {
+        tableScheme: {
+          headers: [
+            { value: 'id', text: 'ID' },
+            { value: 'name', text: 'Name',
+              render: (item) => {
+              const {tooltipContent, name} = item;
+              return `<div class="tooltip"> ${name}
+              <i class="material-icons infoIcon">live_help</i>
+              <span class="tooltiptext"> ${tooltipContent} </span></div>`;
+              }
+            },
+            { value: 'age', text: 'Age' },
+            { value: 'status', text: 'Status',
+              render: (item) => {
+                let customColor = '';
+                const {status} = item;
+                switch (status) {
+                  case 'confirm':  // status case defined by yourself
+                    customColor = 'confirm';
+                    break;
+                  case 'pending':
+                    customColor = 'pending';
+                    break;
+                  case 'complete':
+                    customColor = 'complete';
+                }
+                return `<span class="dot ${customColor}" >${status}</span>`; },
+            { value: 'action', text: 'Actions' }
+          ],
+          items: [
+            { value: false, id: '003', name: 'Howard', age: '30', status: 'complete' ,tooltipContent: 'Howard Stanley'},
+            { value: false, id: '002', name: 'Kathryn', age: '35', status: 'confirm' , tooltipContent: 'Kathryn Spencer'},
+            { value: false, id: '001', name: 'Ashley', age: '25', status: 'confirm' ,tooltipContent: 'Ashley Foster'},
+            { value: false, id: '004', name: 'Nathan', age: '28', status: 'pending' ,tooltipContent: 'Nathan Tucker' }
+          ],
+          actions: [
+            {
+              content: 'search',
+              square:true,
+              outline:true,
+              borderRadius:4,
+              color:'666',
+              click: (item) => {
+                console.log(item);
+              }
+            },
+            {
+              content: 'delete_outline',
+              click: (item) => {
+                console.log(item);
+              }
             }
-          },
-          {
-            content: 'delete',
-            size: 'small',
-            color: '#FF5252',
-            click: (item) => {
-              console.log(item);
-            }
-          }
-        ]
+          ]
+        }
       }
     }
   }
-}
 </script>
+
+<style lang="stylus" scoped>
+
+  /* ---- status ---- */
+  span.dot {
+    &:before {
+      content: '';
+      display: inline-block;
+      border-radius: 50%;
+      width: 7px;
+      height: 7px;
+      margin-right: 6px;
+      background:red;
+    }
+    &.confirm:before {
+      background:#6289f5;
+    }
+    &.pending:before {
+      background:#ffa74c;
+    }
+    &.complete:before {
+      background:#20c785;
+    }
+  }
+</style>
 ```

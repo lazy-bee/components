@@ -1,75 +1,111 @@
-import { storiesOf } from '@storybook/vue';
-import {
-  withKnobs,
-  text,
-  boolean,
-  number,
-  select,
-  object
-} from '@storybook/addon-knobs/vue';
-import { withDocs } from 'storybook-readme';
+import { object } from '@storybook/addon-knobs/vue';
+import { withReadme } from 'storybook-readme';
 import docs from './docs.md';
-import wrapper from '../../wrapper.js';
+import XTable from '../../../src/components/XTable';
+import { generateStory } from '../../utils/generateStory';
 
-let table = storiesOf('XTable', module)
-  .addDecorator(wrapper)
-  .addDecorator(withKnobs);
-
-table.add(
-  'Table',
-  withDocs(docs, () => ({
-    data() {
-      return {
-        scheme: {
-          loading: boolean('loading', false),
-          draggable: boolean('draggable', true),
-          multiSelectable: boolean('multiSelectable', true),
-          dragEndCallback: (data) => {
-            console.log(data);
-          },
-          headers: object('headers', [
-            { value: 'id', text: 'ID' },
-            { value: 'name', text: 'Name' },
-            { value: 'age', text: 'Age' },
-            { value: 'sexy', text: 'Sexy' },
-            { value: 'action', text: 'Actions' }
-          ]),
-          items: object('items', [
-            { value: false, id: '3', name: 'c', age: '3', sexy: '3' },
-            { value: false, id: '2', name: 'b', age: '2', sexy: '2' },
-            { value: false, id: '1', name: 'a', age: '1', sexy: '1' },
-            {
-              value: false,
-              id: '<a href="#">4</a>',
-              name: 'd',
-              age: '4',
-              sexy: '4'
+export default withReadme(docs, () =>
+  generateStory(
+    XTable,
+    {},
+    {
+      dragEndCallback: (data) => {
+        console.log(data);
+      },
+      headers: object('headers', [
+        { value: 'id', text: 'ID' },
+        {
+          value: 'name',
+          text: 'Name',
+          render: (item) => {
+            const { tooltipContent, name } = item;
+            return `<div class="tooltip"> ${name} 
+            <i class="material-icons infoIcon">live_help</i>
+            <span class="tooltiptext"> ${tooltipContent} </span></div>`;
+          }
+        },
+        { value: 'age', text: 'Age' },
+        {
+          value: 'status',
+          text: 'Status',
+          render: (item) => {
+            let customColor = '';
+            const { status } = item;
+            switch (status) {
+              case 'confirm':
+                customColor = 'confirm';
+                break;
+              case 'pending':
+                customColor = 'pending';
+                break;
+              case 'complete':
+                customColor = 'complete';
             }
-          ]),
-          actions: object('actions', [
-            {
-              content: 'add',
-              size: 'small',
-              color: '#1565C0',
-              click: (item) => {
-                this.$refs.table.setSelect(0);
-                //console.log(item);
-              }
-            },
-            {
-              content: 'delete',
-              size: 'small',
-              color: '#FF5252',
-              click: (item) => {
-                console.log(item);
-              }
-            }
-          ])
+            return `<span class="dot ${customColor}" >${status}</span>`;
+          }
+        },
+        { value: 'action', text: 'Actions' }
+      ]),
+      items: object('items', [
+        {
+          value: false,
+          id: '003',
+          name: 'Howard',
+          age: '30',
+          status: 'complete',
+          tooltipContent: 'Howard Stanley'
+        },
+        {
+          value: false,
+          id: '002',
+          name: 'Kathryn',
+          age: '35',
+          status: 'confirm',
+          tooltipContent: 'Kathryn Spencer'
+        },
+        {
+          value: false,
+          id: '001',
+          name: 'Ashley',
+          age: '25',
+          status: 'confirm',
+          tooltipContent: 'Ashley Foster'
+        },
+        {
+          value: false,
+          id: '<a href="#">004</a>',
+          name: 'Nathan',
+          age: '28',
+          status: 'pending',
+          tooltipContent: 'Nathan Tucker'
         }
-      };
+      ]),
+      actions: object('actions', [
+        {
+          content: 'search',
+          color: '$slate-grey',
+          square: true,
+          outline: true,
+          borderRadius: 4,
+          size: 'small',
+          click: (item) => {
+            console.log('search', item.id);
+          }
+        },
+        {
+          content: 'delete_outline',
+          color: '$slate-grey',
+          square: true,
+          outline: true,
+          borderRadius: 4,
+          size: 'small'
+        }
+      ])
     },
-    template: `
-      <x-table ref="table" v-bind="scheme"></x-table>
     `
-  }))
+<div style="width:80vw">
+  <x-table v-bind="scheme"></x-table>
+</div>
+    `
+  )
 );

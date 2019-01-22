@@ -1,4 +1,5 @@
 import './loaders.css';
+import { oneOf } from '../../mixins/tools.js';
 
 import BallBeatLoader from './loaders/ball-beat.vue';
 import BallClipRotateLoader from './loaders/ball-clip-rotate.vue';
@@ -23,11 +24,42 @@ import LineScalePulseOutRapidLoader from './loaders/line-scale-pulse-out-rapid.v
 import LineSpinFadeLoader from './loaders/line-spin-fade.vue';
 import SquareSpinLoader from './loaders/square-spin.vue';
 
+export const propOptions = {
+  name: [
+    'line-scale',
+    'line-scale-party',
+    'line-scale-pulse-out',
+    'line-scale-pulse-out-rapid',
+    'line-spin-fade',
+    'ball-beat',
+    'ball-clip-rotate',
+    'ball-clip-rotate-multiple',
+    'ball-clip-rotate-pulse',
+    'ball-grid-beat',
+    'ball-grid-pulse',
+    'ball-pulse',
+    'ball-pulse-sync',
+    'ball-rotate',
+    'ball-scale',
+    'ball-scale-multiple',
+    'ball-scale-ripple',
+    'ball-scale-ripple-multiple',
+    'ball-spin-fade',
+    'ball-triangle-path',
+    'cube-transition',
+    'square-spin'
+  ]
+};
+
 export default {
   name: 'x-spin',
   props: {
-    name: { type: String, default: 'line-scale' },
-    color: { type: String, default: '' },
+    name: {
+      type: String,
+      default: 'ball-pulse',
+      validator: oneOf(propOptions.name)
+    },
+    color: { type: String, default: '#FF0039' },
     size: { type: String, default: '' }
   },
   components: {

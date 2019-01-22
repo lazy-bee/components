@@ -1,17 +1,14 @@
-# x-tabs
+# Tabs
 
 
-## Demo
-<!-- STORY -->
 
-
-## Usage
+### Usage
 ```html
-<x-tabs v-bind="scheme"></x-tabs>
+<x-tabs v-bind="scheme"> ... </x-tabs>
 ```
 
 
-## Scheme
+### Scheme
 | name     | type    | default | accepted values | description               |
 | -------- | ------- | ------- | --------------- | ------------------------- |
 | type     | String  | card    | card / line     | tabs type                 |
@@ -25,23 +22,23 @@
 
 ### Tabs
 ```javascript
-tabs: [ { label: 'aaa', slot: 'a' }, { label: 'bbb', slot: 'b' } ]
+tabs: [ { label: 'New York', slot: 'tab1' }, { label: 'Chicago', slot: 'tab2' } ]
 ```
 
-## Example
+### Example
 ```html
 <template>
   <x-tabs v-bind="tabsScheme">
-    <div slot="a">
-      this is some a content
+    <div slot="tab1">
+      this is some tab1 content
     </div>
 
-    <div slot="b">
-      this is some b content
+    <div slot="tab2">
+      this is some tab2 content
     </div>
 
-    <div slot="c">
-      this is some c content
+    <div slot="tab3">
+      this is some tab3 content
     </div>
   </x-tabs>
 </template>
@@ -52,9 +49,9 @@ export default {
     return {
       tabsScheme: {
         tabs: [
-          { label: 'aaa', slot: 'a' },
-          { label: 'bbb', slot: 'b' },
-          { label: 'ccc', slot: 'c' }
+          { label: 'New York', slot: 'tab1' },
+          { label: 'Chicago', slot: 'tab2' },
+          { label: 'Califonia', slot: 'tab3' }
         ],
         prev: {
           content: 'Prev button'

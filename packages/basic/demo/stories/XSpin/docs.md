@@ -1,16 +1,13 @@
-# x-spin
+# Spin
 
 
-## Demo
-<!-- STORY -->
-
-## Usage
+### Usage
 ```html
-<x-spin v-bind="scheme"></x-spin>
+<x-spin v-bind="scheme"/>
 ```
 
 
-## Scheme
+### Scheme
 | name | type   | default | accepted values | description |
 | ---- | ------ | ------- | --------------- | ----------- |
 | name | String | -       | see list below   | spin name   |
@@ -42,10 +39,10 @@
 - square-spin
 
 
-## Example
+### Example
 ```html
 <template>
-  <x-spin v-bind="spinScheme"></x-spin>
+  <x-spin v-bind="spinScheme"/>
 </template>
 
 <script>
@@ -54,7 +51,7 @@ export default {
     return {
       spinScheme: {
         name: 'line-scale',
-        color: '#1565C0'
+        color: '#FF0039'
         size: '20px'
       }
     }

@@ -1,24 +1,20 @@
-# x-form
+# Form
 
 
-## Demo
-<!-- STORY -->
-
-
-## Usage
+### Usage
 ```html
-<x-form v-bind="scheme"></x-form>
+<x-form v-bind="scheme"/>
 ```
 
 
-## Scheme
+### Scheme
 | name      | type   | default   | description                                               |
 | --------- | ------ | --------- | --------------------------------------------------------- |
 | fields    | Array  | -         | form fields                                               |
 | actions   | Array  | -         | form actions                                              |
 | authority | String | available | component authority (available / unavailable / invisible) |
 
-## Fields
+### Fields
 | name            | type   | default | description                    |
 | --------------- | ------ | ------- | ------------------------------ |
 | name  (require) | String | -       | field name                     |
@@ -31,7 +27,7 @@
 | server          | String | -       | server for file type           |
 
 
-## Actions
+### Actions
 | name    | type     | default | description                    |
 | ------- | -------- | ------- | ------------------------------ |
 | content | String   | -       | action button text             |
@@ -39,10 +35,10 @@
 | click   | Function | -       | action click event             |
 
 
-## Example
+### Example
 ```html
 <template>
-  <x-form v-bind="formScheme"></x-form>
+  <x-form v-bind="formScheme"/>
 </template>
 
 <script>

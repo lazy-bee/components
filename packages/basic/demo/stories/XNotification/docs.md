@@ -1,26 +1,24 @@
-# x-notification
+# Notification
 
 
-## Demo
-<!-- STORY -->
 
-## Usage
+### Usage
 ```html
-<x-notification v-bind="scheme"></x-notification>
+<x-notification v-bind="scheme"/>
 ```
 
 
-## Scheme
+### Scheme
 | name | type   | default | accepted values | description |
 | ---- | ------ | ------- | --------------- | ----------- |
 
 
 
 
-## Example
+### Example
 ```html
 <template>
-  <x-notification v-bind="notificationScheme"></x-notification>
+  <x-notification v-bind="notificationScheme"/>
 </template>
 
 <script>

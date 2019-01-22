@@ -1,35 +1,38 @@
-# x-tooltip
+# Tooltip
 
+### Usage
 
-## Demo
-<!-- STORY -->
-
-## Usage
 ```html
 <x-tooltip v-bind="scheme">
-  <span slot="trigger">This is trigger</span>
+  <div slot="activator">Trigger</div>
 </x-tooltip>
 ```
 
+### Scheme
 
-## Scheme
-| name      | type   | default | accepted values             | description      |
-| --------- | ------ | ------- | --------------------------- | ---------------- |
-| direction | String | right   | top / bottom / left / right  | tooltip position |
-| content   | String | -   | - | tooltip content  |
-| authority | String | available | available / unavailable / invisible | component authority |
+| name          | type    | default | accepted values              | description                        |
+| -----------   | ------- | ------- | ---------------------------- |----------------------------------- |
+| value         | Boolean | false   | -                            | Controls visibility                |
+| content       | String  | -       | -                            | tooltip content                    |
+| contentClass  | String  | -       | -                            | set a custom class to define tooltip style|
+| color         | String  | #2A2E3D | -                            | tooltip background color           |
+| maxWidth      | String  | 200px   | -                            | the maximum width of the content   |
+| direction     | String  | bottom  | top / right / bottom / left  | direction of content               |
+ 
 
+### Slot
 
-## Slot
-| name    | description                   |
-| ------- | ----------------------------- |
-| trigger | which element trigger tooltip |
+| name       | description              |
+| ---------- | ------------------------ |
+| activator  | place trigger content    |
 
+### Example
 
-## Example
 ```html
 <template>
-  <x-tooltip v-bind="tooltipScheme"></x-tooltip>
+  <x-tooltip v-bind="scheme">
+    <div slot="activator">Trigger</div>
+  </x-tooltip>
 </template>
 
 <script>
@@ -37,11 +40,18 @@ export default {
   data () {
     return {
       tooltipScheme: {
-        direction: 'bottom',
-        content: 'This is some tooltip'
+        content: 'Hello! This is tootip content box',
+        direction:'bottom',
+        contentClass:'customClass'
       }
     }
   }
 }
 </script>
+
+<style scoped>
+  .customClass{
+    border-radius:10px;
+  }
+</style>
 ```

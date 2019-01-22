@@ -1,16 +1,13 @@
-# x-tree
+# Tree
 
 
-## Demo
-<!-- STORY -->
-
-## Usage
+### Usage
 ```html
-<x-tree v-bind="scheme"></x-tree>
+<x-tree v-bind="scheme"/>
 ```
 
 
-## Scheme
+### Scheme
 | name      | type    | default   | description                                               |
 | --------- | ------- | --------- | --------------------------------------------------------- |
 | data      | Array   | -         | tree data                                                 |
@@ -18,10 +15,10 @@
 | authority | String  | available | component authority (available / unavailable / invisible) |
 
 
-## Example
+### Example
 ```html
 <template>
-  <x-tree v-bind="treeScheme"></x-tree>
+  <x-tree v-bind="treeScheme"/>
 </template>
 
 <script>
