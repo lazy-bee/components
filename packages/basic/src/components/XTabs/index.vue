@@ -37,11 +37,6 @@
 </template>
 
 <script>
-import { oneOf } from '../../mixins/tools.js';
-export const propOptions = {
-  type: ['card', 'line'],
-  position: ['top', 'bottom', 'left', 'right']
-};
 import { Tabs, TabPane } from 'element-ui';
 
 export default {
@@ -52,17 +47,9 @@ export default {
   },
   props: {
     tabs: { type: Array, default: () => [] },
-    type: {
-      type: String,
-      default: 'card',
-      validator: oneOf(propOptions.type)
-    },
+    type: { type: String, default: 'card' },
     control: { type: Boolean, default: false },
-    position: {
-      type: String,
-      default: 'top',
-      validator: oneOf(propOptions.position)
-    },
+    position: { type: String, default: 'top' },
     prev: {
       type: Object,
       default: () => {

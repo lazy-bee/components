@@ -4,13 +4,13 @@
   width="100%"
   height="100%"
 >
-  <v-img
+  <v-card-media
     v-if="mediaUrl"
     :src="mediaUrl"
     :height="mediaHeight"
     :class="mediaClass"
   >
-  </v-img>
+  </v-card-media>
 
   <v-card-title
     v-if="title"

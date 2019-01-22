@@ -70,19 +70,12 @@
 </template>
 
 <script>
-import { oneOf } from '../../mixins/tools.js';
-export const propOptions = { type: ['vertical', 'horizontal'] };
-
 export default {
   name: 'x-steps',
   props: {
     active: { type: Number, default: 1 },
     steps: { type: Array, default: () => [] },
-    type: {
-      type: String,
-      default: 'horizontal',
-      validator: oneOf(propOptions.type)
-    },
+    type: { type: String, default: 'horizontal' },
     alertLabel: { type: Boolean, default: true },
     actions: { type: Boolean, default: true },
     prev: {

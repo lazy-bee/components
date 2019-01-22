@@ -12,17 +12,10 @@
 </template>
 
 <script>
-import { oneOf } from '../../mixins/tools.js';
-export const propOptions = { openType: ['click', 'hover'] };
-
 export default {
   name: 'x-menu',
   props: {
-    openType: {
-      type: String,
-      default: 'click',
-      validator: oneOf(propOptions.openType)
-    },
+    openType: { type: String, default: 'click' },
     menuList: { type: Object, default: () => {} },
     authority: { type: String, default: 'available' }
   }

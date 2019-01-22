@@ -32,13 +32,6 @@ export default {
     authority: { type: String, default: 'available' }
   },
   data() {
-    const series = (Array.isArray(this.data[0]) ? this.data : [this.data]).map(
-      (datum) => ({
-        data: datum,
-        type: 'line'
-      })
-    );
-
     return {
       option: {
         colors: this.colors,
@@ -47,7 +40,12 @@ export default {
         },
         xAxis: this.xAxis,
         yAxis: this.yAxis,
-        series: series
+        series: [
+          {
+            data: this.data,
+            type: 'line'
+          }
+        ]
       }
     };
   }

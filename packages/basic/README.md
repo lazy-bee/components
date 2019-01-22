@@ -1,34 +1,41 @@
-# @lazy-bee/basic
+Lazybee-component
 
-## Project setup
-```
-npm install
-```
+Branch
+=============
+* master
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+![Alt text](https://codebuild.ap-northeast-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiUUpnZ2pJbTdkak5DZmQ0T3I2cm5FL3NRZC9xRENJRGFuUzlpeVNMYS9zRzMzQTBPNUt6TlYxa3NMVVBLVTAwWVlCbHpGNU9pVzgxd3ZhNGJoSm5yYUpZPSIsIml2UGFyYW1ldGVyU3BlYyI6IlhzQmQxenE4ZkwyQ0FvVUEiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+* release
 
-### Compiles and minifies for production
-```
-npm run build
-```
+![Alt text](https://codebuild.ap-northeast-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiUUpnZ2pJbTdkak5DZmQ0T3I2cm5FL3NRZC9xRENJRGFuUzlpeVNMYS9zRzMzQTBPNUt6TlYxa3NMVVBLVTAwWVlCbHpGNU9pVzgxd3ZhNGJoSm5yYUpZPSIsIml2UGFyYW1ldGVyU3BlYyI6IlhzQmQxenE4ZkwyQ0FvVUEiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=release)
 
-### Run your tests
+
+## Run demo (storybook)
 ```
-npm run test
+$ yarn install
+$ npm run serve:demo
 ```
 
-### Lints and fixes files
+## Script command
+=============
 ```
-npm run lint
+$ npm run serve:src
+
+$ npm run build:src
+
+$ npm run test:src
+
+$ npm run lint:src
+
+$ npm run serve:demo
+
+$ npm run build:demo
+
+$ npm run install:package
+
+$ npm run release:component
 ```
 
-### Run your unit tests
-```
-npm run test:unit
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Reference
+ - [Storybook](https://s3-ap-northeast-1.amazonaws.com/lazybee-demo/demo/index.html)

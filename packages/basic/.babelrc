@@ -1,0 +1,25 @@
+{
+  "presets": [
+    "@vue/app",
+    "vue"
+  ],
+  "plugins": [
+    ["transform-react-jsx"],
+    [
+      "transform-imports",
+      {
+        "vuetify": {
+          "transform": "vuetify/es5/components/${member}",
+          "preventFullImport": false
+        }
+      }
+    ],
+    [
+      "component",
+      {
+        "libraryName": "element-ui",
+        "styleLibraryName": "theme-chalk"
+      }
+    ]
+  ]
+}

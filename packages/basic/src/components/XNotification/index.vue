@@ -17,20 +17,13 @@
 </template>
 
 <script>
-import { oneOf } from '../../mixins/tools.js';
-export const propOptions = { mode: ['', 'vertical', 'multi-line'] };
-
 export default {
   name: 'x-notification',
   props: {
     xAxis: { type: String, default: '' },
     yAxis: { type: String, default: '' },
     timeout: { type: Number, default: 2000 },
-    mode: {
-      type: String,
-      default: '',
-      validator: oneOf(propOptions.mode)
-    },
+    mode: { type: String, default: '' },
     text: { type: String, default: '' }
   },
   data() {

@@ -80,18 +80,13 @@
 </template>
 
 <script>
-import tools, { oneOf } from '../../mixins/tools.js';
-export const propOptions = { type: ['admin', 'simple', 'error', 'widget'] };
+import tools from '../../mixins/tools.js';
 
 export default {
   name: 'x-layout',
   mixins: [tools],
   props: {
-    type: {
-      type: String,
-      default: 'simple',
-      validator: oneOf(propOptions.type)
-    },
+    type: { type: String, default: 'Simple' },
     clipped: { type: Boolean, default: true },
     drawerWidth: { type: Number, default: 200 },
     drawerClass: { type: String, default: 'grey darken-3' },
