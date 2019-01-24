@@ -103,5 +103,6 @@
     "url": "git+https://github.com/lazy-bee/ui.git"
   },
   "unpkg": "dist/basic.min.js",
+  "files": ["./dist/*"],
   "gitHead": "3a4ef33340fdaa12feb36f5912abb2d96db25613"
 }
