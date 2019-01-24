@@ -130,7 +130,9 @@ actions: [
                   case 'complete':
                     customColor = 'complete';
                 }
-                return `<span class="dot ${customColor}" >${status}</span>`; },
+                return `<span class="dot ${customColor}" >${status}</span>`; 
+              }
+            },
             { value: 'action', text: 'Actions' }
           ],
           items: [

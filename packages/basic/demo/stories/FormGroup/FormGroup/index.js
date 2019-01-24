@@ -48,6 +48,7 @@ export default withReadme(docs, () =>
         value: ''
       },
       radioScheme: {
+        name: 'Gender',
         items: [
           {
             label: 'Male',
@@ -61,6 +62,7 @@ export default withReadme(docs, () =>
         value: ''
       },
       checkboxScheme: {
+        name: 'Specialties',
         items: [
           {
             label: 'Chemistry',
@@ -90,6 +92,10 @@ export default withReadme(docs, () =>
         placeholder: 'Please leave your coment here',
         value: '',
         rule: []
+      },
+      dateTimePickerScheme: {
+        name: 'Date',
+        value: ''
       }
     },
     `
@@ -105,8 +111,30 @@ export default withReadme(docs, () =>
       <x-checkbox v-bind="scheme.checkboxScheme" v-model="scheme.checkboxScheme.value" style="display:flex;"/>
       <br/><br/>
       <x-textarea v-bind="scheme.textareaScheme" v-model="scheme.textareaScheme.value" />
+      <x-datetime-picker @onChange="datepickerChanged" />
+      <br/>
+      <x-button :click="submit">submit</x-button>
     </x-formgroup>
   </div>
-  `
+  `,
+    {
+      methods: {
+        datepickerChanged(val) {
+          console.log(val);
+          this.scheme.dateTimePickerScheme.value = val;
+        },
+        submit() {
+          const rs = Object.keys(this.scheme).map((key) => {
+            console.log(key);
+            const { label, value, name } = this.scheme[key];
+            return {
+              name: name || label,
+              value
+            };
+          });
+          console.log(rs);
+        }
+      }
+    }
   )
 );

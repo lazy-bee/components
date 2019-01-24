@@ -10,8 +10,13 @@
 
 | name       | type    | default | accepted values | description                    |
 | ---------- | ------- | ------- | --------------- | ------------------------------ |
+| startDate  | Date    | -       | new Date()      | start date of the range        |
+| endDate    | Date    | -       | new Date()      | end date of the range          |
 | singleDate | Boolean | false   | -               | select period or a single date |
 | alignRight | Boolean | false   | -               | modal align-right              |
+| label      | String  | -       | -               | input label                    |
+| required   | Boolean | false   | -               | -                              |
+
 
 ### Event
 
@@ -31,7 +36,10 @@
     data() {
       return {
         datetimeScheme: {
-          singleDate: true
+          singleDate: true,
+          alignRight: true
+          label: 'Select Date',
+          required: true
         }
       };
     },

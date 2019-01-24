@@ -12,18 +12,26 @@
 
 ```html
 <template>
-  <x-formgroup v-model="scheme.valid">
+  <x-formgroup v-model="scheme.valid" ref="formgroup">
     <x-textfield v-bind="scheme.emailScheme" v-model="scheme.emailScheme.value" />
     <x-textfield v-bind="scheme.passwordScheme" v-model="scheme.passwordScheme.value" />
     <x-select v-bind="scheme.selectScheme" v-model="scheme.selectScheme.value"/>
     <x-radio v-bind="scheme.radioScheme" v-model="scheme.radioScheme.value"/>
     <x-checkbox v-bind="scheme.checkboxScheme" v-model="scheme.checkboxScheme.value"/>
     <x-textarea v-bind="scheme.textareaScheme" v-model="scheme.textareaScheme.value" />
+
+    <x-button :click="handleSubmit"> submit </x-button>
   </x-formgroup>
 </template>
 
 <script>
   export default {
+    methods: {
+      handleSubmit: function(val){
+        // return the inner v-form 
+        return this.$refs.formgroup.getFormComponent().validate()
+      }
+    },
     data() {
       return {
         scheme:{

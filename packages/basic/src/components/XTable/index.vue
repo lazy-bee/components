@@ -11,7 +11,7 @@
     disable-initial-sort
   >
     <template slot="items" slot-scope="props">
-      <tr class="sortableRow" :key="itemKey(props.item)">
+      <tr class="sortableRow" :key="itemKey(props.item)" @click="() => { clickCallback.call(null, props.item) }">
         <td v-if="multiSelectable" class="select-checkbox">
           <div class="td-wrapper">
             <v-checkbox hide-details v-model="props.selected"></v-checkbox>
@@ -29,20 +29,22 @@
           :key="key"
           v-if="key !== 'value' && checkHeaderKey(key)"
         >
-          <div class="td-wrapper">
+          <div class="td-wrapper" :class="`${key}-td-wrapper`">
             <div v-html="!checkHeaderRender(key) ? val : checkHeaderRender(key)(props.item)"></div>
           </div>
         </td>
 
         <td v-if="actions.length" class="actions-area">
           <div class="td-wrapper">
-            <x-button
-              v-if="checkRender(btn, props.item)"
-              v-for="(btn, index) in actions"
-              :key="index"
-              v-bind="btn"
-              :click="actionClicked(props.item, btn)"
-            ></x-button>
+            <div class="actions-btn-wrapper">
+              <x-button
+                v-if="checkRender(btn, props.item)"
+                v-for="(btn, index) in actions"
+                :key="index"
+                v-bind="btn"
+                :click="actionClicked(props.item, btn)"
+              ></x-button>
+            </div>
           </div>
         </td>
       </tr>
@@ -68,6 +70,7 @@ export default {
     actions: { type: Array, default: () => [] },
     multiSelectable: { type: Boolean, default: true },
     selectCallback: { type: Function, default: () => {} },
+    clickCallback: { type: Function, default: () => {} },
     selectItems: { type: Array, default: () => [] },
     draggable: { type: Boolean, default: false },
     dragEndCallback: { type: Function, default: () => {} },
@@ -245,11 +248,11 @@ export default {
           background: $pale-grey !important;
         }
 
-        &:nth-child(odd) {
-          background-color: white;
-        }
+        // &:nth-child(odd) {
+        //   background-color: white;
+        // }
 
-        &:nth-child(even) {
+        &:nth-child(4n + 1) {
           background-color: $pale-grey-two;
         }
 
@@ -265,12 +268,14 @@ export default {
 
           /* ---- action icon ---- */
           &.actions-area {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
+            .actions-btns-wrapper {
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+            }
 
             button {
-              background: white !important;
+              // background: white !important;
               border: 1px solid $silver-two;
               width: 28px;
               height: 28px;

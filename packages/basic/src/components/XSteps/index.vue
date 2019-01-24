@@ -1,12 +1,12 @@
 <template>
   <div>
-    <v-stepper :alt-labels="alertLabel" v-model="active" v-if="type === 'horizontal'">
+    <v-stepper :alt-labels="alertLabel" v-model="innerActive" v-if="type === 'horizontal'">
       <v-stepper-header>
         <template v-for="(stepItem, index) in steps">
           <v-stepper-step
             :key="index"
             :step="index + 1"
-            :complete="active > (index + 1)"
+            :complete="innerActive > (index + 1)"
           >{{ stepItem.label || UNKNOW_STEPPER }}</v-stepper-step>
           <v-divider :key="index + 10" v-if="index !== (count - 1)"></v-divider>
         </template>
@@ -17,12 +17,12 @@
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>
-    <v-stepper v-else vertical v-model="active">
+    <v-stepper v-else vertical v-model="innerActive">
       <template v-for="(item, index) in steps">
         <v-stepper-step
           :key="index"
           :step="index + 1"
-          :complete="active > (index + 1)"
+          :complete="innerActive > (index + 1)"
         >{{ item.label }}</v-stepper-step>
         <v-stepper-content :key="index" :step="index + 1">
           <slot :name="item.slot"></slot>
@@ -32,7 +32,7 @@
     <div class="action-area" v-if="actions">
       <x-button
         outline
-        v-if="active != 1"
+        v-if="innerActive != 1"
         v-bind="{
         content: prev.content,
         color: prev.color,
@@ -41,7 +41,7 @@
       ></x-button>
       <x-button
         v-bind="{
-        content: active != count ? next.content : finish.content,
+        content: innerActive != count ? next.content : finish.content,
         color: next.color,
         click: goNext
       }"
@@ -96,21 +96,22 @@ export default {
   data() {
     return {
       count: this.steps.length,
-      UNKNOW_STEPPER
+      UNKNOW_STEPPER,
+      innerActive: this.active
     };
   },
   methods: {
     goNext() {
       let isOK = true;
       if (typeof this.next.click === 'function') {
-        isOK = this.next.click(this.active);
+        isOK = this.next.click(this.innerActive);
       }
 
       if (isOK) {
-        if (this.active < this.count) {
-          this.active = this.active + 1;
+        if (this.innerActive < this.count) {
+          this.innerActive = this.innerActive + 1;
         } else {
-          this.finish.click(this.active);
+          this.finish.click(this.innerActive);
         }
       }
     },
@@ -118,12 +119,12 @@ export default {
     goPrevious() {
       let isOK = true;
       if (typeof this.prev.click === 'function') {
-        isOK = this.prev.click(this.active);
+        isOK = this.prev.click(this.innerActive);
       }
 
       if (isOK) {
-        if (this.active > 1) {
-          this.active = this.active - 1;
+        if (this.innerActive > 1) {
+          this.innerActive = this.innerActive - 1;
         }
       }
     }

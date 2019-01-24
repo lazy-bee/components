@@ -12,6 +12,9 @@ export default withReadme(docs, () =>
       dragEndCallback: (data) => {
         console.log(data);
       },
+      clickCallback: (data) => {
+        console.log(data);
+      },
       headers: object('headers', [
         { value: 'id', text: 'ID' },
         {
@@ -19,7 +22,7 @@ export default withReadme(docs, () =>
           text: 'Name',
           render: (item) => {
             const { tooltipContent, name } = item;
-            return `<div class="tooltip"> ${name} 
+            return `<div class="tooltip"> ${name}
             <i class="material-icons infoIcon">live_help</i>
             <span class="tooltiptext"> ${tooltipContent} </span></div>`;
           }

@@ -13,9 +13,11 @@ export const generateStory = (
   component,
   propOptions = {},
   values = {},
-  template
+  template,
+  others = {}
 ) => {
   return {
+    ...others,
     data() {
       return {
         scheme: generateScheme(component, propOptions, values)

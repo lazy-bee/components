@@ -43,7 +43,7 @@
 
 ```html
 <template>
-  <x-button @click=openDialog />
+  <x-button @click="openDialog" />
   <x-dialog v-bind="dialogScheme" v-model="dialogScheme.value" @confirm="dialogConfirm"></x-dialog>
 </template>
 

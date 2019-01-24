@@ -3,7 +3,7 @@
     v-if="authority !== 'invisible'"
     :color="color"
     :depressed="!shadow"
-    :style="{ borderRadius: borderRadius + 'px' }"
+    :style="customStyle"
     :round="round"
     :outline="outline"
     :flat="flat"
@@ -77,9 +77,21 @@ export default {
     }
   },
   data() {
+    let textColor = this.flat ? this.color : this.getTextColor(this.color);
+    let backgroundColor = this.flat ? 'transparent' : this.color;
+    let customStyle = {
+      borderRadius: this.borderRadius + 'px'
+    };
+
+    if (this.outline !== true) {
+      customStyle.backgroundColor = backgroundColor;
+      customStyle.color = textColor;
+    }
+
     return {
-      backgroundColor: this.flat ? 'transparent' : this.color,
-      textColor: this.flat ? this.color : this.getTextColor(this.color)
+      backgroundColor,
+      textColor,
+      customStyle
     };
   }
 };
@@ -89,7 +101,6 @@ export default {
 @import '../../styles/_variables.styl';
 
 .v-btn {
-  color: white;
   height: $btn-height;
   font-size: $btn-font;
   line-height: $btn-height;
