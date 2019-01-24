@@ -1,6 +1,6 @@
 {
   "name": "@lazy-bee/basic",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "## Project setup ``` npm install ```",
   "author": "oriente",
   "scripts": {
@@ -13,6 +13,7 @@
     "build:demo": "build-storybook -c demo/config -o dist/demo -s ./demo/asset/favicon",
     "install:package": "HUSKY_SKIP_INSTALL=true yarn install",
     "release:component": "npm run build:src && npm run build:demo",
+    "prepublish": "npm run build-bundle",
     "kill": "npm run kill:8080; npm run kill:9001",
     "kill:8080": "pkill -15 -f -o bin/nodemon;kill $(lsof -i:8080 -sTCP:LISTEN -t);echo All mockServer should be killed",
     "kill:9001": "pkill -15 -f -o bin/nodemon;kill $(lsof -i:9001 -sTCP:LISTEN -t);echo All mockServer should be killed"
@@ -95,7 +96,7 @@
     "web"
   ],
   "license": "ISC",
-  "main": "./src/build.js",
+  "main": "dist/basic.common.js",
   "module": "dist/basic.esm.js",
   "repository": {
     "type": "git",

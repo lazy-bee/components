@@ -1,6 +1,6 @@
 {
   "name": "@lazy-bee/basic",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "main": "./src/main.js",
   "scripts": {
     "serve:src": "vue-cli-service serve --open",
