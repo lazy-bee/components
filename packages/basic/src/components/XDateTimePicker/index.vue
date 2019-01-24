@@ -1,5 +1,5 @@
 <template>
-  <div class="datetime_wrapper">
+  <div :class="`datetime_wrapper ${label? 'padding26': ''}`">
     <label slot="label" v-if="label">
       {{label}}
       <span v-if="required" class="star">*</span>
@@ -51,9 +51,10 @@ export default {
 
 <style lang="stylus" scoped>
 @import '../../styles/_variables.styl';
-
-.datetime_wrapper {
+.padding26{
   padding-top: 26px;
+}
+.datetime_wrapper {
   position: relative;
 
   label {
