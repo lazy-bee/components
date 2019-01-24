@@ -1,6 +1,6 @@
 {
   "name": "@lazy-bee/basic",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "description": "## Project setup ``` npm install ```",
   "author": "oriente",
   "scripts": {
@@ -101,5 +101,6 @@
     "type": "git",
     "url": "git+https://github.com/lazy-bee/ui.git"
   },
-  "unpkg": "dist/basic.min.js"
+  "unpkg": "dist/basic.min.js",
+  "gitHead": "3a4ef33340fdaa12feb36f5912abb2d96db25613"
 }
