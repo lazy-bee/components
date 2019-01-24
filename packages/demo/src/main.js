@@ -4,13 +4,13 @@ import "./registerServiceWorker";
 import router from './router'
 
 
-import '@lazy-bee/basic/dist/basic.css'
+// import '@lazy-bee/basic/dist/basic.css'
 import lb from '@lazy-bee/basic'
 
-console.log('lb: ', lb)
+// console.log('lb: ', lb)
 
 Vue.config.productionTip = false;
-Vue.use(lb)
+// Vue.use(lb)
 
 new Vue({
   router,

@@ -1,9 +1,15 @@
-import FirstPage from './FirstPage.vue'
+import XButton from './XButton.vue'
+import XTable from './XTable.vue'
 
 export default [
   {
-    name: 'FirstPage',
-    path: 'FirstPage',
-    component: FirstPage
+    name: 'XButton',
+    path: 'XButton',
+    component: XButton
+  },
+  {
+    name: 'XTable',
+    path: 'XTable',
+    component: XTable
   }
 ] 
