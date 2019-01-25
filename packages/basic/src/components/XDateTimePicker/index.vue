@@ -1,5 +1,5 @@
 <template>
-  <div :class="`datetime_wrapper ${label? 'padding26': ''}`">
+  <div class="datetime_wrapper">
     <label slot="label" v-if="label">
       {{label}}
       <span v-if="required" class="star">*</span>
@@ -21,8 +21,7 @@ export default {
   props: {
     singleDate: { type: Boolean, default: false },
     label: { type: String, default: '' },
-    required: { type: Boolean, default: false },
-    rules: {} //Array or Function, so no assigned here
+    required: { type: Boolean, default: false }
   },
   methods: {
     validate: function() {
@@ -50,10 +49,9 @@ export default {
 
 <style lang="stylus" scoped>
 @import '../../styles/_variables.styl';
-.padding26{
-  padding-top: 26px;
-}
+
 .datetime_wrapper {
+  padding-top: 26px;
   position: relative;
 
   label {
