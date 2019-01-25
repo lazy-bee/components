@@ -34,12 +34,12 @@ export default {
   margin-bottom: 60px;
 
   .logo {
-    width: 200px;
+    width: 160px;
     margin: 0 auto;
   }
 
   h1 {
-    font-size: 45px;
+    font-size: 40px;
     line-height: 1.6;
     font-family: 'Laila', serif;
   }

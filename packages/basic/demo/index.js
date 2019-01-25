@@ -9,7 +9,6 @@ import wrapper from './wrapper.js';
 import { adminLayout, simpleLayout } from './stories/XLayout';
 
 import Installation from './stories/Installation';
-import Contributing from './stories/Contributing';
 import StyleGuide from './stories/StyleGuide';
 import ButtonDemo from './stories/ButtonDemo';
 
@@ -22,7 +21,6 @@ import GeoChart from './stories/ChartGeo';
 // Getting Started
 storiesOf('Getting Started', module)
   .add('Installation', Installation)
-  .add('Contributing', Contributing)
   .add('Style Guide', StyleGuide);
 
 // Demo
