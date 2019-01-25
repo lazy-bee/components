@@ -4,8 +4,8 @@
       <img src="../../asset/Lazybee-logo.svg">
     </div>
     <h1>Lazybee UI Component</h1>
-    <p>Lazybee is a UI Component Library base on Vue.js
-      <br>It provides variable components for you to build apps and prototype projects quickly.
+    <p>Lazybee is a front-end UI component Library for developing websites and web applications base on Vue.js. 
+      <br>It provides useful components for the developer to building app and prototype quickly.
     </p>
     <x-button v-bind="buttonScheme" v-scroll-to="{ element: '#installation' }"/>
   </div>
