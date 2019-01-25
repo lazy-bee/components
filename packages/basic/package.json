@@ -1,6 +1,6 @@
 {
   "name": "@lazy-bee/basic",
-  "version": "0.1.12",
+  "version": "0.1.14",
   "description": "## Project setup ``` npm install ```",
   "author": "oriente",
   "scripts": {
@@ -13,7 +13,8 @@
     "build:demo": "build-storybook -c demo/config -o dist/demo -s ./demo/asset/favicon",
     "install:package": "HUSKY_SKIP_INSTALL=true yarn install",
     "release:component": "npm run build:src && npm run build:demo",
-    "prepublish": "npm run build-bundle",
+    "prepublish": "rm -rf dist ; npm run build-bundle",
+    "postpublish": "npm run build:demo; npx gh-pages --dist=dist/demo",
     "kill": "npm run kill:8080; npm run kill:9001",
     "kill:8080": "pkill -15 -f -o bin/nodemon;kill $(lsof -i:8080 -sTCP:LISTEN -t);echo All mockServer should be killed",
     "kill:9001": "pkill -15 -f -o bin/nodemon;kill $(lsof -i:9001 -sTCP:LISTEN -t);echo All mockServer should be killed"
@@ -68,6 +69,7 @@
     "codeceptjs": "^1.4.3",
     "eslint": "^4.19.1",
     "eslint-plugin-vue": "^4.4.0",
+    "gh-pages": "^2.0.1",
     "lint-staged": "^7.0.0",
     "mochawesome": "^3.0.3",
     "storybook-readme": "^3.3.0",
