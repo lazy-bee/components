@@ -8,10 +8,12 @@
 
 ### Scheme
 
-| name   | type    | default | description |
-| ------ | ------- | ------- | ----------- |
-| items  | Array   | -       | -           |
-| column | Boolean | false   | -           |
+| name       | type    | default | description             |
+| ---------- | ------- | ------- | ----------------------- |
+| radioTitle | String  | -       | Title of the radios     |
+| required   | Boolean | false   | -                       |
+| column     | Boolean | false   | vertical or horizobntal |
+| items      | Array   | -       | radio items             |
 
 ### Example
 
@@ -25,22 +27,23 @@
     data() {
       return {
         radioScheme: {
+          radioTitle: 'Select City:',
           items: [
             {
-             label: 'New York',
-             value: 'New York'
+              label: 'New York',
+              value: 'New York'
             },
             {
-             label: 'Chicago',
-             value: 'Chicago'
+              label: 'Chicago',
+              value: 'Chicago'
             },
             {
-             label: 'Seattle',
-             value: 'Seattle'
+              label: 'Seattle',
+              value: 'Seattle'
             }
           ],
-          column:true,
-          value:''
+          column: true,
+          value: ''
         }
       };
     }

@@ -733,9 +733,9 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@lazy-copilot/datetimepicker@^0.1.26":
-  version "0.1.26"
-  resolved "https://registry.yarnpkg.com/@lazy-copilot/datetimepicker/-/datetimepicker-0.1.26.tgz#129fc1aae6c7882594bd2ff3077baeefb2e0a079"
+"@lazy-copilot/datetimepicker@^0.1.28":
+  version "0.1.28"
+  resolved "https://registry.yarnpkg.com/@lazy-copilot/datetimepicker/-/datetimepicker-0.1.28.tgz#6c99e77b991bc35de4c0db496f7a86d066e54b34"
   dependencies:
     node-sass "^4.11.0"
     sass-loader "^7.1.0"

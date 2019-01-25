@@ -1,5 +1,5 @@
 <template>
-  <v-autocomplete v-bind="Object.assign({}, $props, $attrs)" v-on="$listeners">
+  <v-autocomplete v-bind="Object.assign({}, $props, $attrs)" v-on="$listeners" :rules='innerRules'>
     <label slot="label" v-if="label">
       {{label}}
       <span v-if="required" class="star">*</span>
@@ -24,7 +24,17 @@ export default {
     items: {
       type: Array,
       default: () => []
-    }
+    },
+    rules: {} //Array or Function, so no assigned here
+  },
+  data: function() {
+    return {
+      innerRules: this.rules
+        ? this.rules
+        : this.required
+          ? [(v) => !!v || `${this.label || 'field'} is required`]
+          : []
+    };
   }
 };
 </script>

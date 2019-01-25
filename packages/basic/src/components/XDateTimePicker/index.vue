@@ -4,7 +4,8 @@
       {{label}}
       <span v-if="required" class="star">*</span>
     </label>
-    <date-time-picker v-bind="Object.assign({}, $props, $attrs)" @onChange="val => $emit('onChange', val)"/>
+    <date-time-picker v-bind="Object.assign({}, $props, $attrs)" @onChange="innerOnChange"/>
+    <div class="errorMessage" v-if="errorMessage"> {{errorMessage}}</div>
   </div>
 </template>
 
@@ -21,15 +22,29 @@ export default {
     singleDate: { type: Boolean, default: false },
     alignRight: { type: Boolean, default: false },
     label: { type: String, default: '' },
-    required: { type: Boolean, default: false }
+    required: { type: Boolean, default: false },
+    rules: {} //Array or Function, so no assigned here
   },
   methods: {
-    submitHandler: function(data) {
-      console.log('data: ', data);
+    validate: function() {
+      console.log(' -=-= validate');
+      if (this.required && !this.innerVal) {
+        this.errorMessage = `${this.label || 'field'} is required`;
+      }
     },
-    cancelHandler: function() {
-      console.log('close');
+    innerOnChange: function(val) {
+      this.innerVal = val;
+      this.$emit('onChange', val);
+    },
+    setErrorMessage: function(msg) {
+      this.errorMessage = msg;
     }
+  },
+  data: function() {
+    return {
+      errorMessage: '',
+      innerVal: ''
+    };
   }
 };
 </script>
@@ -53,6 +68,12 @@ export default {
     .star {
       color: $primary-01;
     }
+  }
+
+  .errorMessage {
+    color: #fb3939 !important;
+    caret-color: #fb3939 !important;
+    text-align: left;
   }
 }
 </style>

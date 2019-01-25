@@ -26,8 +26,8 @@ export default withReadme(docs, () =>
     },
     `
     <div style="min-width:380px;">
-      <h3 style="margin-bottom:25px;">Select City : <span style="color:#0149FF"> {{scheme.value}} </span></h3>
-      <x-checkbox v-bind="scheme" v-model="scheme.value" />  
+      <x-checkbox v-bind="scheme" v-model="scheme.value" /> 
+      <h3 style="margin-top:50px;">Print Value: <span style="color:#0149FF"> {{scheme.value}} </span></h3> 
     </div>
     `
   )
