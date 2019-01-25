@@ -20,7 +20,6 @@ export default {
   },
   props: {
     singleDate: { type: Boolean, default: false },
-    alignRight: { type: Boolean, default: false },
     label: { type: String, default: '' },
     required: { type: Boolean, default: false },
     rules: {} //Array or Function, so no assigned here
