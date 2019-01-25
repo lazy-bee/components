@@ -1,6 +1,6 @@
 {
   "name": "@lazy-bee/basic",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "## Project setup ``` npm install ```",
   "author": "oriente",
   "scripts": {
@@ -36,7 +36,7 @@
     "arrowParens": "always"
   },
   "dependencies": {
-    "@lazy-copilot/datetimepicker": "^0.1.28",
+    "@lazy-copilot/datetimepicker": "^0.1.29",
     "element-ui": "^2.3.6",
     "js-base64": "^2.4.5",
     "material-design-icons-iconfont": "^4.0.2",
