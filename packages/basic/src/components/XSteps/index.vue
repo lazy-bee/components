@@ -32,6 +32,7 @@
     <div class="action-area" v-if="actions">
       <x-button
         outline
+        class="prev-btn"
         v-if="innerActive != 1"
         v-bind="{
         content: prev.content,
@@ -40,6 +41,7 @@
       }"
       ></x-button>
       <x-button
+        :class="innerActive != count ? 'next-btn' : 'finish-btn'"
         v-bind="{
         content: innerActive != count ? next.content : finish.content,
         color: next.color,

@@ -1,5 +1,5 @@
 <template>
-  <v-textarea v-bind="Object.assign({}, $props, $attrs)" v-on="$listeners">
+  <v-textarea v-bind="Object.assign({}, $props, $attrs)" v-on="$listeners" :rules='innerRules'>
     <label slot="label" v-if="label">
       {{label}}
       <span v-if="required" class="star">*</span>
@@ -19,7 +19,17 @@ export default {
     prependIcon: { type: String, default: '' },
     errorMessages: { type: String, default: '' },
     required: { type: Boolean, default: false },
-    disabled: { type: Boolean, default: false }
+    disabled: { type: Boolean, default: false },
+    rules: {} //Array or Function, so no assigned here
+  },
+  data: function() {
+    return {
+      innerRules: this.rules
+        ? this.rules
+        : this.required
+          ? [(v) => !!v || `${this.label || 'field'} is required`]
+          : []
+    };
   }
 };
 </script>

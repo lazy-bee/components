@@ -25,8 +25,8 @@ export default withReadme(docs, () =>
     },
     `
     <div>
-      <h3 style="margin-bottom:25px;">Select City : <span style="color:#0149FF"> {{scheme.value}} </span></h3>
       <x-radio v-bind="scheme" v-model="scheme.value" />
+      <h3 style="margin-top:50px;">Print Value: <span style="color:#0149FF"> {{scheme.value}} </span></h3>
     </div>
     `
   )
