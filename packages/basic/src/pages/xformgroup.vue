@@ -64,20 +64,13 @@ export default {
           emailScheme: {
             label: 'Email',
             value: '',
+            id: 'emailId',
             appendIcon:'email',
             suffix:'@gmail.com',
             required:true,
             // rules: [
             //   (v) => !!v || 'E-mail is required',
             // ]
-          },
-          passwordScheme: {
-            label: 'Password',
-            type: 'password',
-            placeholder:'password',
-            appendIcon:'lock',
-            required:true,
-            value: '',
           },
           selectScheme: {
             label:'Please Select City',
@@ -96,7 +89,8 @@ export default {
               }
             ],
             required: true,
-            value: ''
+            value: '',
+            id: 'selectOptionId'
           },
           radioScheme: {
             items: [
@@ -112,10 +106,12 @@ export default {
             value: '',
             label: 'Radio Label',
             required: true,
+            id: 'radioId'
           },
           checkboxScheme: {
             label: 'Checkbox Label',
             required: true,
+            id: 'checkboxId',
             items: [
               {
                 label: 'Chemistry',
@@ -147,6 +143,7 @@ export default {
             value: '',
           },
           dateTimeScheme: {
+            id: 'dateTimeId',
             label: 'Date Time Label',
             required: true,
             // startDate: new Date(),

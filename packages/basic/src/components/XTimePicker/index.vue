@@ -1,5 +1,5 @@
 <template>
-  <div class="time_wrapper">
+  <div class="time_wrapper" :id="id">
     <label slot="label" v-if="label">
       {{label}}
       <span v-if="required" class="star">*</span>
@@ -27,7 +27,8 @@ export default {
     format: {
       type: String,
       default: 'hh:mm:A'
-    }
+    },
+    id: { type: String, default: '' }
   }
 };
 </script>

@@ -34,7 +34,8 @@ export default {
       default: ''
     },
     errorMessages: { type: String, default: '' },
-    rules: {} //Array or Function, so no assigned here
+    rules: {}, //Array or Function, so no assigned here
+    id: { type: String, default: '' }
   },
   methods: {
     change(val) {

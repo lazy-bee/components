@@ -33,7 +33,8 @@ export default {
     errorMessages: { type: String, default: '' },
     required: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
-    rules: {} //Array or Function, so no assigned here
+    rules: {}, //Array or Function, so no assigned here
+    id: { type: String, default: '' }
   },
   data: function() {
     return {
