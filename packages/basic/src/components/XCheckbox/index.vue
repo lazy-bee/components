@@ -28,7 +28,8 @@ export default {
     value: {
       type: Array,
       default: () => []
-    }
+    },
+    id: { type: String, default: '' }
   },
   methods: {
     toggle(val, itemVal) {
