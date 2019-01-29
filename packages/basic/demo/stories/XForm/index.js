@@ -81,7 +81,7 @@ export default withReadme(docs, () => ({
             options: [
               { label: 'New York', value: 'newyork' },
               { label: 'Chicago', value: 'chicago' },
-              { label: 'Seattle', value: 'seattle' }
+              { label: 'Seattle', value: 'seattle', disabled: true}
             ]
           },
           {

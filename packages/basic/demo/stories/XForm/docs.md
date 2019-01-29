@@ -75,19 +75,19 @@ export default {
             name: 'radioName',
             label: 'radio',
             options: [
-              { label: 'aaa', value: 'aaa' },
-              { label: 'bbb', value: 'bbb' },
-              { label: 'ccc', value: 'ccc' }
+              { label: 'New York', value: 'newyork' },
+              { label: 'Chicago', value: 'chicago' },
+              { label: 'Seattle', value: 'seattle'}
             ]
           },
           {
             type: 'select',
             name: 'selectName',
-            label: 'select',
+            label: 'Select City',
             options: [
-              { label: 'aaa', value: 'aaa' },
-              { label: 'bbb', value: 'bbb' },
-              { label: 'ccc', value: 'ccc' }
+              { label: 'New York', value: 'newyork' },
+              { label: 'Chicago', value: 'chicago' },
+              { label: 'Seattle', value: 'seattle', disabled: true}
             ]
           },
           {

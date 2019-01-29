@@ -74,6 +74,21 @@ export default {
 
   >>>.v-input__control {
     .v-input--radio-group__input {
+
+      .v-radio--is-disabled { /* disable */
+        .v-label {
+          color: $silver;
+        }
+
+        &.v-radio {
+          .v-input--selection-controls__input {
+            .v-icon {
+              color: $pale-grey !important
+            }
+          }
+        }
+      }
+
       .v-label {
         color: $slate-grey; /* label */
         font-size: 16px;

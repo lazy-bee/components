@@ -13,7 +13,7 @@ export default withReadme(docs, () =>
       items: [
         {
           text: 'New York',
-          value: 'New York'
+          value: 'New York',
         },
         {
           text: 'Chicago',
@@ -21,7 +21,8 @@ export default withReadme(docs, () =>
         },
         {
           text: 'Seattle',
-          value: 'Seattle'
+          value: 'Seattle',
+          disabled: true
         }
       ],
       label: text('label', 'Select City'),

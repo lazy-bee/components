@@ -82,6 +82,22 @@ export default {
         }
       }
     }
+
+    &.v-input--is-disabled { /* disable */
+      .v-input__control {
+        .v-input__slot {
+          .v-input--selection-controls__input {
+            .v-icon {
+              color: $pale-grey !important;
+            }
+          }
+
+          label {
+            color: $silver;
+          }
+        }
+      }
+    }
   }
 
   >>>.v-input--is-label-active {

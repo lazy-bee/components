@@ -21,6 +21,7 @@ export default {
     prependIcon: { type: String, default: '' },
     suffix: { type: String, default: '' },
     errorMessages: { type: String, default: '' },
+    disabled: { type: Boolean, default: false },
     items: {
       type: Array,
       default: () => []

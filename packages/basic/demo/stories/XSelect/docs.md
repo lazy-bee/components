@@ -21,6 +21,7 @@
 | prependIcon    | String  | -       | use the Material Icon to prepends an icon to the component          |
 | suffix         | String  | -       | Displays suffix text                                                |
 | errorMessages  | String  | -       | error message                                                       |
+| disabled       | Boolean | false   | Disables the input                                                  |
 
 ### Example
 
@@ -46,7 +47,8 @@
             },
             {
               text: 'Seattle',
-              value: 'Seattle'
+              value: 'Seattle',
+              disabled: true
             }
           ],
           chips: true,

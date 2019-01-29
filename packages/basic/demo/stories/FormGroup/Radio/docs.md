@@ -39,7 +39,8 @@
             },
             {
               label: 'Seattle',
-              value: 'Seattle'
+              value: 'Seattle',
+              disabled: true
             }
           ],
           column: true,

@@ -19,7 +19,8 @@ export default withReadme(docs, () =>
         },
         {
           label: 'Seattle',
-          value: 'Seattle'
+          value: 'Seattle',
+          disabled: true
         }
       ]
     },

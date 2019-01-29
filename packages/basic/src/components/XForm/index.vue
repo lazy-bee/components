@@ -235,8 +235,8 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped> 
-@import "../../styles/_variables.styl";
+<style lang="stylus" scoped>
+@import '../../styles/_variables.styl';
 
 .v-form {
   background: white;
@@ -328,7 +328,7 @@ export default {
 /* ---------- radio button ---------- */
 >>>.v-input--radio-group__input {
   .v-label {
-    color: $slate-grey ;
+    color: $slate-grey;
   }
 
   .v-radio {
@@ -361,7 +361,7 @@ export default {
         .v-select__selections {
           padding-left: 12px;
           font-size: 16px;
-          color: $secondary-01
+          color: $secondary-01;
         }
       }
     }
@@ -396,7 +396,6 @@ export default {
   }
 }
 
-
 /* ---------- upload ---------- */
 >>>.el-upload {
   width: 100%;
@@ -415,12 +414,13 @@ export default {
     &:hover {
       border: 1px dashed $secondary-01;
     }
-    .el-icon-upload{
+
+    .el-icon-upload {
       color: $silver-two;
-      font-size:28px;
-      margin:0 10px;
-      line-height :auto;
-      }
+      font-size: 28px;
+      margin: 0 10px;
+      line-height: auto;
+    }
   }
 }
 
@@ -437,12 +437,12 @@ export default {
 }
 
 >>>.primary--text {
-  color: $secondary-01  !important;
-  caret-color: $secondary-01  !important;
+  color: $secondary-01 !important;
+  caret-color: $secondary-01 !important;
 }
 
 >>>.accent--text {
-  color: $secondary-01  !important;
+  color: $secondary-01 !important;
   caret-color: $secondary-01 !important;
 }
 </style>

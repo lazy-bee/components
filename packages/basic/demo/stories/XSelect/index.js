@@ -20,7 +20,8 @@ export default withReadme(docs, () =>
         },
         {
           text: 'Seattle',
-          value: 'Seattle'
+          value: 'Seattle',
+          disabled: true
         }
       ],
       label: text('label', 'Select City'),
