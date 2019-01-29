@@ -14,6 +14,7 @@
 | endDate    | Date    | -       | new Date()      | end date of the range          |
 | singleDate | Boolean | false   | -               | select period or a single date |
 | label      | String  | -       | -               | input label                    |
+| id      | String  | -       | -               |  id                    |
 | required   | Boolean | false   | -               | -                              |
 
 
@@ -37,6 +38,7 @@
         datetimeScheme: {
           singleDate: true,
           alignRight: true
+          id: 'dateInputId',
           label: 'Select Date',
           required: true
         }

@@ -10,10 +10,11 @@
 
 | name       | type    | default | description             |
 | ---------- | ------- | ------- | ----------------------- |
-| radioTitle | String  | -       | Title of the radios     |
+| title      | String  | -       | Title of the radios     |
 | required   | Boolean | false   | -                       |
 | column     | Boolean | false   | vertical or horizobntal |
 | items      | Array   | -       | radio items             |
+| id         | Array   | -       |       id                |
 
 ### Example
 
@@ -27,7 +28,7 @@
     data() {
       return {
         radioScheme: {
-          radioTitle: 'Select City:',
+          title: 'Select City:',
           items: [
             {
               label: 'New York',

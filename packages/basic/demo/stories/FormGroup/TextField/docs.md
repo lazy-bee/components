@@ -13,6 +13,7 @@
 | name          | String  | -       | input name                       |
 | type          | String  | -       | input type                       |
 | label         | String  | -       | input label                      |
+| id            | String  | -       |          id                      |
 | value         | String  | -       | input value                      |
 | placeholder   | String  | -       | input placeholder                |
 | prependIcon   | String  | -       | prepend an icon to the component |

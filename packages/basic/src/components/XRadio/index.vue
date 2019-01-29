@@ -1,7 +1,7 @@
 <template>
   <div class="radio-wrap">
-    <span v-if="radioTitle" class="radio-title">
-      {{radioTitle}}
+    <span v-if="title" class="radio-title">
+      {{title}}
       <span v-if="required" class="star">*</span>
     </span>
     <v-radio-group
@@ -19,7 +19,7 @@
 export default {
   name: 'x-radio',
   props: {
-    radioTitle: { type: String, default: '' },
+    title: { type: String, default: '' },
     required: { type: Boolean, default: false },
     items: {
       type: Array,

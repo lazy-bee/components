@@ -10,7 +10,8 @@
 
 | name          | type    | default | description           |
 | ------------- | ------- | ------- | --------------------- |
-| checkboxTitle | String  | -       | Title of the checkbox |
+| title | String  | -       | Title of the checkbox |
+| required      | Boolean | false   | -                     |
 | required      | Boolean | false   | -                     |
 | items         | Array   | -       | -                     |
 
@@ -26,7 +27,7 @@
     data() {
       return {
         checkboxScheme: {
-          checkboxTitle: 'Select City:',
+          title: 'Select City:',
           items: [
             {
               label: 'New York',

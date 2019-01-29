@@ -1,7 +1,7 @@
 <template>
   <div class="checkbox-wrap">
-    <span v-if="checkboxTitle" class="checkbox-title">
-      {{checkboxTitle}}
+    <span v-if="title" class="checkbox-title">
+      {{title}}
       <span v-if="required" class="star">*</span>
     </span>
     <div class="checkbox-group">
@@ -19,7 +19,7 @@
 export default {
   name: 'x-checkbox',
   props: {
-    checkboxTitle: { type: String, default: '' },
+    title: { type: String, default: '' },
     required: { type: Boolean, default: false },
     items: {
       type: Array,
