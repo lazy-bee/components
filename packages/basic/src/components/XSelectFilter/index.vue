@@ -1,5 +1,5 @@
 <template>
-  <v-autocomplete v-bind="Object.assign({}, $props, $attrs)" v-on="$listeners" :rules='innerRules'>
+  <v-autocomplete v-bind="Object.assign({}, $props, $attrs)" v-on="$listeners" :rules="innerRules">
     <label slot="label" v-if="label">
       {{label}}
       <span v-if="required" class="star">*</span>
@@ -21,6 +21,7 @@ export default {
     prependIcon: { type: String, default: '' },
     suffix: { type: String, default: '' },
     errorMessages: { type: String, default: '' },
+    disabled: { type: Boolean, default: false },
     items: {
       type: Array,
       default: () => []
@@ -60,6 +61,16 @@ export default {
         &.primary--text {
           color: $secondary-01 !important;
         }
+      }
+    }
+  }
+}
+
+.v-input--is-disabled {
+  >>>.v-input__control {
+    .v-input__slot {
+      .v-select__slot {
+         background: $pale-grey-two; /* disable input */
       }
     }
   }
