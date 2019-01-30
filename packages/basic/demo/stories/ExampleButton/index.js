@@ -2,12 +2,12 @@ import Vue from 'vue';
 import { withDocs, withReadme } from 'storybook-readme';
 import { setOptions } from '@storybook/addon-options';
 import docs from './docs.md';
-import ButtonDemo from './ButtonDemo';
+import ExampleButton from './ExampleButton';
 
 var VueScrollTo = require('vue-scrollto');
 Vue.use(VueScrollTo);
 
-Vue.component('buttondemo', ButtonDemo);
+Vue.component('examplebutton', ExampleButton);
 
 export default withDocs(docs, () => ({
   beforeCreate() {
@@ -20,5 +20,5 @@ export default withDocs(docs, () => ({
       showAddonPanel: true
     });
   },
-  template: '<buttondemo />'
+  template: '<examplebutton />'
 }));

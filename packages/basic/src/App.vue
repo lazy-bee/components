@@ -6,7 +6,7 @@
   </div>
   <section class="tapsContainer">
     <a @click="tapIndex = 0" class="componentTab" :class="tapIndex===0? 'active' : 'inactive'">xformgroup</a>
-    <a @click="tapIndex = 1" class="componentTab" :class="tapIndex===1? 'active' : 'inactive'">Calender</a>
+    <a @click="tapIndex = 1" class="componentTab" :class="tapIndex===1? 'active' : 'inactive'">xformindialog</a>
     <a @click="tapIndex = 2" class="componentTab" :class="tapIndex===2? 'active' : 'inactive'">DatePicker</a>
     <a @click="tapIndex = 3" class="componentTab" :class="tapIndex===3? 'active' : 'inactive'">Datexformgroup</a>
     <a @click="tapIndex = 4" class="componentTab" :class="tapIndex===4? 'active' : 'inactive'">
@@ -21,19 +21,19 @@
 </template>
 
 <script>
-import xformgroupPage from "./pages/xformgroup.vue";
+import xformgroupPage from './pages/xformgroup.vue';
+import xformindialogPage from './pages/xformindialog.vue';
 
 export default {
-  name: "app",
+  name: 'app',
   computed: {
-    currentTabComponent: function(){
-      if(this.tapIndex === 0) return xformgroupPage
+    currentTabComponent: function() {
+      if (this.tapIndex === 0) return xformgroupPage;
+      if (this.tapIndex === 1) return xformindialogPage;
     }
   },
-  methods: {
-  },
-  components: {
-  },
+  methods: {},
+  components: {},
   data: function() {
     return {
       tapIndex: ''
@@ -44,7 +44,7 @@ export default {
 
 <style lang="scss">
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -84,11 +84,11 @@ export default {
     justify-content: center;
 
     a {
-      color: hsla(0,0%,100%,.5);
+      color: hsla(0, 0%, 100%, 0.5);
       display: block;
-      padding: .8em .5em;
+      padding: 0.8em 0.5em;
       border-radius: 5px;
-      transition: color .3s;
+      transition: color 0.3s;
       position: relative;
       overflow: hidden;
       z-index: 1;
@@ -96,7 +96,7 @@ export default {
       cursor: pointer;
     }
 
-    .active{
+    .active {
       color: #51c28f;
     }
 
@@ -114,10 +114,10 @@ export default {
     }
   }
 }
-
 </style>
 
 // <style lang="scss">
 // @import "./style/main.scss";
 
-// </style>
+//
+</style>

@@ -1,10 +1,14 @@
 <template>
   <v-dialog v-bind="Object.assign({}, $props, $attrs)">
+    <!-- close dialog -->
+    <div v-if="closeSign" class="close-sign" @click="cancel">
+      <v-icon>clear</v-icon>
+    </div>
+    <!-- dialog header -->
+    <div class="dialog-header">
+      <slot name="slot-header"></slot>
+    </div>
     <div class="dialog-box">
-      <!-- close dialog -->
-      <div v-if="closeSign" class="close-sign" @click="cancel">
-        <v-icon>clear</v-icon>
-      </div>
       <slot>
         <!-- dialog content -->
         <div class="header">
@@ -97,23 +101,25 @@ export default {
 
 >>>.v-dialog {
   background: #fff;
+  position: relative;
+
+  .close-sign {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 18px;
+    padding: 10px;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+
+    .v-icon {
+      color: $slate-grey;
+    }
+  }
 
   .dialog-box {
     padding: 40px;
-    position: relative;
-
-    .close-sign {
-      position: absolute;
-      font-size: 18px;
-      padding: 10px;
-      top: 5px;
-      right: 5px;
-      cursor: pointer;
-
-      .v-icon {
-        color: $slate-grey;
-      }
-    }
 
     .header {
       border-bottom: 1px dashed $silver-two;

@@ -125,12 +125,14 @@ export default {
   text-align: left;
   background: #F9FAFB;
   padding: 14px;
+  width:100%;
   display: flex;
   flex-wrap: wrap;
 
   .boxWrap {
     background: #fff;
-    width: 340px;
+    width:30%;
+    min-width: 340px;
     padding: 10px;
     margin: 10px;
     border-radius: 6px;
