@@ -34,41 +34,47 @@
 
 ### Slot
 
-| name     | description                                                              |
-| -------- | ------------------------------------------------------------------------ |
-| default  | place your custom dialog content here to replace original dialog content |
-| slot-btn | place your custom buttons in this slot                                   |
+| name        | description                                                              |
+| ----------- | ------------------------------------------------------------------------ |
+| default     | place your custom dialog content here to replace original dialog content |
+| slot-header | place your custom dialog header in this slot                             |
+| slot-btn    | place your custom buttons in this slot                                   |
 
 ### Example
 
 ```html
 <template>
   <x-button @click="openDialog" />
-  <x-dialog v-bind="dialogScheme" v-model="dialogScheme.value" @confirm="dialogConfirm"></x-dialog>
+  <x-dialog
+    v-bind="dialogScheme"
+    v-model="dialogScheme.value"
+    @confirm="dialogConfirm"
+  ></x-dialog>
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      dialogScheme: {
-        value: false,
-        title: 'You have unsaved changes!',
-        content: 'Are you sure you want to leave this page without saving it?',
-        cancelText: 'No',
-        confirmText: 'Yes',
-        type:'alert',
+  export default {
+    data() {
+      return {
+        dialogScheme: {
+          value: false,
+          title: 'You have unsaved changes!',
+          content:
+            'Are you sure you want to leave this page without saving it?',
+          cancelText: 'No',
+          confirmText: 'Yes',
+          type: 'alert'
+        }
+      };
+    },
+    methods: {
+      dialogConfirm(event) {
+        console.log('confirmed with event:', event); //confirm button
+      },
+      openDialog() {
+        this.dialogScheme.value = true; //open Dialog
       }
     }
-  },
-  methods:{
-    dialogConfirm(event){
-      console.log("confirmed with event:", event); //confirm button
-    },
-    openDialog(){
-      this.dialogScheme.value = true //open Dialog
-    }
-  }
-}
+  };
 </script>
 ```

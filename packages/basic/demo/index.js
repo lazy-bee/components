@@ -10,7 +10,8 @@ import { adminLayout, simpleLayout } from './stories/XLayout';
 
 import Installation from './stories/Installation';
 import StyleGuide from './stories/StyleGuide';
-import ButtonDemo from './stories/ButtonDemo';
+import ExampleButton from './stories/ExampleButton';
+import ExampleDialog from './stories/ExampleDialog';
 
 import BarChart from './stories/ChartBar';
 import LineChart from './stories/ChartLine';
@@ -24,8 +25,9 @@ storiesOf('Getting Started', module)
   .add('Style Guide', StyleGuide);
 
 // Demo
-storiesOf('Demo', module)
-  .add('Button Demo', ButtonDemo);
+storiesOf('Examples', module)
+  .add('Button Sample', ExampleButton)
+  .add('Dialog Sample', ExampleDialog);
 
 // Components
 const components = storiesOf('Components', module)
