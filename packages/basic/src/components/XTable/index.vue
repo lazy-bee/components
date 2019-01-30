@@ -25,12 +25,12 @@
           </div>
         </td>
         <td
-          v-for="(val, key) in props.item"
-          :key="key"
-          v-if="key !== 'value' && checkHeaderKey(key)"
+          v-for="{ value: columnName, render } in columns"
+          :key="columnName"
+          v-if="columnName !== 'action'"
         >
-          <div class="td-wrapper" :class="`${key}-td-wrapper`">
-            <div v-html="!checkHeaderRender(key) ? val : checkHeaderRender(key)(props.item)"></div>
+          <div class="td-wrapper" :class="`${columnName}-td-wrapper`">
+            <div v-html="render ? render(props.item) : props.item[columnName]"></div>
           </div>
         </td>
 
@@ -123,20 +123,6 @@ export default {
       if (!this.itemKeys.has(item))
         this.itemKeys.set(item, ++this.currentItemKey);
       return this.itemKeys.get(item);
-    },
-
-    checkHeaderKey(key) {
-      return this.headers.some((item) => {
-        return item.value === key;
-      });
-    },
-
-    checkHeaderRender(key) {
-      const result = this.headers.find((item) => {
-        return item.value === key;
-      });
-
-      return (result && result.render) || false;
     },
 
     checkRender(btn, item) {
