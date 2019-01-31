@@ -94,6 +94,7 @@ export default {
       type: String,
       default: propOptions.legendY[0]
     },
+    legendGap: { type: Number, default: 10 },
     colors: {
       type: Array,
       default: () => [
@@ -165,7 +166,8 @@ export default {
 
       return {
         ...DEFAULT_LEGEND,
-        y: this.legendY
+        y: this.legendY,
+        itemGap: this.legendGap
       };
     }
   }

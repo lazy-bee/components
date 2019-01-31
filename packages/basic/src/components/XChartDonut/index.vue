@@ -59,6 +59,8 @@ export default {
       default: propOptions.legendY[0],
       validator: oneOf(propOptions.legendY)
     },
+    legendGap: { type: Number, default: 10 },
+    isRoseType: { type: Boolean, default: false },
     colors: {
       type: Array,
       default: () => [
@@ -92,6 +94,7 @@ export default {
         orient: this.legendOrient,
         x: this.legendX,
         y: this.legendY,
+        itemGap: this.legendGap,
         data: this.data,
         ...DEFAULT_LEGEND
       };
@@ -99,6 +102,7 @@ export default {
     series() {
       return {
         radius: this.radius,
+        roseType: this.isRoseType,
         data: this.data,
         ...DEFAULT_SERIES
       };

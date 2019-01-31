@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { withDocs, withReadme } from 'storybook-readme';
+import { withDocs } from 'storybook-readme';
 import { setOptions } from '@storybook/addon-options';
 import docs from './docs.md';
 import ExampleButton from './ExampleButton';

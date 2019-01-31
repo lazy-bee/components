@@ -58,6 +58,7 @@ export default {
       default: propOptions.legendY[0],
       validator: oneOf(propOptions.legendY)
     },
+    legendGap: { type: Number, default: 10 },
     colors: {
       type: Array,
       default: () => [
@@ -91,6 +92,7 @@ export default {
         orient: this.legendOrient,
         x: this.legendX,
         y: this.legendY,
+        itemGap: this.legendGap,
         data: this.data,
         ...DEFAULT_LEGEND
       };

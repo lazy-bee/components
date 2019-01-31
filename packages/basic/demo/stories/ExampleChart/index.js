@@ -2,12 +2,12 @@ import Vue from 'vue';
 import { withDocs } from 'storybook-readme';
 import { setOptions } from '@storybook/addon-options';
 import docs from './docs.md';
-import ExampleDialog from './ExampleDialog';
+import ExampleChart from './ExampleChart';
 
 var VueScrollTo = require('vue-scrollto');
 Vue.use(VueScrollTo);
 
-Vue.component('exampledialog', ExampleDialog);
+Vue.component('examplechart', ExampleChart);
 
 export default withDocs(docs, () => ({
   beforeCreate() {
@@ -20,5 +20,5 @@ export default withDocs(docs, () => ({
       showAddonPanel: true
     });
   },
-  template: '<exampledialog />'
+  template: '<examplechart />'
 }));

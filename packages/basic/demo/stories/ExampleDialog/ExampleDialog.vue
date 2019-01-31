@@ -78,6 +78,7 @@ export default {
 
 <style lang='stylus' scoped>
 @import '../../../src/styles/_variables.styl';
+@import '../../styles/example-layout.styl';
 
 >>>.application--wrap {
   min-height: 100% !important;
@@ -96,81 +97,5 @@ export default {
       color: white !important;
     }
   }
-}
-
-.demoWrap {
-  font-family: 'Nunito Sans', sans-serif;
-  text-align: left;
-  background: #F9FAFB;
-  padding: 14px;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-
-  .boxWrap {
-    background: #fff;
-    width: 30%;
-    min-width: 340px;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 6px;
-    box-shadow: 0 10px 70px rgba(0, 0, 0, 0.05);
-
-    h3 {
-      background: $pale-grey-two;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      font-size: 16px;
-      color: $bluey-grey;
-      text-align: center;
-      line-height: 40px;
-    }
-
-    .box {
-      min-height: 200px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      .stage {
-        text-align: center;
-
-        .item {
-          margin-bottom: 20px;
-        }
-
-        a {
-          color: $bluey-grey;
-          font-size: 14px;
-          text-decoration: none;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
-    }
-  }
-}
-
-.buttonSchemeD {
-  box-shadow: 0 10px 18px -5px rgba(1, 7, 255, 0.23);
-}
-
-.buttonSchemeE {
-  border-color: $silver-two;
-
-  &.v-btn {
-    &:hover {
-      color: #fff !important;
-      background: $secondary-01 !important;
-      border-color: $secondary-01;
-    }
-  }
-}
-
-.buttonSchemeF {
-  color: $bluey-grey !important;
 }
 </style>

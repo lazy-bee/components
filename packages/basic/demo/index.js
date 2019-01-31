@@ -12,6 +12,7 @@ import Installation from './stories/Installation';
 import StyleGuide from './stories/StyleGuide';
 import ExampleButton from './stories/ExampleButton';
 import ExampleDialog from './stories/ExampleDialog';
+import ExampleChart from './stories/ExampleChart';
 
 import BarChart from './stories/ChartBar';
 import LineChart from './stories/ChartLine';
@@ -26,6 +27,7 @@ storiesOf('Getting Started', module)
 
 // Demo
 storiesOf('Examples', module)
+  .add('Charts Sample', ExampleChart)
   .add('Button Sample', ExampleButton)
   .add('Dialog Sample', ExampleDialog);
 

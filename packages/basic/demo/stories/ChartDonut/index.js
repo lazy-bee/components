@@ -24,7 +24,7 @@ export default withReadme(docs, () =>
         name: 'Boston'
       },
       {
-        value: 600,
+        value: 450,
         name: 'Los Angles'
       }
     ])
