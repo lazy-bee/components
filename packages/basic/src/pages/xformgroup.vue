@@ -1,15 +1,17 @@
 <template>
-  <div class='contentWrapper'>
-    <x-form-group v-model="scheme.valid" ref="formgroup">
-      <x-text-field v-bind="scheme.emailScheme" v-model="scheme.emailScheme.value" />
-      <x-text-area v-bind="scheme.textareaScheme" v-model="scheme.textareaScheme.value" />
-      <x-select v-bind="scheme.selectScheme" v-model="scheme.selectScheme.value"/>
-      <x-radio v-bind="scheme.radioScheme" v-model="scheme.radioScheme.value"/>
-      <x-checkbox v-bind="scheme.checkboxScheme" v-model="scheme.checkboxScheme.value"/>
-      <x-date-time-picker v-bind="scheme.dateTimeScheme" :onChange="handleDateTime" ref="dateTime"/>
-      <x-button :click="handleSubmit"> submit </x-button>
-    </x-form-group>
-  </div>
+  <v-app>
+    <div class='contentWrapper'>
+      <x-form-group v-model="scheme.valid" ref="formgroup">
+        <x-text-field v-bind="scheme.emailScheme" v-model="scheme.emailScheme.value" />
+        <x-text-area v-bind="scheme.textareaScheme" v-model="scheme.textareaScheme.value" />
+        <x-select v-bind="scheme.selectScheme" v-model="scheme.selectScheme.value"/>
+        <x-radio v-bind="scheme.radioScheme" v-model="scheme.radioScheme.value"/>
+        <x-checkbox v-bind="scheme.checkboxScheme" v-model="scheme.checkboxScheme.value"/>
+        <x-date-time-picker v-bind="scheme.dateTimeScheme" :onChange="handleDateTime" ref="dateTime"/>
+        <x-button :click="handleSubmit"> submit </x-button>
+      </x-form-group>
+    </div>
+  </v-app>
 </template>
 
 <script>
