@@ -157,6 +157,7 @@ export default {
     },
     yAxisName: { type: String, default: '' },
     yAxisLabelFormatter: {}, // type could be either string or function, so no assigned here
+    boundaryGap: { type: Boolean, default: false },
     paddingLeft: { type: String, default: '10%' },
     paddingRight: { type: String, default: '10%' },
     legendShow: { type: Boolean, default: true },
@@ -164,11 +165,15 @@ export default {
       type: String,
       default: propOptions.legendY[0]
     },
+    legendGap: { type: Number, default: 10 },
     isGradientColor: { type: Boolean, default: true },
     colors: {
       type: Array,
       default: () => ['#73ABFF', '#FFBC5E', '#61E9E6', '#A99CFC', '#6A97C1'] // default regular colors
-    }
+    },
+    stroke: { type: Number, default: 5 },
+    isAreaStyle: { type: Boolean, default: false },
+    areaOpacity: { type: Number, default: 0.5 }
   },
   computed: {
     options() {
@@ -198,6 +203,7 @@ export default {
       return {
         name: this.xAxisName,
         data: this.xAxisData,
+        boundaryGap: this.boundaryGap,
         ...DAFAULT_X_AXIS
       };
     },
@@ -216,7 +222,8 @@ export default {
 
       return {
         ...DEFAULT_LEGEND,
-        y: this.legendY
+        y: this.legendY,
+        itemGap: this.legendGap
       };
     },
     color() {
@@ -231,13 +238,13 @@ export default {
     },
     series() {
       const series = this.data.map((item, index) => {
-        return {
+        const resultData = {
           ...item,
           type: 'line',
           smooth: true,
           symbolSize: 0,
           lineStyle: {
-            width: 5,
+            width: this.stroke,
             shadowColor: this.isGradientColor
               ? DEFAULT_GRADIENT[index].shadowColor
               : null,
@@ -245,6 +252,12 @@ export default {
             shadowBlur: this.isGradientColor ? 6 : undefined
           }
         };
+
+        if (this.isAreaStyle) {
+          const opacity = this.areaOpacity || 0.5;
+          resultData.areaStyle = { opacity };
+        }
+        return resultData;
       });
       return series;
     }

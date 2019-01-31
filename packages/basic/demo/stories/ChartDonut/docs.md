@@ -16,6 +16,8 @@
 | legendOrient | String  | vertical       | vertical / horizontal | the orient of legend                      |
 | legendX      | String  | left           | left / center / right | position of x-axis of legend              |
 | legendY      | String  | top            | top / middle / bottom | position of y-axis of legend              |
+| legendGap    | Number  | 10             | -                     | the gap of each legend item               |
+| isRoseType   | Boolean | false          | -                     | turn dount chart into rose style          |
 | colors       | Array   | -              | -                     | donut chart colors                        |
 
 ### Example

@@ -22,7 +22,8 @@
 | barGap              | String             | 30%     | -            | gap of eachbar                |
 | barCategoryGap      | String             | 20%     | -            | gap of each Category          |
 | legendShow          | Boolean            | true    | -            | display or hide legend        |
-| legendY             | String             | top     | top / bottom | position of y-axis of legend |
+| legendY             | String             | top     | top / bottom | position of y-axis of legend  |
+| legendGap           | Number             | 10      | -            | the gap of each legend item   |
 | colors              | Array              | -       | -            | bar chart color               |
 
 ### Example
