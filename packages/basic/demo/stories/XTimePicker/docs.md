@@ -12,6 +12,7 @@
 | -------- | ------- | ------- | ------------------------- | ----------- |
 | format   | String  | hh:mm:A | hh:mm:A / HH:mm / hh:mm:a | time format |
 | label    | String  | -       | -                         | input label |
+| id       | String  | -       | -                         | id          |
 | required | Boolean | false   | -                         | -           |
 
 ### Event

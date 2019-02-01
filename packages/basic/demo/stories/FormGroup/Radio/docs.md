@@ -8,12 +8,13 @@
 
 ### Scheme
 
-| name       | type    | default | description             |
-| ---------- | ------- | ------- | ----------------------- |
-| radioTitle | String  | -       | Title of the radios     |
-| required   | Boolean | false   | -                       |
-| column     | Boolean | false   | vertical or horizobntal |
-| items      | Array   | -       | radio items             |
+| name     | type    | default | description             |
+| -------- | ------- | ------- | ----------------------- |
+| title    | String  | -       | title of the radios     |
+| required | Boolean | false   | -                       |
+| column   | Boolean | false   | vertical or horizobntal |
+| items    | Array   | -       | radio items             |
+| id       | String  | -       | id                      |
 
 ### Example
 
@@ -27,7 +28,7 @@
     data() {
       return {
         radioScheme: {
-          radioTitle: 'Select City:',
+          title: 'Select City:',
           items: [
             {
               label: 'New York',

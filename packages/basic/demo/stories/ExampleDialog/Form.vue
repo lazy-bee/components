@@ -32,7 +32,7 @@ export default {
         },
         radioScheme: {
           column: true,
-          radioTitle: 'Please choose your issue subject',
+          title: 'Please choose your issue subject',
           required: true,
           items: [
             {

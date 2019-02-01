@@ -8,11 +8,12 @@
 
 ### Scheme
 
-| name          | type    | default | description           |
-| ------------- | ------- | ------- | --------------------- |
-| checkboxTitle | String  | -       | Title of the checkbox |
-| required      | Boolean | false   | -                     |
-| items         | Array   | -       | -                     |
+| name     | type    | default | description           |
+| -------- | ------- | ------- | --------------------- |
+| title    | String  | -       | title of the checkbox |
+| required | Boolean | false   | -                     |
+| items    | Array   | -       | -                     |
+| id       | String  | -       | id                    |
 
 ### Example
 
@@ -26,7 +27,7 @@
     data() {
       return {
         checkboxScheme: {
-          checkboxTitle: 'Select City:',
+          title: 'Select City:',
           items: [
             {
               label: 'New York',
