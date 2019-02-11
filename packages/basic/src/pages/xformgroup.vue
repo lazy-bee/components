@@ -15,17 +15,17 @@
 </template>
 
 <script>
-import  XFormGroup from '../components/XFormGroup'
-import  XTextField from '../components/XTextField'
-import  XTextArea from '../components/XTextArea'
-import  XRadio from '../components/XRadio'
-import  XCheckbox from '../components/XCheckbox'
-import  XSelect from '../components/XSelectFilter'
-import  XButton from '../components/XButton'
-import XDateTimePicker from '../components/XDateTimePicker'
+import XFormGroup from '../components/XFormGroup';
+import XTextField from '../components/XTextField';
+import XTextArea from '../components/XTextArea';
+import XRadio from '../components/XRadio';
+import XCheckbox from '../components/XCheckbox';
+import XSelect from '../components/XSelectFilter';
+import XButton from '../components/XButton';
+import XDateTimePicker from '../components/XDateTimePicker';
 
 export default {
-  name: "xform-group-page",
+  name: 'xform-group-page',
   components: {
     XFormGroup,
     XTextField,
@@ -34,131 +34,127 @@ export default {
     XSelect,
     XButton,
     XCheckbox,
-    XTextArea,
     XDateTimePicker
   },
   methods: {
-    handleSubmit: function(val){
-      console.log(val)
-      console.log('this.validate(): ', this.validate())
+    handleSubmit: function(val) {
+      console.log(val);
+      console.log('this.validate(): ', this.validate());
     },
-    validate () {
-
+    validate() {
       const valid = [
         this.$refs.dateTime.validate(),
         this.$refs.formgroup.getFormComponent().validate()
-      ].reduce(function (accumulator, currentValue) {
+      ].reduce(function(accumulator, currentValue) {
         return accumulator && currentValue;
       }, 0);
 
-
-      return valid
+      return valid;
     },
     handleDateTime(val) {
-      console.log(' -=-=-= handleDateTime -=-=-=', val)
+      console.log(' -=-=-= handleDateTime -=-=-=', val);
     }
   },
-  computed: {
-  },
+  computed: {},
   data: function() {
-      return {
-        scheme:{
-          emailScheme: {
-            label: 'Email',
-            value: '',
-            id: 'emailId',
-            appendIcon:'email',
-            suffix:'@gmail.com',
-            required:true,
-            // rules: [
-            //   (v) => !!v || 'E-mail is required',
-            // ]
-          },
-          selectScheme: {
-            label:'Please Select City',
-            items: [
-              {
-                text: 'New York',
-                value: 'New York'
-              },
-              {
-                text: 'Chicago',
-                value: 'Chicago'
-              },
-              {
-                text: 'Seattle',
-                value: 'Seattle'
-              }
-            ],
-            required: true,
-            value: '',
-            id: 'selectOptionId'
-          },
-          radioScheme: {
-            items: [
-              {
-                label: 'Male',
-                value: 'Male'
-              },
-              {
-                label: 'Female',
-                value: 'Female'
-              }
-            ],
-            value: '',
-            label: 'Radio Label',
-            required: true,
-            id: 'radioId'
-          },
-          checkboxScheme: {
-            label: 'Checkbox Label',
-            required: true,
-            id: 'checkboxId',
-            items: [
-              {
-                label: 'Chemistry',
-                value: 'Chemistry'
-              },
-              {
-                label: 'Biological',
-                value: 'Biological'
-              },
-              {
-                label: 'Mathematics',
-                value: 'Mathematics'
-              },
-              {
-                label: 'Literature',
-                value: 'Literature'
-              },
-              {
-                label: 'Science',
-                value: 'Science'
-              }
-            ],
-            value: []
-          },
-          textareaScheme: {
-            label: 'Comment',
-            placeholder:'Please leave your coment here',
-            required: true,
-            value: '',
-          },
-          dateTimeScheme: {
-            id: 'dateTimeId',
-            label: 'Date Time Label',
-            required: true,
-            // startDate: new Date(),
-            // endDate: new Date(),
-          }
+    return {
+      scheme: {
+        emailScheme: {
+          label: 'Email',
+          value: '',
+          id: 'emailId',
+          appendIcon: 'email',
+          suffix: '@gmail.com',
+          required: true
+          // rules: [
+          //   (v) => !!v || 'E-mail is required',
+          // ]
+        },
+        selectScheme: {
+          label: 'Please Select City',
+          items: [
+            {
+              text: 'New York',
+              value: 'New York'
+            },
+            {
+              text: 'Chicago',
+              value: 'Chicago'
+            },
+            {
+              text: 'Seattle',
+              value: 'Seattle'
+            }
+          ],
+          required: true,
+          value: '',
+          id: 'selectOptionId'
+        },
+        radioScheme: {
+          items: [
+            {
+              label: 'Male',
+              value: 'Male'
+            },
+            {
+              label: 'Female',
+              value: 'Female'
+            }
+          ],
+          value: '',
+          label: 'Radio Label',
+          required: true,
+          id: 'radioId'
+        },
+        checkboxScheme: {
+          label: 'Checkbox Label',
+          required: true,
+          id: 'checkboxId',
+          items: [
+            {
+              label: 'Chemistry',
+              value: 'Chemistry'
+            },
+            {
+              label: 'Biological',
+              value: 'Biological'
+            },
+            {
+              label: 'Mathematics',
+              value: 'Mathematics'
+            },
+            {
+              label: 'Literature',
+              value: 'Literature'
+            },
+            {
+              label: 'Science',
+              value: 'Science'
+            }
+          ],
+          value: []
+        },
+        textareaScheme: {
+          label: 'Comment',
+          placeholder: 'Please leave your coment here',
+          required: true,
+          value: ''
+        },
+        dateTimeScheme: {
+          id: 'dateTimeId',
+          label: 'Date Time Label',
+          required: true
+          // startDate: new Date(),
+          // endDate: new Date(),
         }
-      };
+      }
+    };
   }
 };
 </script>
 
 <style>
-.contentWrapper{
+.contentWrapper {
   width: 100%;
   max-width: 600px;
   margin: auto;
