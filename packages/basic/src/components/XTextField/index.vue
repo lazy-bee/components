@@ -34,7 +34,7 @@ export default {
     required: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
     rules: {}, //Array or Function, so no assigned here
-    id: { type: String, default: '' }
+    id: { type: String, default: undefined }
   },
   data: function() {
     return {

@@ -27,7 +27,7 @@ export default {
       default: () => []
     },
     rules: {}, //Array or Function, so no assigned here
-    id: { type: String, default: '' }
+    id: { type: String, default: undefined }
   },
   data: function() {
     return {

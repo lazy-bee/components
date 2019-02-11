@@ -1,5 +1,5 @@
 <template>
-  <div class="datetime_wrapper" :id="id">
+  <div class="datetime_wrapper">
     <label slot="label" v-if="label">
       {{label}}
       <span v-if="required" class="star">*</span>
@@ -21,8 +21,7 @@ export default {
   props: {
     singleDate: { type: Boolean, default: false },
     label: { type: String, default: '' },
-    required: { type: Boolean, default: false },
-    id: { type: String, default: '' }
+    required: { type: Boolean, default: false }
   },
   methods: {
     validate: function() {
