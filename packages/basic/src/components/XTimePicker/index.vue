@@ -27,8 +27,7 @@ export default {
     format: {
       type: String,
       default: 'hh:mm:A'
-    },
-    id: { type: String, default: '' }
+    }
   }
 };
 </script>

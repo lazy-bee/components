@@ -26,7 +26,6 @@ export default {
       type: Array,
       default: () => []
     },
-    id: { type: String, default: '' }
   }
 };
 </script>

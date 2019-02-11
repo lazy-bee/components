@@ -35,7 +35,7 @@ export default {
     },
     errorMessages: { type: String, default: '' },
     rules: {}, //Array or Function, so no assigned here
-    id: { type: String, default: '' }
+    id: { type: String, default: undefined }
   },
   methods: {
     change(val) {
