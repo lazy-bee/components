@@ -2,6 +2,13 @@ import 'babel-polyfill';
 import { configure } from '@storybook/vue';
 import { setOptions } from '@storybook/addon-options';
 
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+library.add(fas);
+
 import Vue from 'vue';
 import VueBus from 'vue-bus';
 Vue.use(VueBus);
@@ -21,6 +28,8 @@ components.forEach((component) => {
     Vue.component(component.name, component);
   }
 });
+
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 setOptions({
   name: 'Lazybee',
