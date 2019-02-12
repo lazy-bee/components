@@ -37,6 +37,7 @@
         datetimeScheme: {
           singleDate: true,
           alignRight: true,
+          timeFormat: 'HH:mm',
           id: 'dateInputId',
           label: 'Select Date',
           required: true

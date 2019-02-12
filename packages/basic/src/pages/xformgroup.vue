@@ -143,6 +143,7 @@ export default {
         dateTimeScheme: {
           id: 'dateTimeId',
           label: 'Date Time Label',
+          timeFormat: 'HH:mm',
           required: true
           // startDate: new Date(),
           // endDate: new Date(),

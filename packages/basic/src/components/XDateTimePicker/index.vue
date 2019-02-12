@@ -4,7 +4,7 @@
       {{label}}
       <span v-if="required" class="star">*</span>
     </label>
-    <date-time-picker v-bind="Object.assign({}, $props, $attrs)" @onChange="innerOnChange"/>
+    <date-time-picker v-bind="Object.assign({}, $props, $attrs)" @onChange="innerOnChange" :timeFormat='timeFormat'/>
     <div class="errorMessage" v-if="errorMessage"> {{errorMessage}}</div>
   </div>
 </template>
@@ -21,11 +21,11 @@ export default {
   props: {
     singleDate: { type: Boolean, default: false },
     label: { type: String, default: '' },
+    timeFormat: { type: String, default: 'hh:mm:A' },
     required: { type: Boolean, default: false }
   },
   methods: {
     validate: function() {
-      console.log(' -=-= validate');
       if (this.required && !this.innerVal) {
         this.errorMessage = `${this.label || 'field'} is required`;
       }
