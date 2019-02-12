@@ -37,6 +37,10 @@
     "arrowParens": "always"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.14",
+    "@fortawesome/free-brands-svg-icons": "^5.7.1",
+    "@fortawesome/free-solid-svg-icons": "^5.7.1",
+    "@fortawesome/vue-fontawesome": "^0.1.5",
     "@lazy-copilot/datetimepicker": "^0.1.29",
     "element-ui": "^2.3.6",
     "js-base64": "^2.4.5",

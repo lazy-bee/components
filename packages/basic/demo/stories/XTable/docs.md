@@ -6,17 +6,25 @@
 <x-table v-bind="scheme" />
 ```
 
+### Action Icon
+
+> Material Design Icon: https://material.io/tools/icons
+
+> Font Awesome: https://fontawesome.com/icons?s=solid
+
 ### Scheme
 
-| name            | type     | default | description             |
-| --------------- | -------- | ------- | ----------------------- |
-| headers         | Array    | -       | table header column     |
-| items           | Array    | -       | table data              |
-| actions         | Array    | -       | table action coloumn    |
-| multiSelectable | Boolean  | true    | select multiple item    |
-| selectCallback  | Function | -       | select item callback    |
-| draggable       | Boolean  | false   | draggable               |
-| loading         | Boolean  | false   | Loading status of table |
+| name            | type     | default | description                            |
+| --------------- | -------- | ------- | -------------------------------------- |
+| headers         | Array    | -       | table header column                    |
+| items           | Array    | -       | table data                             |
+| multiSelectable | Boolean  | true    | select multiple item                   |
+| selectCallback  | Function | -       | select item callback                   |
+| draggable       | Boolean  | false   | draggable                              |
+| loading         | Boolean  | false   | Loading status of table                |
+| actions         | Array    | -       | table action coloumn                   |
+| contant         | String   | -       | material design icon for action button |
+| faIcon          | String   | -       | font awesome icon for action button    |
 
 ### Headers
 
@@ -69,14 +77,10 @@ items: [
 ];
 ```
 
-### Actions
-
-> Refer to Material Icon to get the content of icon: https://material.io/tools/icons
-
 ```javascript
 actions: [
   {
-    content: 'search', // Material icon name
+    content: 'search', // Material Design Icon name
     click: function(item, event) {
       console.log(this); // XTable component
       console.log(this.getSelected()); // XTable method
@@ -85,7 +89,7 @@ actions: [
     }
   },
   {
-    content: 'delete_outline',
+    faIcon: 'trash-alt', // Font Awesome Icon name
     click: (item) => {
       console.log(item);
     }
@@ -102,26 +106,30 @@ actions: [
 
 <script>
   export default {
-    data () {
+    data() {
       return {
         tableScheme: {
           headers: [
             { value: 'id', text: 'ID' },
-            { value: 'name', text: 'Name',
+            {
+              value: 'name',
+              text: 'Name',
               render: (item) => {
-              const {tooltipContent, name} = item;
-              return `<div class="tooltip"> ${name}
+                const { tooltipContent, name } = item;
+                return `<div class="tooltip"> ${name}
               <i class="material-icons infoIcon">live_help</i>
               <span class="tooltiptext"> ${tooltipContent} </span></div>`;
               }
             },
             { value: 'age', text: 'Age' },
-            { value: 'status', text: 'Status',
+            {
+              value: 'status',
+              text: 'Status',
               render: (item) => {
                 let customColor = '';
-                const {status} = item;
+                const { status } = item;
                 switch (status) {
-                  case 'confirm':  // status case defined by yourself
+                  case 'confirm': // status case defined by yourself
                     customColor = 'confirm';
                     break;
                   case 'pending':
@@ -130,39 +138,81 @@ actions: [
                   case 'complete':
                     customColor = 'complete';
                 }
-                return `<span class="dot ${customColor}" >${status}</span>`; 
+                return `<span class="dot ${customColor}" >${status}</span>`;
               }
             },
             { value: 'action', text: 'Actions' }
           ],
           items: [
-            { value: false, id: '003', name: 'Howard', age: '30', status: 'complete' ,tooltipContent: 'Howard Stanley'},
-            { value: false, id: '002', name: 'Kathryn', age: '35', status: 'confirm' , tooltipContent: 'Kathryn Spencer'},
-            { value: false, id: '001', name: 'Ashley', age: '25', status: 'confirm' ,tooltipContent: 'Ashley Foster'},
-            { value: false, id: '004', name: 'Nathan', age: '28', status: 'pending' ,tooltipContent: 'Nathan Tucker' }
+            {
+              value: false,
+              id: '003',
+              name: 'Howard',
+              age: '30',
+              status: 'complete',
+              tooltipContent: 'Howard Stanley'
+            },
+            {
+              value: false,
+              id: '002',
+              name: 'Kathryn',
+              age: '35',
+              status: 'confirm',
+              tooltipContent: 'Kathryn Spencer'
+            },
+            {
+              value: false,
+              id: '001',
+              name: 'Ashley',
+              age: '25',
+              status: 'confirm',
+              tooltipContent: 'Ashley Foster'
+            },
+            {
+              value: false,
+              id: '004',
+              name: 'Nathan',
+              age: '28',
+              status: 'pending',
+              tooltipContent: 'Nathan Tucker'
+            }
           ],
           actions: [
             {
               content: 'search',
-              square:true,
-              outline:true,
-              borderRadius:4,
-              color:'666',
+              color: '$slate-grey',
+              square: true,
+              outline: true,
+              borderRadius: 4,
               click: (item) => {
-                console.log(item);
+                console.log('search', item.id);
               }
             },
             {
-              content: 'delete_outline',
+              faIcon: 'qrcode',
+              color: '$slate-grey',
+              square: true,
+              outline: true,
+              borderRadius: 4,
               click: (item) => {
-                console.log(item);
+                console.log('qrcode', item.id);
+              }
+            },
+            {
+              faIcon: 'trash-alt',
+              color: '$slate-grey',
+              square: true,
+              outline: true,
+              borderRadius: 4,
+              click: (item) => {
+                console.log('delete', item.id);
               }
             }
           ]
         }
-      }
+      };
     }
-  }
+  };
 </script>
 
 <style lang="stylus" scoped>

@@ -43,7 +43,9 @@
                 :key="index"
                 v-bind="btn"
                 :click="actionClicked(props.item, btn)"
-              ></x-button>
+              >
+                <font-awesome-icon v-if="btn.faIcon" :icon="btn.faIcon" />
+              </x-button>
             </div>
           </div>
         </td>
@@ -261,7 +263,6 @@ export default {
             }
 
             button {
-              // background: white !important;
               border: 1px solid $silver-two;
               width: 28px;
               height: 28px;
@@ -277,6 +278,17 @@ export default {
                 i {
                   color: white !important;
                 }
+                .svg-inline--fa{
+                  color: white;  
+                }
+              }
+
+              .svg-inline--fa{ // font awesome
+                color: $slate-grey;
+                font-size: 14px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);    
               }
             }
           }
