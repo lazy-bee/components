@@ -191,7 +191,7 @@ export default {
 .dateTimeWrapper {
   max-width: 768px;
   background: #fff;
-  box-shadow: 0 2px 60px rgba(183, 185, 188, 0.35);
+  box-shadow: 0 20px 50px rgba(183, 185, 188, 0.35);
 
   .containerWrapper {
     display: flex;
