@@ -183,7 +183,6 @@ export default {
   //trigger
   .calendarTrigger {
     position: relative;
-    z-index: 197;
     overflow: hidden;
     display: block;
     width: 100%;
