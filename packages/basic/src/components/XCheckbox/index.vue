@@ -1,11 +1,6 @@
 <template>
-  <div class="checkbox-wrap">
-    <div v-if="title" class="checkbox-title">
-      {{title}}
-      <span v-if="required" class="star">*</span>
-    </div>
-    <div class="description">{{description}}</div>
-
+  <div>
+    <inputLabel :label="title" :required="required" :description="description"/>
     <div class="checkbox-group">
       <v-checkbox
         v-for="(item, index) in items"
@@ -14,11 +9,7 @@
         @change="(val) => toggle(val, item.value)"
       ></v-checkbox>
     </div>
-
-    <div class="message">
-      <div v-if="errorMessages" class="errorMessages">{{errorMessages}}</div>
-      <div v-else class="tip">{{tip}}</div>
-    </div>
+    <inputMessage :tip="tip" :errorMessages="errorMessages"/>
   </div>
 </template>
 
@@ -56,90 +47,61 @@ export default {
 <style lang="stylus" scoped>
 @import '../../styles/_variables.styl';
 
-.checkbox-wrap {
-  font-size: 14px;
+.checkbox-group {
+  margin-top: 20px;
 
-  .checkbox-title {
-    color: $slate-grey;
-    font-weight: 600;
+  >>>.v-input--selection-controls {
+    margin-top: 0;
+    padding-top: 0;
 
-    .star {
-      color: $primary-01;
-    }
-  }
+    .v-input__control {
+      .v-input__slot {
+        margin-top: 0;
+        margin-bottom: 0;
 
-  .description {
-    color: $bluey-grey;
-  }
-
-  .message {
-    height: 21px;
-
-    .errorMessages {
-      color: $error;
-    }
-
-    .tip {
-      color: $bluey-grey;
-    }
-  }
-
-  .checkbox-group {
-    margin-top: 20px;
-
-    >>>.v-input--selection-controls {
-      margin-top: 0;
-      padding-top: 0;
-
-      .v-input__control {
-        .v-input__slot {
-          margin-top: 0;
-          margin-bottom: 0;
-
-          .v-input--selection-controls__input {
-            .v-icon {
-              color: $silver !important;
-            }
-          }
-
-          label {
-            color: $slate-grey;
+        .v-input--selection-controls__input {
+          .v-icon {
+            color: $silver !important;
           }
         }
-      }
 
-      &.v-input--is-disabled { /* disable */
-        .v-input__control {
-          .v-input__slot {
-            .v-input--selection-controls__input {
-              .v-icon {
-                color: $pale-grey !important;
-              }
-            }
-
-            label {
-              color: $silver;
-            }
-          }
+        label {
+          color: $slate-grey;
         }
       }
     }
 
-    >>>.v-input--is-label-active {
+    &.v-input--is-disabled { /* disable */
       .v-input__control {
         .v-input__slot {
-          margin-top: 0;
-          margin-bottom: 0;
-
           .v-input--selection-controls__input {
             .v-icon {
-              color: $secondary-01 !important;
+              color: $pale-grey !important;
             }
           }
 
           label {
-            color: $secondary-01;
+            color: $silver;
           }
+        }
+      }
+    }
+  }
+
+  >>>.v-input--is-label-active {
+    .v-input__control {
+      .v-input__slot {
+        margin-top: 0;
+        margin-bottom: 0;
+
+        .v-input--selection-controls__input {
+          .v-icon {
+            color: $secondary-01 !important;
+          }
+        }
+
+        label {
+          color: $secondary-01;
         }
       }
     }

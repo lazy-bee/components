@@ -1,21 +1,12 @@
 <template>
-  <div class="textfiled-wrap">
-    <div class="label" v-if="label">
-      {{label}}
-      <span v-if="required" class="star">*</span>
-    </div>
-    <div class="description">{{description}}</div>
-
+  <div>
+    <inputLabel :label="label" :required="required" :description="description"/>
     <v-text-field
       v-bind="Object.assign({}, this.$data.newProps, $attrs)"
       v-on="$listeners"
       :rules="innerRules"
     ></v-text-field>
-
-    <div class="message">
-      <div v-if="errorMessages" class="errorMessages">{{errorMessages}}</div>
-      <div v-else class="tip">{{tip}}</div>
-    </div>
+    <inputMessage :tip="tip" :errorMessages="errorMessages"/>
   </div>
 </template>
 
@@ -70,134 +61,104 @@ export default {
 <style lang="stylus" scoped>
 @import '../../styles/_variables.styl';
 
-.textfiled-wrap {
-  font-size: 14px;
-  text-align: left;
+.v-text-field {
+  margin-top: 0;
+  padding-top: 0;
 
-  .label {
-    font-weight: 600;
-    color: $slate-grey;
-
-    .star {
-      color: $primary-01;
-    }
+  &.primary--text {
+    color: $secondary-01 !important; /* active bottom line */
   }
 
-  .description {
-    color: $bluey-grey;
-  }
+  >>>.v-input__prepend-outer { /* prepend-icon */
+    margin: 0;
 
-  .message {
-    height: 21px;
+    .v-input__icon {
+      width: 50px;
+      height: 50px;
 
-    .errorMessages {
-      color: $error;
-    }
+      i {
+        font-size: 25px;
+        color: $slate-grey;
 
-    .tip {
-      color: $bluey-grey;
-    }
-  }
-
-  .v-text-field {
-    margin-top: 0;
-    padding-top: 0;
-
-    &.primary--text {
-      color: $secondary-01 !important; /* active bottom line */
-    }
-
-    >>>.v-input__prepend-outer { /* prepend-icon */
-      margin: 0;
-
-      .v-input__icon {
-        width: 50px;
-        height: 50px;
-
-        i {
-          font-size: 25px;
-          color: $slate-grey;
-
-          &.primary--text {
-            color: $secondary-01 !important;
-          }
+        &.primary--text {
+          color: $secondary-01 !important;
         }
       }
     }
+  }
 
-    >>>.v-input__control {
-      .v-input__slot {
-        background: white;
-        border: 1px solid $silver-two;
-        border-radius: 3px;
-        margin-bottom: 0px;
+  >>>.v-input__control {
+    .v-input__slot {
+      background: white;
+      border: 1px solid $silver-two;
+      border-radius: 3px;
+      margin-bottom: 0px;
 
-        &:before {
-          display: none;
+      &:before {
+        display: none;
+      }
+
+      .v-text-field__slot {
+        .v-text-field__prefix {
+          width: auto;
+          height: 48px;
+          line-height: 48px;
+          padding: 0 14px;
+          background: rgba(183, 190, 200, 0.3);
+          color: $slate-grey;
         }
 
-        .v-text-field__slot {
-          .v-text-field__prefix {
-            width: auto;
-            height: 48px;
-            line-height: 48px;
-            padding: 0 14px;
-            background: rgba(183, 190, 200, 0.3);
-            color: $slate-grey;
-          }
-
-          input {
-            font-size: 16px;
-            padding: 20px;
-            max-height: 48px; /* inputbox height */
-            color: $secondary-01;
-            width: 100%;
-          }
-
-          ::-webkit-input-placeholder { /* WebKit browsers */
-            color: $silver-two;
-          }
-
-          ::-moz-placeholder { /* Mozilla Firefox 19+ */
-            color: $silver-two;
-          }
-
-          :-ms-input-placeholder { /* Internet Explorer 10+ */
-            color: $silver-two;
-          }
+        input {
+          font-size: 16px;
+          padding: 20px;
+          max-height: 48px; /* inputbox height */
+          color: $secondary-01;
+          width: 100%;
         }
 
-        .v-input__append-inner { /* text field icon */
-          margin: 0;
-          padding: 0;
+        ::-webkit-input-placeholder { /* WebKit browsers */
+          color: $silver-two;
+        }
 
-          .v-input__icon {
-            width: 48px;
-            height: 48px;
+        ::-moz-placeholder { /* Mozilla Firefox 19+ */
+          color: $silver-two;
+        }
 
-            i {
-              color: $silver;
-              font-size: 20px;
+        :-ms-input-placeholder { /* Internet Explorer 10+ */
+          color: $silver-two;
+        }
+      }
 
-              &.primary--text {
-                color: $secondary-01 !important;
-              }
+      .v-input__append-inner { /* text field icon */
+        margin: 0;
+        padding: 0;
+
+        .v-input__icon {
+          width: 48px;
+          height: 48px;
+
+          i {
+            color: $silver;
+            font-size: 20px;
+
+            &.primary--text {
+              color: $secondary-01 !important;
             }
           }
         }
       }
+    }
 
-      .v-text-field__details { /* error message */
-        display: none;
-      }
+    .v-text-field__details { /* error message */
+      display: none;
     }
   }
+}
 
-  .v-input--is-disabled { /* disable */
-    >>> .v-input__control {
-      .v-input__slot {
-        background: $pale-grey-two !important;
-      }
+.v-input--is-disabled { /* disable  */
+  >>> .v-input__control {
+    .v-input__slot {
+      background: $pale-grey-two !important;
     }
   }
 }

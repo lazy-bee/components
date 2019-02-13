@@ -1,11 +1,6 @@
 <template>
-  <div class="radio-wrap">
-    <div v-if="title" class="radio-title">
-      {{title}}
-      <span v-if="required" class="star">*</span>
-    </div>
-    <div class="description">{{description}}</div>
-
+  <div>
+    <inputLabel :label="title" :required="required" :description="description"/>
     <v-radio-group
       v-bind="Object.assign({}, $props, $attrs)"
       v-on="$listeners"
@@ -14,11 +9,7 @@
     >
       <v-radio v-for="(item, index) in items" :key="index" v-bind="item"></v-radio>
     </v-radio-group>
-
-    <div class="message">
-      <div v-if="errorMessages" class="errorMessages">{{errorMessages}}</div>
-      <div v-else class="tip">{{tip}}</div>
-    </div>
+    <inputMessage :tip="tip" :errorMessages="errorMessages"/>
   </div>
 </template>
 
@@ -66,80 +57,51 @@ export default {
 <style lang="stylus" scoped>
 @import '../../styles/_variables.styl';
 
-.radio-wrap {
-  font-size: 14px;
+.v-input--selection-controls {
+  margin-top: 20;
 
-  .radio-title {
-    color: $slate-grey;
-    font-weight: 600;
-
-    .star {
-      color: $primary-01;
-    }
-  }
-
-  .description {
-    color: $bluey-grey;
-  }
-
-  .message {
-    height: 21px;
-
-    .errorMessages {
-      color: $error;
-    }
-
-    .tip {
-      color: $bluey-grey;
-    }
-  }
-
-  .v-input--selection-controls {
-    margin-top: 20;
-
-    >>>.v-input__control {
-      .v-input--radio-group__input {
-        .v-radio--is-disabled { /* disable */
-          .v-label {
-            color: $silver;
-          }
-
-          &.v-radio {
-            .v-input--selection-controls__input {
-              .v-icon {
-                color: $pale-grey !important;
-              }
-            }
-          }
-        }
-
+  >>>.v-input__control {
+    .v-input--radio-group__input {
+      .v-radio--is-disabled { /* disable */
         .v-label {
-          color: $slate-grey; /* label */
-          font-size: 16px;
+          color: $silver;
         }
 
-        .v-radio {
+        &.v-radio {
           .v-input--selection-controls__input {
             .v-icon {
-              color: $silver; /* input icon */
-            }
-
-            .accent--text {
-              color: $secondary-01 !important; /* color active input icon */
-            }
-          }
-
-          &.accent--text { /* color active label */
-            .v-label {
-              color: $secondary-01;
+              color: $pale-grey !important;
             }
           }
         }
       }
 
-      .v-messages { /* error message */
-        display: none;
+      .v-label {
+        color: $slate-grey; /* label */
+        font-size: 16px;
       }
+
+      .v-radio {
+        .v-input--selection-controls__input {
+          .v-icon {
+            color: $silver; /* input icon */
+          }
+
+          .accent--text {
+            color: $secondary-01 !important; /* color active input icon */
+          }
+        }
+
+        &.accent--text { /* color active label */
+          .v-label {
+            color: $secondary-01;
+          }
+        }
+      }
+    }
+
+    .v-messages { /* error message */
+      display: none;
     }
   }
 }
