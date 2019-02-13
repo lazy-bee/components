@@ -1,8 +1,8 @@
 import { text } from '@storybook/addon-knobs/dist/vue';
 import { withReadme } from 'storybook-readme';
 import docs from './docs.md';
-import XSelect from '../../../src/components/XSelect';
-import { generateStory } from '../../utils/generateStory';
+import XSelect from '../../../../src/components/XSelect';
+import { generateStory } from '../../../utils/generateStory';
 
 export default withReadme(docs, () =>
   generateStory(
