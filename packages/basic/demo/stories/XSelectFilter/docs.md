@@ -12,7 +12,7 @@
 | -------------- | ------- | ------- | ------------------------------------------------------------------- |
 | items          | Array   | -       | items's value                                                       |
 | label          | String  | -       | input label                                                         |
-| id             | String  | -       | id                                                                  |
+| description    | String  | -       | input description                                                   |
 | placeholder    | String  | -       | input placeholder                                                   |
 | required       | Boolean | false   | -                                                                   |
 | multiple       | Boolean | false   | Changes select to multiple. Accepts array for value                 |
@@ -21,8 +21,10 @@
 | clearable      | Boolean | false   | Add input clear functionality, default icon is Material Icons clear |
 | prependIcon    | String  | -       | use the Material Icon to prepends an icon to the component          |
 | suffix         | String  | -       | Displays suffix text                                                |
+| tip            | String  | -       | input tip                                                           |
 | errorMessages  | String  | -       | error message                                                       |
 | disabled       | Boolean | false   | Disables the input                                                  |
+| id             | String  | -       | id                                                                  |
 
 ### Example
 

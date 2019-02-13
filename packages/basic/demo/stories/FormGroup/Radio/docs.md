@@ -8,13 +8,16 @@
 
 ### Scheme
 
-| name     | type    | default | description             |
-| -------- | ------- | ------- | ----------------------- |
-| title    | String  | -       | title of the radios     |
-| required | Boolean | false   | -                       |
-| column   | Boolean | false   | vertical or horizobntal |
-| items    | Array   | -       | radio items             |
-| id       | String  | -       | id                      |
+| name          | type    | default | description             |
+| ------------- | ------- | ------- | ----------------------- |
+| title         | String  | -       | title of the radios     |
+| description   | String  | -       | input description       |
+| required      | Boolean | false   | -                       |
+| tip           | String  | -       | input tip               |
+| errorMessages | String  | -       | error message           |
+| column        | Boolean | false   | vertical or horizobntal |
+| items         | Array   | -       | radio items             |
+| id            | String  | -       | id                      |
 
 ### Example
 

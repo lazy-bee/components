@@ -1,10 +1,22 @@
 <template>
-  <v-text-field v-bind="Object.assign({}, $props, $attrs)" v-on="$listeners" :rules='innerRules'>
-    <label slot="label" v-if="label">
+  <div class="textfiled-wrap">
+    <div class="label" v-if="label">
       {{label}}
       <span v-if="required" class="star">*</span>
-    </label>
-  </v-text-field>
+    </div>
+    <div class="description">{{description}}</div>
+
+    <v-text-field
+      v-bind="Object.assign({}, this.$data.newProps, $attrs)"
+      v-on="$listeners"
+      :rules="innerRules"
+    ></v-text-field>
+
+    <div class="message">
+      <div v-if="errorMessages" class="errorMessages">{{errorMessages}}</div>
+      <div v-else class="tip">{{tip}}</div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -23,6 +35,8 @@ export default {
       validator: oneOf(propOptions.type)
     },
     label: { type: String, default: '' },
+    description: { type: String, default: '' },
+    required: { type: Boolean, default: false },
     name: { type: String, default: '' },
     value: { type: String, default: '' },
     placeholder: { type: String, default: '' },
@@ -30,14 +44,19 @@ export default {
     prependIcon: { type: String, default: '' },
     prefix: { type: String, default: '' },
     suffix: { type: String, default: '' },
+    tip: { type: String, default: '' },
     errorMessages: { type: String, default: '' },
-    required: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
     rules: {}, //Array or Function, so no assigned here
     id: { type: String, default: undefined }
   },
   data: function() {
+    const newProps = { ...this.$props };
+    delete newProps['label'];
+    delete newProps['errorMessages'];
+
     return {
+      newProps,
       innerRules: this.rules
         ? this.rules
         : this.required
@@ -51,134 +70,134 @@ export default {
 <style lang="stylus" scoped>
 @import '../../styles/_variables.styl';
 
-.v-text-field {
-  padding-top: 26px;
+.textfiled-wrap {
+  font-size: 14px;
+  text-align: left;
 
-  &.primary--text {
-    color: $secondary-01 !important; /* active bottom line */
-  }
+  .label {
+    font-weight: 600;
+    color: $slate-grey;
 
-  >>>.v-input__prepend-outer { /* prepend-icon */
-    margin: 0;
-
-    .v-input__icon {
-      width: 50px;
-      height: 50px;
-
-      i {
-        font-size: 25px;
-        color: $slate-grey;
-         &.primary--text {
-          color: $secondary-01 !important;
-        }
-      }
+    .star {
+      color: $primary-01;
     }
   }
 
-  >>>.v-input__control {
-    .v-input__slot {
-      background: white;
-      border: 1px solid $silver-two;
-      border-radius: 3px;
-      margin-bottom: 2px;
+  .description {
+    color: $bluey-grey;
+  }
 
-      &:before {
-        display: none;
-      }
+  .message {
+    height: 21px;
 
-      .v-text-field__slot {
-        .v-label {
-          transform: translateY(-15px) scale(1); /* label's position */
+    .errorMessages {
+      color: $error;
+    }
+
+    .tip {
+      color: $bluey-grey;
+    }
+  }
+
+  .v-text-field {
+    margin-top: 0;
+    padding-top: 0;
+
+    &.primary--text {
+      color: $secondary-01 !important; /* active bottom line */
+    }
+
+    >>>.v-input__prepend-outer { /* prepend-icon */
+      margin: 0;
+
+      .v-input__icon {
+        width: 50px;
+        height: 50px;
+
+        i {
+          font-size: 25px;
+          color: $slate-grey;
 
           &.primary--text {
             color: $secondary-01 !important;
           }
         }
+      }
+    }
 
-        .v-label--active {
-          transform: translateY(-15px) scale(1); /* active label's position */
+    >>>.v-input__control {
+      .v-input__slot {
+        background: white;
+        border: 1px solid $silver-two;
+        border-radius: 3px;
+        margin-bottom: 0px;
+
+        &:before {
+          display: none;
         }
 
-        .v-text-field__prefix {
-          width: auto;
-          height: 48px;
-          line-height: 48px;
-          padding: 0 14px;
-          background: rgba(183, 190, 200, 0.3);
-          color: $slate-grey;
-        }
+        .v-text-field__slot {
+          .v-text-field__prefix {
+            width: auto;
+            height: 48px;
+            line-height: 48px;
+            padding: 0 14px;
+            background: rgba(183, 190, 200, 0.3);
+            color: $slate-grey;
+          }
 
-        label {
-          font-size: 14px;
-          color: $slate-grey;
-          font-weight: 600;
-          top: -8px;
-          left: 0 !important;
+          input {
+            font-size: 16px;
+            padding: 20px;
+            max-height: 48px; /* inputbox height */
+            color: $secondary-01;
+            width: 100%;
+          }
 
-          .star {
-            color: $primary-01;
+          ::-webkit-input-placeholder { /* WebKit browsers */
+            color: $silver-two;
+          }
+
+          ::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color: $silver-two;
+          }
+
+          :-ms-input-placeholder { /* Internet Explorer 10+ */
+            color: $silver-two;
           }
         }
 
-        input {
-          font-size: 16px;
-          padding: 20px;
-          max-height: 48px; /* inputbox height */
-          color: $secondary-01;
-          width: 100%;
-        }
+        .v-input__append-inner { /* text field icon */
+          margin: 0;
+          padding: 0;
 
-        ::-webkit-input-placeholder { /* WebKit browsers */
-          color: $silver-two;
-        }
+          .v-input__icon {
+            width: 48px;
+            height: 48px;
 
-        ::-moz-placeholder { /* Mozilla Firefox 19+ */
-          color: $silver-two;
-        }
+            i {
+              color: $silver;
+              font-size: 20px;
 
-        :-ms-input-placeholder { /* Internet Explorer 10+ */
-          color: $silver-two;
-        }
-      }
-
-      .v-input__append-inner { /* text field icon */
-        margin: 0;
-        padding: 0;
-
-        .v-input__icon {
-          width: 48px;
-          height: 48px;
-
-          i {
-            color: $silver;
-            font-size: 20px;
-
-            &.primary--text {
-              color: $secondary-01 !important;
+              &.primary--text {
+                color: $secondary-01 !important;
+              }
             }
           }
         }
       }
-    }
 
-    .v-text-field__details { /* error message */
-      .v-messages {
-        height: 20px;
-        font-size: 14px;
-
-        &.error--text {
-          color: $error !important;
-          caret-color: $error !important;
-        }
+      .v-text-field__details { /* error message */
+        display: none;
       }
     }
   }
-}
 
-.v-input--is-disabled { /* disable */
-  >>> .v-input__control {
-    .v-input__slot {
-      background: $pale-grey-two !important;
+  .v-input--is-disabled { /* disable */
+    >>> .v-input__control {
+      .v-input__slot {
+        background: $pale-grey-two !important;
+      }
     }
   }
 }
