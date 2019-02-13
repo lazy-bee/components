@@ -12,15 +12,17 @@
 | ------------- | ------- | ------- | -------------------------------- |
 | name          | String  | -       | input name                       |
 | label         | String  | -       | input label                      |
-| id            | String  | -       | id                               |
+| description   | String  | -       | input description                |
+| required      | Boolean | false   | -                                |
 | value         | String  | -       | input value                      |
 | placeholder   | String  | -       | input placeholder                |
 | prependIcon   | String  | -       | prepend an icon to the component |
 | appendIcon    | String  | -       | append an icon to the component  |
-| required      | Boolean | false   | -                                |
+| tip           | String  | -       | input tip                        |
 | errorMessages | String  | -       | error message                    |
 | disable       | Boolean | false   | -                                |
 | rules         | Array   | -       | field validate rules             |
+| id            | String  | -       | id                               |
 
 ### Example
 

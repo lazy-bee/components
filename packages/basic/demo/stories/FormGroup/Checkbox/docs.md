@@ -8,12 +8,15 @@
 
 ### Scheme
 
-| name     | type    | default | description           |
-| -------- | ------- | ------- | --------------------- |
-| title    | String  | -       | title of the checkbox |
-| required | Boolean | false   | -                     |
-| items    | Array   | -       | -                     |
-| id       | String  | -       | id                    |
+| name          | type    | default | description           |
+| ------------- | ------- | ------- | --------------------- |
+| title         | String  | -       | title of the checkbox |
+| description   | String  | -       | input description     |
+| required      | Boolean | false   | -                     |
+| tip           | String  | -       | input tip             |
+| errorMessages | String  | -       | error message         |
+| items         | Array   | -       | -                     |
+| id            | String  | -       | id                    |
 
 ### Example
 
