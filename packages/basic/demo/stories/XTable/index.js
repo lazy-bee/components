@@ -8,12 +8,26 @@ export default withReadme(docs, () =>
   generateStory(
     XTable, {}, {
       dragEndCallback: (data) => {
-        console.log(data);
+        console.log('dragEndCallback: ', data);
       },
       clickCallback: (data) => {
-        console.log(data);
+        console.log('clickCallback: ', data);
       },
-      headers: object('headers', [{
+      selectCallback: (data) => {
+        console.log('selectCallback: ', data);
+      },
+      headers: object('headers', [
+        {
+          value:'thumbnail',
+          text:'Thumbnail',
+          render: (item) => {
+            const{
+              thumbnailImage = ''
+            } = item;
+            return `<div> <img src="${thumbnailImage}" style="width:70px; height:70px; padding:8px"> </div>`
+          }
+        },
+        {
           value: 'id',
           text: 'ID'
         },
@@ -29,6 +43,14 @@ export default withReadme(docs, () =>
             <i class="material-icons infoIcon">live_help</i>
             <span class="tooltiptext"> ${tooltipContent} </span></div>`;
           }
+        },
+        {
+          value: 'switch',
+          text: 'On/Off',
+          type: 'switch',
+          onSwitchChange: function(val, item){
+            console.log('data:, ', val, item);
+          },
         },
         {
           value: 'age',
@@ -62,35 +84,43 @@ export default withReadme(docs, () =>
       ]),
       items: object('items', [{
           value: false,
+          thumbnailImage:'https://a0.muscache.com/im/pictures/269b75cc-82a1-477c-81f4-db5d059b0242.jpg',
           id: '003',
           name: 'Howard',
+          tooltipContent: 'Howard Stanley',
+          switch: true,
           age: '30',
-          status: 'complete',
-          tooltipContent: 'Howard Stanley'
+          status: 'complete'       
         },
         {
           value: false,
+          thumbnailImage:'https://a0.muscache.com/im/pictures/2c7388f7-a899-4034-b67c-b36a902b6e35.jpg',
           id: '002',
           name: 'Kathryn',
+          tooltipContent: 'Kathryn Spencer',
+          switch: true,
           age: '35',
-          status: 'confirm',
-          tooltipContent: 'Kathryn Spencer'
+          status: 'confirm'        
         },
         {
           value: false,
+          thumbnailImage:'https://a0.muscache.com/im/pictures/1d0cd98d-efa4-4ffc-b233-17861f4efca2.jpg',
           id: '001',
           name: 'Ashley',
+          tooltipContent: 'Ashley Foster',
+          switch: false,
           age: '25',
-          status: 'confirm',
-          tooltipContent: 'Ashley Foster'
+          status: 'confirm'         
         },
         {
           value: false,
+          thumbnailImage:'https://a0.muscache.com/im/pictures/93537e16-042e-4dd5-b145-e14f3ed35c66.jpg',
           id: '<a href="#">004</a>',
           name: 'Nathan',
+          tooltipContent: 'Nathan Tucker',
+          switch: false,
           age: '28',
-          status: 'pending',
-          tooltipContent: 'Nathan Tucker'
+          status: 'pending'        
         }
       ]),
       actions: object('actions', [{
