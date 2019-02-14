@@ -1,9 +1,6 @@
 <template>
   <div class="datetime_wrapper">
-    <label slot="label" v-if="label">
-      {{label}}
-      <span v-if="required" class="star">*</span>
-    </label>
+    <inputLabel :label="label" :required="required" :description="description"/>
     <date-time-picker v-bind="Object.assign({}, $props, $attrs)" @onChange="innerOnChange" :timeFormat='timeFormat'/>
     <div class="errorMessage" v-if="errorMessage"> {{errorMessage}}</div>
   </div>
@@ -19,10 +16,11 @@ export default {
     DateTimePicker
   },
   props: {
-    singleDate: { type: Boolean, default: false },
     label: { type: String, default: '' },
-    timeFormat: { type: String, default: 'hh:mm:A' },
-    required: { type: Boolean, default: false }
+    description: { type: String, default: '' },
+    required: { type: Boolean, default: false },
+    singleDate: { type: Boolean, default: false },
+    timeFormat: { type: String, default: 'hh:mm:A' }
   },
   methods: {
     validate: function() {
@@ -69,8 +67,9 @@ export default {
   }
 
   .errorMessage {
-    color: #fb3939 !important;
-    caret-color: #fb3939 !important;
+    height: 20px;
+    font-size: 14px;
+    color: $error;
     text-align: left;
   }
 }

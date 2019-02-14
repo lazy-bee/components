@@ -1,9 +1,6 @@
 <template>
   <div class="time_wrapper" :id="id">
-    <label slot="label" v-if="label">
-      {{label}}
-      <span v-if="required" class="star">*</span>
-    </label>
+    <inputLabel :label="label" :required="required" :description="description"/>
     <TimePicker v-bind="Object.assign({}, $props, $attrs)"/>
     <div class="errorMessage" v-if="errorMessage">{{errorMessage}}</div>
   </div>
@@ -23,7 +20,10 @@ export default {
   },
   props: {
     label: { type: String, default: '' },
+    description: { type: String, default: '' },
     required: { type: Boolean, default: false },
+    errorMessage: { type: String, default: '' },
+    id: { type: String, default: '' },
     format: {
       type: String,
       default: 'hh:mm:A'
@@ -52,5 +52,10 @@ export default {
       color: $primary-01;
     }
   }
+  .errorMessage{
+    height: 20px;
+    font-size: 14px;
+    color: $error;
+  }  
 }
 </style>

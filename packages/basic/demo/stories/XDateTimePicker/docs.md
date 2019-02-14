@@ -8,14 +8,15 @@
 
 ### Scheme
 
-| name       | type    | default | accepted values | description                    |
-| ---------- | ------- | ------- | --------------- | ------------------------------ |
-| startDate  | Date    | -       | new Date()      | start date of the range        |
-| endDate    | Date    | -       | new Date()      | end date of the range          |
-| singleDate | Boolean | false   | -               | select period or a single date |
-| label      | String  | -       | -               | input label                    |
-| id         | String  | -       | -               | id                             |
-| required   | Boolean | false   | -               | -                              |
+| name        | type    | default | accepted values           | description                    |
+| ----------- | ------- | ------- | ------------------------- | ------------------------------ |
+| startDate   | Date    | -       | new Date()                | start date of the range        |
+| endDate     | Date    | -       | new Date()                | end date of the range          |
+| singleDate  | Boolean | false   | -                         | select period or a single date |
+| timeFormat  | String  | hh:mm:A | hh:mm:A / HH:mm           | time format                    |
+| label       | String  | -       | -                         | input label                    |
+| description | String  | -       | input description         | -                              |
+| required    | Boolean | false   | -                         | -                              |
 
 ### Event
 
