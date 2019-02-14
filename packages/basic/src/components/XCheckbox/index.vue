@@ -9,7 +9,6 @@
         @change="(val) => toggle(val, item.value)"
       ></v-checkbox>
     </div>
-    <inputMessage :tip="tip" :errorMessages="errorMessages"/>
   </div>
 </template>
 
@@ -20,8 +19,6 @@ export default {
     title: { type: String, default: '' },
     description: { type: String, default: '' },
     required: { type: Boolean, default: false },
-    tip: { type: String, default: '' },
-    errorMessages: { type: String, default: '' },
     items: {
       type: Array,
       default: () => []

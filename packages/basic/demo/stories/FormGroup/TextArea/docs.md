@@ -18,7 +18,6 @@
 | placeholder   | String  | -       | input placeholder                |
 | prependIcon   | String  | -       | prepend an icon to the component |
 | appendIcon    | String  | -       | append an icon to the component  |
-| tip           | String  | -       | input tip                        |
 | errorMessages | String  | -       | error message                    |
 | disable       | Boolean | false   | -                                |
 | rules         | Array   | -       | field validate rules             |

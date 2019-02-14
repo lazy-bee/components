@@ -6,7 +6,6 @@
       v-on="$listeners"
       :rules="innerRules"
     ></v-textarea>
-    <inputMessage :tip="tip" :errorMessages="errorMessages"/>
   </div>
 </template>
 
@@ -22,7 +21,6 @@ export default {
     placeholder: { type: String, default: '' },
     appendIcon: { type: String, default: '' },
     prependIcon: { type: String, default: '' },
-    tip: { type: String, default: '' },
     errorMessages: { type: String, default: '' },
     disabled: { type: Boolean, default: false },
     rules: {}, //Array or Function, so no assigned here
@@ -31,7 +29,6 @@ export default {
   data: function() {
     const newProps = { ...this.$props };
     delete newProps['label'];
-    delete newProps['errorMessages'];
 
     return {
       newProps,
@@ -145,7 +142,14 @@ export default {
     }
 
     .v-text-field__details {
-      display: none;
+      .v-messages {
+        height: 20px;
+        font-size: 14px;
+        &.error--text {
+          color: $error !important;
+          caret-color: $error !important;
+        }
+      }
     }
   }
 }

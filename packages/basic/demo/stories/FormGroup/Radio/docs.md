@@ -13,7 +13,6 @@
 | title         | String  | -       | title of the radios     |
 | description   | String  | -       | input description       |
 | required      | Boolean | false   | -                       |
-| tip           | String  | -       | input tip               |
 | errorMessages | String  | -       | error message           |
 | column        | Boolean | false   | vertical or horizobntal |
 | items         | Array   | -       | radio items             |

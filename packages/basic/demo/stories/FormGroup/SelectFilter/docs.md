@@ -21,7 +21,6 @@
 | clearable      | Boolean | false   | Add input clear functionality, default icon is Material Icons clear |
 | prependIcon    | String  | -       | use the Material Icon to prepends an icon to the component          |
 | suffix         | String  | -       | Displays suffix text                                                |
-| tip            | String  | -       | input tip                                                           |
 | errorMessages  | String  | -       | error message                                                       |
 | disabled       | Boolean | false   | Disables the input                                                  |
 | id             | String  | -       | id                                                                  |

@@ -9,7 +9,6 @@
     >
       <v-radio v-for="(item, index) in items" :key="index" v-bind="item"></v-radio>
     </v-radio-group>
-    <inputMessage :tip="tip" :errorMessages="errorMessages"/>
   </div>
 </template>
 
@@ -20,7 +19,6 @@ export default {
     title: { type: String, default: '' },
     description: { type: String, default: '' },
     required: { type: Boolean, default: false },
-    tip: { type: String, default: '' },
     errorMessages: { type: String, default: '' },
     items: {
       type: Array,
@@ -101,7 +99,13 @@ export default {
     }
 
     .v-messages { /* error message */
-      display: none;
+      height: 20px;
+      font-size: 14px;
+
+      &.error--text {
+        color: $error !important;
+        caret-color: $error !important;
+      }
     }
   }
 }
