@@ -21,7 +21,7 @@
         <div class="box">
           <div class="stage">
             <div class="item">
-              <x-button v-bind="buttonSchemeB"></x-button>
+              <p>By registering you agree to our <a class="hyberlink" @click="openDialog">Terms of Service</a></p> 
               <x-dialog v-bind="dialogSchemeB" v-model="dialogSchemeB.value">
                 <div class="slot-header" slot="slot-header"></div>
                 <customTerms/>
@@ -58,13 +58,6 @@ export default {
         cancelText: 'CANCEL',
         confirmText: 'SUBMIT'
       },
-      buttonSchemeB: {
-        content: 'Terms of Service',
-        borderRadius: 4,
-        click: () => {
-          this.dialogSchemeB.value = true;
-        }
-      },
       dialogSchemeB: {
         value: false,
         closeSign: true,
@@ -72,6 +65,11 @@ export default {
         confirmText: 'Submit'
       }
     };
+  },
+  methods: {
+    openDialog() {
+      this.dialogSchemeB.value = true;
+    }
   }
 };
 </script>

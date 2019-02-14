@@ -29,6 +29,11 @@
       line-height: 40px;
     }
 
+    p {
+      font-size: 16px;
+      color: $dark;
+    }
+
     .box {
       min-height: 200px;
       display: flex;
@@ -44,11 +49,14 @@
 
         a {
           color: $bluey-grey;
-          font-size: 14px;
           text-decoration: none;
 
           &:hover {
             text-decoration: underline;
+          }
+
+          &.hyberlink {
+            color: $secondary-01;
           }
         }
       }
@@ -63,6 +71,7 @@
     }
   }
 }
+
 @media screen and (max-width: 600px) {
   .demoWrap {
     .boxWrap {

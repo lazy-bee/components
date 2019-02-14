@@ -59,7 +59,7 @@
 ```html
 <template>
   <x-button v-bind="buttonSchemeB"></x-button>
-  <x-dialog v-bind="dialogSchemeB" v-model="dialogSchemeB.value">
+  <p>By registering you agree to our <a class="hyberlink" @click="openDialog">Terms of Service</a></p>
     <div class="slot-header" slot="slot-header"></div>
     <customTerms />
     <div slot="slot-btn"></div>
@@ -73,13 +73,6 @@
     components: { customTerms },
     data() {
       return {
-        buttonSchemeB: {
-          content: 'Terms of Service',
-          borderRadius: 4,
-          click: () => {
-            this.dialogSchemeB.value = true;
-          }
-        },
         dialogSchemeB: {
           value: false,
           closeSign: true,
@@ -87,6 +80,11 @@
           confirmText: 'Submit'
         }
       };
+    },
+    methods: {
+      openDialog() {
+        this.dialogSchemeB.value = true;
+      }
     }
   };
 </script>

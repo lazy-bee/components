@@ -44,7 +44,7 @@
 
 ```html
 <template>
-  <x-button @click="openDialog" />
+  <x-button v-bind="buttonScheme" />
   <x-dialog
     v-bind="dialogScheme"
     v-model="dialogScheme.value"
@@ -56,6 +56,11 @@
   export default {
     data() {
       return {
+        buttonScheme: {
+          click: () => {
+            this.dialogScheme.value = true;
+          }
+        },
         dialogScheme: {
           value: false,
           title: 'You have unsaved changes!',
@@ -70,9 +75,6 @@
     methods: {
       dialogConfirm(event) {
         console.log('confirmed with event:', event); //confirm button
-      },
-      openDialog() {
-        this.dialogScheme.value = true; //open Dialog
       }
     }
   };
