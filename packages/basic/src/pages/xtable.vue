@@ -17,6 +17,14 @@ export default {
     return {
       schema: {
         headers: [
+          {
+            value: 'switch',
+            text: 'On/Off',
+            type: 'switch',
+            onSwitchChange: function(val, item) {
+              console.log(' data:, ', val, item);
+            }
+          },
           { value: 'no', text: 'No' },
           {
             value: 'name',
@@ -37,6 +45,24 @@ export default {
             age: '30',
             name: 'John',
             description: 'He has been single for 30 years'
+          },
+          {
+            no: '2',
+            age: '40',
+            name: 'Michael',
+            description: 'He has been single for 40 years'
+          },
+          {
+            no: '3',
+            age: '50',
+            name: 'Mary',
+            description: 'He has been single for 50 years'
+          },
+          {
+            no: '4',
+            age: '60',
+            name: 'Carol',
+            description: 'He has been single for 60 years'
           }
         ],
         actions: [
@@ -47,7 +73,7 @@ export default {
             borderRadius: 4,
             color: '#666',
             render: (item) => true,
-            click: (item) => {
+            click: () => {
               this.$router.push({
                 name: 'taskEdit',
                 params: { task: item }
@@ -76,7 +102,7 @@ export default {
 <style>
 .contentWrapper {
   width: 100%;
-  max-width: 600px;
+  max-width: 900px;
   margin: auto;
 }
 </style>

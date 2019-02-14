@@ -17,23 +17,30 @@
             <v-checkbox hide-details v-model="props.selected"></v-checkbox>
           </div>
         </td>
-        <td v-if="draggable ">
-          <div class="td-wrapper">
+        
+        <td
+          v-for="{ value: columnName, render, type, onSwitchChange } in columns"
+          :key="columnName"
+          v-if="columnName !== 'action'"
+        > 
+
+          <div v-if="columnName === 'draggable'" class="td-wrapper">
             <v-btn icon class="sortHandle">
               <v-icon>drag_handle</v-icon>
             </v-btn>
           </div>
-        </td>
-        <td
-          v-for="{ value: columnName, render } in columns"
-          :key="columnName"
-          v-if="columnName !== 'action'"
-        >
-          <div class="td-wrapper" :class="`${columnName}-td-wrapper`">
+          
+          <div v-else-if="type === 'switch'" class="td-wrapper switch-td-wrapper">
+            <v-switch v-model="props.item.switch" 
+              @change="(val) => onSwitchChange && onSwitchChange(val, props.item)"></v-switch>
+          </div>
+
+          <div v-else class="td-wrapper" :class="`${columnName}-td-wrapper`">
             <div v-html="render ? render(props.item) : props.item[columnName]"></div>
           </div>
-        </td>
 
+        </td>
+        
         <td v-if="actions.length" class="actions-area">
           <div class="td-wrapper">
             <div class="actions-btn-wrapper">
@@ -67,6 +74,7 @@ import Sortable from 'sortablejs';
 export default {
   name: 'x-table',
   props: {
+    // switchBtn: { type: Boolean, default: false },
     headers: { type: Array, default: () => [] },
     items: { type: Array, default: () => [] },
     actions: { type: Array, default: () => [] },
@@ -113,7 +121,10 @@ export default {
       selected: [],
       dataItems: this.items,
       columns: this.draggable
-        ? [{ sortable: false, text: 'Sorting' }, ...this.headers]
+        ? [
+            { sortable: false, value: 'draggable', text: 'Sorting' },
+            ...this.headers
+          ]
         : this.headers
     };
   },
@@ -248,6 +259,19 @@ export default {
           color: $slate-grey;
           font-size: 14px;
           font-weight: 400;
+
+          .switch-td-wrapper{
+            .v-input{
+              .v-input__control{
+                .v-input__slot{
+                  margin-bottom:0;              
+                } 
+                .v-messages{
+                  display:none;  
+                }   
+              }  
+            }
+          }
 
           a {
             color: $secondary-01;
