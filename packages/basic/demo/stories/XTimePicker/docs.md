@@ -8,12 +8,14 @@
 
 ### Scheme
 
-| name     | type    | default | accepted values           | description |
-| -------- | ------- | ------- | ------------------------- | ----------- |
-| format   | String  | hh:mm:A | hh:mm:A / HH:mm / hh:mm:a | time format |
-| label    | String  | -       | -                         | input label |
-| id       | String  | -       | -                         | id          |
-| required | Boolean | false   | -                         | -           |
+| name         | type    | default | accepted values           | description  |
+| ------------ | ------- | ------- | ------------------------- | ------------ |
+| format       | String  | hh:mm:A | hh:mm:A / HH:mm / hh:mm:a | time format  |
+| label        | String  | -       | -                         | input label  |
+| description  | String  | -       | input description         | -            |
+| required     | Boolean | false   | -                         | -            |
+| errorMessage | String  | -       | -                         | errorMessage |
+| id           | String  | -       | -                         | id           |
 
 ### Event
 
