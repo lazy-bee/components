@@ -2,7 +2,6 @@
   <div>
     <inputLabel :label="label" :required="required" :description="description"/>
     <v-select v-bind="Object.assign({}, this.$data.newProps, $attrs)" v-on="$listeners"></v-select>
-    <inputMessage :tip="tip" :errorMessages="errorMessages"/>
   </div>
 </template>
 
@@ -20,7 +19,6 @@ export default {
     clearable: { type: Boolean, default: false },
     prependIcon: { type: String, default: '' },
     suffix: { type: String, default: '' },
-    tip: { type: String, default: '' },
     errorMessages: { type: String, default: '' },
     disabled: { type: Boolean, default: false },
     items: {
@@ -31,7 +29,7 @@ export default {
   data() {
     const newProps = { ...this.$props };
     delete newProps['label'];
-    delete newProps['errorMessages'];
+
     return {
       newProps
     };
@@ -169,7 +167,15 @@ export default {
 
   /* error message */
   .v-text-field__details {
-    display: none;
+    .v-messages {
+      height: 20px;
+      font-size: 14px;
+
+      &.error--text {
+        color: $error !important;
+        caret-color: $error !important;
+      }
+    }
   }
 }
 </style>

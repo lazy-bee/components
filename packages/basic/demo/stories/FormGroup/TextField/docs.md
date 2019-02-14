@@ -21,7 +21,6 @@
 | appendIcon    | String  | -       | append an icon to the component  |
 | prefix        | String  | -       | displays prefix text             |
 | suffix        | String  | -       | Displays suffix text             |
-| tip           | String  | -       | input tip                        |
 | errorMessages | String  | -       | error message                    |
 | disable       | Boolean | false   | -                                |
 | rules         | Array   | -       | field validate rules             |
