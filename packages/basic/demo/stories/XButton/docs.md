@@ -24,7 +24,7 @@
 | block        | Boolean | false     | -                                   | Block buttons extend the full available width   |
 | click        | function| -         | -                                   | click function                                  |
 | size         | String  | medium    | small / medium (default) / large    | button size (button height 34px/44px/50px)      |
-| tootltip     | Object  | -         | {direction: 'top / bottom / left / left', <br/> content:" "} | tooltip position & content |
+| tootltip     | Object  | -         | {direction: 'top / bottom / left / right', <br/> content:" "} | tooltip position & content |
 | authority    | String  | available | available / unavailable / invisible | component authority                             |
 
 ### Example

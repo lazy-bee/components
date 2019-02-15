@@ -247,10 +247,6 @@ export default {
           background: $pale-grey !important;
         }
 
-        // &:nth-child(odd) {
-        //   background-color: white;
-        // }
-
         &:nth-child(4n + 1) {
           background-color: $pale-grey-two;
         }

@@ -8,9 +8,7 @@
     <a @click="tapIndex = 0" class="componentTab" :class="tapIndex===0? 'active' : 'inactive'">xformgroup</a>
     <a @click="tapIndex = 1" class="componentTab" :class="tapIndex===1? 'active' : 'inactive'">xformindialog</a>
     <a @click="tapIndex = 2" class="componentTab" :class="tapIndex===2? 'active' : 'inactive'">xtable</a>
-    <a @click="tapIndex = 4" class="componentTab" :class="tapIndex===4? 'active' : 'inactive'">
-      DatexformgroupModal
-    </a>
+    <a @click="tapIndex = 3" class="componentTab" :class="tapIndex===3? 'active' : 'inactive'">xtootip</a>
   </section>
 
   <keep-alive>
@@ -23,6 +21,7 @@
 import xformgroupPage from './pages/xformgroup.vue';
 import xformindialogPage from './pages/xformindialog.vue';
 import xtable from './pages/xtable.vue';
+import xtooltip from './pages/xtooltip.vue';
 
 export default {
   name: 'app',
@@ -31,6 +30,7 @@ export default {
       if (this.tapIndex === 0) return xformgroupPage;
       if (this.tapIndex === 1) return xformindialogPage;
       if (this.tapIndex === 2) return xtable;
+      if (this.tapIndex === 3) return xtooltip;
     }
   },
   methods: {},

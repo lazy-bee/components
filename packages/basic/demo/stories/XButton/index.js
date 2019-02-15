@@ -8,5 +8,11 @@ export default withReadme(docs, () =>
   generateStory(XButton, propOptions, {
     content: text('content', 'download'),
     borderRadius: number('borderRadius', 4)
-  })
+  },
+  `
+  <div style="width:600px; display:flex; justify-content:center"> 
+    <x-button v-bind="scheme"/>
+  </div>
+  `
+  )
 );
