@@ -5,7 +5,11 @@ export const oneOf = (options) => (value) => options.includes(value);
 export default {
   methods: {
     getTextColor(bg = '#ffffff') {
-      let hexCode = bg.replace('#', '');
+      if (bg.indexOf('rgba') !== -1) {
+        bg = this.rgbaToHex(bg);
+      }
+
+      var hexCode = bg.replace('#', '');
 
       var c_r = parseInt(hexCode.substr(0, 2), 16);
       var c_g = parseInt(hexCode.substr(2, 2), 16);
@@ -14,6 +18,24 @@ export default {
       var fore = Math.round((c_r * 299 + c_g * 587 + c_b * 114) / 1000);
 
       return fore > 125 ? '#000000' : '#ffffff';
+    },
+
+    rgbaToHex(rgba) {
+      var parts = rgba.substring(rgba.indexOf('(')).split(','),
+        r = parseInt(this.trim(parts[0].substring(1)), 10),
+        g = parseInt(this.trim(parts[1]), 10),
+        b = parseInt(this.trim(parts[2]), 10),
+        a = parseFloat(
+          this.trim(parts[3].substring(0, parts[3].length - 1))
+        ).toFixed(2);
+
+      return (
+        '#' +
+        r.toString(16) +
+        g.toString(16) +
+        b.toString(16) +
+        (a * 255).toString(16).substring(0, 2)
+      );
     },
 
     trim(string) {

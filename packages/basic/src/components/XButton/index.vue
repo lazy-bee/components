@@ -15,31 +15,25 @@
     @click="click"
     :prependIcon="prependIcon"
   >
-    <slot></slot>
+    <slot></slot>  <!-- Do not delete, keep this slot for the action buttons of x-table  -->
+
     <template v-if="tooltip.content">
       <x-tooltip v-bind="tooltip">
-        <span slot="trigger">
-          <v-icon v-if="icon === true || square === true">{{ content }}</v-icon>
-
-          <span v-else>{{ content }}</span>
+        <span slot="activator">
+          <button-content :icon="icon" :content="content" :prependIcon="prependIcon" :appendIcon="appendIcon" :square="square"/>
         </span>
       </x-tooltip>
     </template>
 
     <template v-else>
-      <v-icon v-if="icon === true || square === true">{{ content }}</v-icon>
-
-      <span v-else>
-        <v-icon v-if="prependIcon" class="prependIcon">{{prependIcon}}</v-icon>
-        {{ content }}
-        <v-icon v-if="appendIcon" class="appendIcon">{{appendIcon}}</v-icon>
-      </span>
+      <button-content :icon="icon" :content="content" :prependIcon="prependIcon" :appendIcon="appendIcon" :square="square"/>
     </template>
   </v-btn>
 </template>
 
 <script>
 import tools, { oneOf } from '../../mixins/tools.js';
+import buttonContent from './buttonContent';
 export const propOptions = { size: ['small', 'medium', 'large'] };
 
 export default {
@@ -70,7 +64,7 @@ export default {
       type: Object,
       default: () => {
         return {
-          direction: 'top',
+          direction: 'left',
           content: ''
         };
       }

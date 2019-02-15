@@ -28,6 +28,7 @@ import XDonut from './XChartDonut';
 import XLine from './XChartLine';
 import XGeo from './XChartGeo';
 import inputLabel from './common/inputLabel';
+import buttonContent from './XButton/buttonContent';
 
 // deprecated
 import XAlert from '../deprecated/XAlert';
@@ -69,5 +70,6 @@ export default [
   XBar,
   XLine,
   XGeo,
-  inputLabel
+  inputLabel,
+  buttonContent
 ];
