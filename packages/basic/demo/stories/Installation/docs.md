@@ -1,8 +1,8 @@
 
 <!-- STORY -->
 
-# Lazybee-component
-Lazybee is a front-end UI component Library for developing websites and web applications base on Vue.js. It provides useful components for the developer to building app and prototype quickly.
+# Lazybee Components
+Lazybee, a frontend UI component library based on Vue.js, is created for rapidly developing websites, applications, and prototypes by minimizing repeating works, to boost the production timing.
 
 ## Demo
  - [https://lazy-bee.github.io/components/](https://lazy-bee.github.io/components/)
@@ -10,12 +10,14 @@ Lazybee is a front-end UI component Library for developing websites and web appl
 ## Install
 
 ```shell
+
 yarn add @lazy-bee/basic
 ```
 
 or
 
 ```shell
+
 npm install @lazy-bee/basic --save
 ```
 
@@ -23,6 +25,7 @@ npm install @lazy-bee/basic --save
 ## Usage
 
 ```
+
 import LazybeeComponent from '@lazy-bee/basic';
 import '@lazy-bee/basic/dist/basic.css';
 
