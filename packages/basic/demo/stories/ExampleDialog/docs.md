@@ -58,8 +58,11 @@
 
 ```html
 <template>
-  <x-button v-bind="buttonSchemeB"></x-button>
-  <p>By registering you agree to our <a class="hyberlink" @click="openDialog">Terms of Service</a></p>
+  <p>
+    By registering you agree to our
+    <a class="hyberlink" @click="openDialog">Terms of Service</a>
+  </p>
+  <x-dialog v-bind="dialogSchemeB" v-model="dialogSchemeB.value">
     <div class="slot-header" slot="slot-header"></div>
     <customTerms />
     <div slot="slot-btn"></div>
