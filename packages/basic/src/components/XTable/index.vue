@@ -11,7 +11,7 @@
     disable-initial-sort
   >
     <template slot="items" slot-scope="props">
-      <tr class="sortableRow" :key="itemKey(props.item)" @click="() => { clickCallback.call(null, props.item) }">
+      <tr class="sortableRow" :key="itemKey(props.item)" @click="(e) => { clickCallback.call(null, props.item, e) }">
         <td v-if="multiSelectable" class="select-checkbox">
           <div class="td-wrapper">
             <v-checkbox hide-details v-model="props.selected"></v-checkbox>
