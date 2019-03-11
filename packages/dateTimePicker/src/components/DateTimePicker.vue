@@ -39,6 +39,7 @@ import { getTimeObjectFromDate } from "../lib/time";
 
 const BOX_LENGTH = 750; //px
 const BOX_HEIGHT = 510; //px
+const RWD_THRESHOLD_W = 700;
 
 const _getDateString = (date, format = "hh:mm:A") => {
   if (!date) return "";
@@ -76,32 +77,30 @@ export default {
   },
   methods: {
     calculateShift: function() {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
 
       const wrapper = this.$refs.wrapper;
 
       const { x, y } = wrapper.getBoundingClientRect();
 
-      const dx = width - x;
+      const dx = windowWidth - x;
+      const isDesktop = windowWidth > RWD_THRESHOLD_W;
 
       // calculate shift x
-      if (dx < BOX_LENGTH && width > 700) {
-        // 700 is RWD break point
-        this.shiftMarginLeft = BOX_LENGTH - dx;
+      if (dx < BOX_LENGTH && isDesktop) {
+        this.shiftMarginLeft = Math.min(BOX_LENGTH - dx, x);
       }
 
       // calculate shift y, has enough space
-      if (y > height / 2 && height > 2 * BOX_HEIGHT && width > 700) {
-        // 700 is RWD break point
+      if (y > windowHeight / 2 && windowHeight > 2 * BOX_HEIGHT && isDesktop) {
         this.shiftMarginHeight = BOX_HEIGHT;
       }
 
       // calculate shift y, has no enough space
-      if (height < 2 * BOX_HEIGHT && width > 700) {
-        // 700 is RWD break point
-        const dy = height - y;
-        this.shiftMarginHeight = BOX_HEIGHT - dy;
+      if (windowHeight < 2 * BOX_HEIGHT && isDesktop) {
+        const dy = windowHeight - y;
+        this.shiftMarginHeight = Math.min(BOX_HEIGHT - dy, y);
       }
     },
     openHandler: function() {
