@@ -2,7 +2,7 @@
   <div>
     <inputLabel :label="label" :required="required" :description="description"/>
     <v-text-field
-      v-bind="Object.assign({}, this.$data.newProps, $attrs)"
+      v-bind="Object.assign({}, newProps, $attrs)"
       v-on="$listeners"
       :rules="innerRules"
     ></v-text-field>  
@@ -39,12 +39,15 @@ export default {
     rules: {}, //Array or Function, so no assigned here
     id: { type: String, default: undefined }
   },
+  computed: {
+    newProps() {
+      const newProps = { ...this.$props };
+      delete newProps.label;
+      return newProps
+    }
+  },
   data: function() {
-    const newProps = { ...this.$props };
-    delete newProps['label'];
-
     return {
-      newProps,
       innerRules: this.rules
         ? this.rules
         : this.required
