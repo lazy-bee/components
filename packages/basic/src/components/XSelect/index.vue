@@ -1,7 +1,7 @@
 <template>
   <div>
     <inputLabel :label="label" :required="required" :description="description"/>
-    <v-select v-bind="Object.assign({}, this.$data.newProps, $attrs)" v-on="$listeners"></v-select>
+    <v-select v-bind="Object.assign({}, newProps, $attrs)" v-on="$listeners"></v-select>
   </div>
 </template>
 
@@ -26,13 +26,12 @@ export default {
       default: () => []
     }
   },
-  data() {
-    const newProps = { ...this.$props };
-    delete newProps['label'];
-
-    return {
-      newProps
-    };
+  computed: {
+    newProps() {
+      const newProps = { ...this.$props };
+      delete newProps.label;
+      return newProps
+    }
   }
 };
 </script>
