@@ -42,9 +42,8 @@ export default {
   },
   data: function() {
     return {
-      innerRules: this.rules
-        ? this.rules
-        : this.required
+      innerRules:
+        this.rules || this.required
           ? [(v) => !!v || `${this.label || 'field'} is required`]
           : []
     };
