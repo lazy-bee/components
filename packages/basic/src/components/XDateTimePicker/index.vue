@@ -49,7 +49,6 @@ export default {
 @import '../../styles/_variables.styl';
 
 .datetime_wrapper {
-  padding-top: 26px;
   position: relative;
 
   label {
