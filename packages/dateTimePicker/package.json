@@ -63,7 +63,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wahengchang/vue-packages.git"
+    "url": "git+https://github.com/lazy-bee/components.git"
   },
   "keywords": [
     "vue",
@@ -81,7 +81,7 @@
   "author": "lazy-copilot",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wahengchang/vue-packages/issues"
+    "url": "https://github.com/lazy-bee/components/issues"
   },
-  "homepage": "https://github.com/wahengchang/vue-packages#readme"
+  "homepage": "https://github.com/lazy-bee/components/tree/master/packages/dateTimePicker#readme"
 }
