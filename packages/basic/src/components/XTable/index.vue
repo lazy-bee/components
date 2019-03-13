@@ -286,6 +286,7 @@ export default {
               border: 1px solid $silver-two;
               width: 28px;
               height: 28px;
+              line-height: 28px;
               margin: 6px 5px;
 
               .v-icon {
