@@ -30,15 +30,16 @@ export default {
     newProps() {
       const newProps = { ...this.$props };
       delete newProps.label;
-      return newProps
+      return newProps;
     }
   },
   data: function() {
     return {
       innerRules:
-        this.rules || this.required
+        this.rules ||
+        (this.required
           ? [(v) => !!v || `${this.label || 'field'} is required`]
-          : []
+          : [])
     };
   }
 };
