@@ -5,6 +5,12 @@ It provides useful components for the developer to building app and prototype qu
 #### Demo
  - [https://lazy-bee.github.io/components/](https://lazy-bee.github.io/components/)
 
+## Init *
+this links all modules in a monorepo together. This way, you can immediately test whether a change will break code that relies on a module.
+```
+$ lerna bootstrap
+```
+
 ## Add
 Add a dependency to matched packages
 
@@ -12,13 +18,6 @@ Add a dependency to matched packages
 $ lerna add module-1 --scope=module-2
 
 // lerna add @lazy-bee/datetimepicker --scope=demo
-```
-
-## bootstrap
-this links all modules in a monorepo together. This way, you can immediately test whether a change will break code that relies on a module.
- 
-```
-$ lerna bootstrap
 ```
 
 
