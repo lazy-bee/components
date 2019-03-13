@@ -36,7 +36,6 @@ export default {
 @import '../../styles/_variables.styl';
 
 .time_wrapper {
-  padding-top: 26px;
   position: relative;
 
   label {
