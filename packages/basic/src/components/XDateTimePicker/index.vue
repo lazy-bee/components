@@ -1,7 +1,7 @@
 <template>
   <div class="datetime_wrapper">
     <inputLabel :label="label" :required="required" :description="description"/>
-    <date-time-picker v-bind="Object.assign({}, $props, $attrs)" @onChange="innerOnChange" :timeFormat='timeFormat'/>
+    <date-time-picker v-bind="Object.assign({}, $props, $attrs, innerVal)" @onChange="innerOnChange" :timeFormat='timeFormat'/>
     <div class="errorMessage" v-if="errorMessage"> {{errorMessage}}</div>
   </div>
 </template>
@@ -39,7 +39,7 @@ export default {
   data: function() {
     return {
       errorMessage: '',
-      innerVal: ''
+      innerVal: {}
     };
   }
 };
