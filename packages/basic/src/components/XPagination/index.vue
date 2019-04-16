@@ -24,10 +24,15 @@ export default {
     nextIcon: { type: String, default: 'chevron_right' },
     click: { type: Function, default: () => {} }
   },
-  data() {
-    return {
-      page: this.value
-    };
+  computed: {
+    page: {
+      get() {
+        return this.value;
+      },
+      set(val) {
+        this.value = val;
+      }
+    }
   },
   methods: {
     input() {
