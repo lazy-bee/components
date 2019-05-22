@@ -1,0 +1,12 @@
+@import "../style/_variable.scss";
+@import "../style/_reset.scss";
+
+*{
+    box-sizing: border-box;
+    font-family: "Nunito Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+body {
+    background:rgb(245, 249, 251)
+  }
