@@ -1,11 +1,11 @@
 <template>
-  <div class='row'>
-    <a @click='onSelectedItem'>
+  <div class='item-box'>
+    <a class="item-checkbox" @click='onSelectedItem'>
       <input type="checkbox" :name="label" :checked="isSelected">
-      <span>{{label}}</span>
+      <label>{{label}}</label>
     </a>
-    <a  @click='_onAddItem' class='addButton'  >
-      <span > + </span>
+    <a @click='_onAddItem' class='sub-btn'>
+      <span>+</span>
     </a>
   </div>
 </template>
@@ -54,18 +54,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.row{
-  border: 1px gray solid;
-  line-height: 50px;
-  display: flex;
 
-  a {
-    display: block;
-  }
-
-  .addButton {
-    width: 30px;
-    border: 1px gray solid;
-  }
-}
 </style>

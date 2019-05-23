@@ -11,15 +11,17 @@
 
     <section class="componentContainer" v-if="tapIndex === 0">
       <h1>Multi Select</h1>
-      <div> 
+      <div class="btn-box"> 
         <button class='addItemsButton' @click='addSameItems'> add same Items</button>
         <button class='addItemsButton' @click='addRandomItems'> add random Items</button>
       </div>
-      <TwoSideSelect
-        :items='initTwoSideSelectItems'
-        :poolItems='poolItems'
-        :onChange='onChangeHandler'
-      />
+      <div class="content-box">
+        <TwoSideSelect
+          :items='initTwoSideSelectItems'
+          :poolItems='poolItems'
+          :onChange='onChangeHandler'
+        />
+      </div>
     </section>
 
   </div>
@@ -83,6 +85,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./style/main.scss";
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -158,12 +161,142 @@ export default {
       z-index: 3;
     }
   }
+
+  .btn-box {
+    padding: 20px 0 30px 0;
+  }
+
+  .content-box {
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 
+$item-height: 42px;
+.item-box{
+  display: flex;
+  height: $item-height;
+  align-items: center;
+  transition: 0.2s;
+  &:hover {
+    background-color: rgba(0,0,0,0.015);
+  }
 
-</style>
+  a.sub-btn {
+    display: block;
+    margin-left: auto;
+    height: $item-height;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    cursor: pointer;
+    span {
 
-<style lang="scss">
-@import "./style/main.scss";
+    }
+  }
+}
+
+a.item-checkbox {
+  padding: 0 0 0 20px;
+  height: $item-height;
+  flex: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  position: relative;
+  $checkboxColor: hsl(hue(#0149ff), saturation(#0149ff), 50%);
+  $checkboxSize: 18px;
+  font-size: 15px;
+  input[type='checkbox'] {
+    margin: 0;
+    font-size: 1.25em;
+    z-index: -1;
+    width: $checkboxSize;
+    height: $checkboxSize;
+    appearance: none;
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    transform: scale(2);
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+    &:focus {
+      outline: none;
+    }
+    &:checked {
+      background-color: $checkboxColor;
+      + label {
+        &::before {
+          background-color: $checkboxColor;
+          border-color: $checkboxColor;
+        }
+        &::after {
+          border-color: white;
+        }
+      }
+    }
+    // &:active {
+    //   opacity: 1;
+    //   transform: scale(0);
+    //   transition: opacity 0s, transform 0s;
+    //   + label::before {
+    //     border-color: $checkboxColor;
+    //   }
+    // }
+  }
+  label {
+    cursor: pointer;
+    &::before {
+      content: '';
+      display: inline-block;
+      width: $checkboxSize;
+      height: $checkboxSize;
+      margin-right: 12px;
+      border: solid 2px #d6dbdd;
+      border-radius: 2px;
+      vertical-align: -4px;
+      transition: border-color 0.2s, background-color 0.2s;
+    }
+    &::after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      $checkWidth: $checkboxSize * 0.35;
+      $checkHeight: $checkWidth * 2;
+      width: $checkWidth;
+      height: $checkHeight;
+      border: solid 2px transparent;
+      border-left: none;
+      border-top: none;
+      transform: translate(26px,13px) rotate(45deg)
+    }
+  }
+}
+
+.arrow {
+  border-top: 2px solid #525862;
+  border-right: 2px solid #525862;
+  width: 9px;
+  height: 9px;
+  transform: rotate(45deg);
+  position: relative;
+  display: inline-block;
+  &:after {
+    content: " ";
+    width: 2px;
+    height: 14px;
+    background-color: #525862;
+    transform: rotate(45deg);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -1px;
+    bottom: 0;
+    margin: auto;
+  }
+}
 
 </style>

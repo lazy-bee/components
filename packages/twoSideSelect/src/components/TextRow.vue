@@ -1,8 +1,17 @@
 <template>
-  <div class='row'>
+  <!-- <div class='row'>
     <span>{{label}}</span>
     <a  @click='onRemoveItem'>
       <span class='closeButton'> x </span>
+    </a>
+  </div> -->
+  <div class='item-box'>
+    <a class="item-checkbox">
+      <input type="checkbox">
+      <label>{{label}}</label>
+    </a>
+    <a @click='onRemoveItem' class='sub-btn'>
+      <span>x</span>
     </a>
   </div>
 </template>
@@ -39,15 +48,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.row{
-  border: 1px gray solid;
-  line-height: 50px;
 
-  .closeButton {
-    float: right;
-    width: 30px;
-    border: 1px black solid;
-    z-index: 2px;
-  }
-}
 </style>
