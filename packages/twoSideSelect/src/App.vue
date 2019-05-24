@@ -236,17 +236,13 @@ a.item-checkbox {
         }
       }
     }
-    // &:active {
-    //   opacity: 1;
-    //   transform: scale(0);
-    //   transition: opacity 0s, transform 0s;
-    //   + label::before {
-    //     border-color: $checkboxColor;
-    //   }
-    // }
   }
   label {
     cursor: pointer;
+    word-break: break-all;
+    height: 42px;
+    line-height: 42px;
+    overflow: hidden;
     &::before {
       content: '';
       display: inline-block;
