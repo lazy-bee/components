@@ -114,14 +114,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+::placeholder {
+  color: #d6dbdd;
+}
 .inputtag-wrapper {
   box-sizing: border-box;
   background-color: #fff;
   border: 1px solid #d5dbde;
   min-height: 46px;
+  padding: 0 16px 0 0;
   width: 100%;
-  padding-right: 16px;
-  padding-bottom: 7px;
   cursor: text;
   text-align: left;
   display: flex;
@@ -147,13 +149,15 @@ export default {
     align-items: center;
     .remove {
       cursor: pointer;
+      transform: scale(.84);
+      opacity: .35
     }
   }
   .innputtag-edit {
     background: transparent;
     border: 0;
     color: #2c3542;
-    font-size: 0.9rem;
+    font-size: .9rem;
     outline: none;
     flex-grow: 1;
     max-height: 46px;
