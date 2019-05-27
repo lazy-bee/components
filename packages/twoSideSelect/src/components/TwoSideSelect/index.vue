@@ -41,7 +41,6 @@
 <script>
 import SelectionRow from '../SelectionRow'
 import SingleSide from './SingleSide'
-// import TextRow from '../TextRow'
 
 export default {
   name: 'Cart',
@@ -69,6 +68,7 @@ export default {
   watch: {
     poolItems: function(newVal = []){
       this.innerPoolItems = [...newVal]
+      this.selectedPoolItems = []
     }
   },
   methods: {
