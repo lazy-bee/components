@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@lazy-bee/basic": "^0.1.41",
+    "@lazy-bee/two-side-select": "^0.1.0",
     "@lazy-copilot/datetimepicker": "^0.1.40",
     "node-sass": "^4.11.0",
     "register-service-worker": "^1.5.2",

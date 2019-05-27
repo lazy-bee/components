@@ -1,6 +1,6 @@
-// Import vue component
-
+import TwoSideSelect from '@/components/TwoSideSelect/index.vue'
 const Components = {
+  TwoSideSelect
 };
 
 // Declare install function executed by Vue.use()
