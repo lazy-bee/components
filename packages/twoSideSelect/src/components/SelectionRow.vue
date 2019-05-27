@@ -55,5 +55,29 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../style/_variable.scss";
+
+.item-box{
+  display: flex;
+  height: $item-height;
+  align-items: center;
+  transition: 0.2s;
+  &:hover {
+    background-color: rgba(0,0,0,0.015);
+  }
+
+  a.sub-btn {
+    display: block;
+    margin-left: auto;
+    height: $item-height;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    cursor: pointer;
+    span {
+
+    }
+  }
+}
 
 </style>
