@@ -22,6 +22,10 @@ export default {
       type: String,
       default: ''
     },
+    isSelected: {
+      type: Boolean,
+      default: false
+    },
     buttonChar: {
       type: String,
       default: '+'
@@ -35,13 +39,8 @@ export default {
       default: null
     },
   },
-  data: function(){
-    return {isSelected: false}
-  },
   methods: {
     onSelectedItem: function(){
-      this.isSelected = !this.isSelected
-
       const {label, value} = this
       const item = {label, value}
       return this.onSelect(item)

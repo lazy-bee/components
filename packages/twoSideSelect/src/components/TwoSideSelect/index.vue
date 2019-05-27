@@ -1,27 +1,13 @@
 <template>
   <div class='main-wrapper'>
     <div class='left-wrapper'>
-      <div class="top-box">
-        <a class="item-checkbox">
-          <input type="checkbox" id="poolSideId">
-          <label for="poolSideId">
-            <a class="box-title">Search Result</a>
-          </label>
-        </a>
-      </div>
-      <div class="center-box">
-        <div
-          v-for='(item, index) in innerPoolItems'
-          :key='item.value || index'
-        >
-          <SelectionRow
-            :label='item.label'
-            :value='item.value'
-            :onSelect='onSelectPoolHandler'
-            :onClickButtonHandler='onClickAddSingleHandler'
-          />
-        </div>
-      </div>
+      <SingleSide
+        :itemList='innerPoolItems'
+        :selectedItemList='selectedPoolItems'
+        :onSelect='onSelectPoolHandler'
+        :onSelectAll='onSelectAllPoolHandler'
+        :onClickAddSingleHandler='onClickAddSingleHandler'
+      />
       <div class="bottom-box">
         <button class='main-btn add-btn' @click='onClickAddAllHandler'>
           <span class="btn-content">
@@ -32,30 +18,14 @@
       </div>
     </div>
     <div class='left-wrapper'>
-      <div class="top-box">
-        <a class="item-checkbox">
-          <input type="checkbox" id="selectedSideId">
-          <label for="selectedSideId">
-            <a class="box-title">Selected Items</a>
-          </label>
-        </a>
-      </div>
-      <div class="center-box">
-        <div class="empty" v-if='innerItems.length <=0'> Empty Items</div>
-        <div
-          v-else='innerItems.length > 0'
-          v-for='(item, index) in innerItems'
-          :key='item.value'
-        >
-          <SelectionRow
-            :label='item.label'
-            :value='item.value'
-            buttonChar='x'
-            :onSelect='onSelectItemHandler'
-            :onClickButtonHandler='onClickRemoveSingleHandler'
-          />
-        </div>
-      </div>
+      <SingleSide
+        buttonChar='x'
+        :itemList='innerItems'
+        :selectedItemList='selectedItems'
+        :onSelect='onSelectItemHandler'
+        :onSelectAll='onSelectAllItemHandler'
+        :onClickAddSingleHandler='onClickRemoveSingleHandler'
+      />
       <div class="bottom-box">
         <button class='main-btn remove-btn' @click='onClickRemoveAllItemsHandler'>
           <span class="btn-content">
@@ -70,11 +40,12 @@
 
 <script>
 import SelectionRow from '../SelectionRow'
+import SingleSide from './SingleSide'
 // import TextRow from '../TextRow'
 
 export default {
   name: 'Cart',
-  components: {SelectionRow},
+  components: {SelectionRow, SingleSide},
   props: {
     items: {
       type: Array,
@@ -115,6 +86,17 @@ export default {
         this[field].push(_item)
       }
     },
+    onSelect: function(field, _item){
+      const targetList = this[field] || []
+      const isExisted = targetList.find(item => item.value === _item.value)
+
+      if(!isExisted) {
+        return this[field].push(_item)
+      }
+
+      const tList = targetList.filter(item => item.value !== _item.value)
+      return this[field] = [...tList]
+    },
     // -=-=-=-=-=-=-=-=- items section -=-=-=-=-=-=-=-=-
     onRemoveItem: function(_item){
       return this.removeFromList('innerItems', _item)
@@ -123,7 +105,8 @@ export default {
       return this.addToList('innerItems', _item)
     },
     onSelectItemHandler: function (_item) {
-      this.selectedItems.push(_item)
+      // this.selectedItems.push(_item)
+      return this.onSelect('selectedItems', _item)
     },
     // -=-=-=-=-=-=-=-=- pool items section -=-=-=-=-=-=-=-=-
     onRemovePoolItem: function(_item){
@@ -133,12 +116,33 @@ export default {
       return this.addToList('innerPoolItems', _item)
     },
     onSelectPoolHandler: function (_item) {
-      this.selectedPoolItems.push(_item)
+      return this.onSelect('selectedPoolItems', _item)
+    },
+    // -=-=-=-=-=-=-=-=-select all section -=-=-=-=-=-=-=-=-
+    onSelectAllPoolHandler: function () {
+      if(this.selectedPoolItems.length === this.innerPoolItems.length) {
+        return this.selectedPoolItems = []
+      }
+      return this.selectedPoolItems = [...this.innerPoolItems]
+    },
+    onSelectAllItemHandler: function () {
+      if(this.selectedItems.length === this.innerItems.length) {
+        return this.selectedItems = []
+      }
+
+      return this.selectedItems = [...this.innerItems]
     },
     // -=-=-=-=-=-=-=-=-interaction section -=-=-=-=-=-=-=-=-
     onClickAddSingleHandler: function(item){
       this.onAddItem(item)
       this.onRemovePoolItem(item)
+      this.removeFromList('selectedPoolItems', item)
+      this.emitParentOnChange(this.innerItems)
+    },
+    onClickRemoveSingleHandler: function(_item){
+      this.onRemoveItem(_item)
+      this.onAddPoolItem(_item)
+      this.removeFromList('selectedItems', _item)
       this.emitParentOnChange(this.innerItems)
     },
     onClickAddAllHandler: function(){
@@ -147,11 +151,7 @@ export default {
         this.onAddItem(item)
         this.onRemovePoolItem(item)
       }
-      this.emitParentOnChange(this.innerItems)
-    },
-    onClickRemoveSingleHandler: function(_item){
-      this.onRemoveItem(_item)
-      this.onAddPoolItem(_item)
+      this.selectedPoolItems = []
       this.emitParentOnChange(this.innerItems)
     },
     onClickRemoveAllItemsHandler: function(_item){
@@ -160,6 +160,7 @@ export default {
         this.onAddPoolItem(item)
         this.onRemoveItem(item)
       }
+      this.selectedItems = []
       this.emitParentOnChange(this.innerItems)
     },
     // -=-=-=-=-=-=-=-=- trigger parent onchange -=-=-=-=-=-=-=-=-
@@ -189,29 +190,6 @@ export default {
     box-shadow: 0 0 18px hsla(0,0%,57%,.1);
     display: flex;
     flex-direction: column;
-
-    .top-box {
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      padding: 10px 20px 10px 0;
-      .box-title {
-        font-size: 16px;
-        display: inline-block;
-        font-weight: 600;
-      }
-    }
-
-    .center-box {
-      max-height: 294px;
-      overflow-y: auto;
-      min-height: 50px;
-      color: #2c3e50;
-      .empty {
-        opacity: 0.3;
-        line-height: 50px;
-        text-align: left;
-        padding: 0 0 0 20px;
-      }
-    }
 
     .bottom-box {
       border-top: 1px solid rgba(0,0,0,0.05);
