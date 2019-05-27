@@ -4,17 +4,15 @@
       <input type="checkbox" :name="label" :checked="isSelected">
       <label>{{label}}</label>
     </a>
-    <a @click='_onAddItem' class='sub-btn'>
-      <span>+</span>
+    <a @click='_onClickButtonHandler' class='sub-btn'>
+      <span> {{buttonChar}} </span>
     </a>
   </div>
 </template>
 
-
-
 <script>
 export default {
-  name: 'Cart',
+  name: 'SelectionRow',
   props: {
     label: {
       type: String,
@@ -24,11 +22,15 @@ export default {
       type: String,
       default: ''
     },
+    buttonChar: {
+      type: String,
+      default: '+'
+    },
     onSelect: {
       type: Function,
       default: null
     },
-    onAddItem: {
+    onClickButtonHandler: {
       type: Function,
       default: null
     },
@@ -44,10 +46,10 @@ export default {
       const item = {label, value}
       return this.onSelect(item)
     },
-    _onAddItem: function(){
+    _onClickButtonHandler: function(){
       const {label, value} = this
       const item = {label, value}
-      return this.onAddItem(item)
+      return this.onClickButtonHandler(item)
     }
   }
 }
