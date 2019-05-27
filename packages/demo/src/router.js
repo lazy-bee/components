@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import Twosideselect from './views/Twosideselect.vue'
 
 import routerBasic from './pages/Basic/router'
 
@@ -11,6 +12,11 @@ const routerConfig = [
     path: '/',
     name: 'home',
     component: Home
+  },
+  {
+    path: '/twosideselect',
+    name: 'twosideselect',
+    component: Twosideselect
   },
   {
     path: '/about',
