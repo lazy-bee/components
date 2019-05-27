@@ -6,8 +6,7 @@
   "browser": {
     "./sfc": "src/components/two-side-select.vue"
   },
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.2",
   "scripts": {
     "precommit": "lint-staged; npm test",
     "dev": "npm run serve",
@@ -42,6 +41,9 @@
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
+  "files": [
+    "dist/*",
+  ],
   "lint-staged": {
     "*.{js,vue}": [
       "vue-cli-service lint",

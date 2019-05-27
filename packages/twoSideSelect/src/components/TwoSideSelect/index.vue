@@ -43,7 +43,7 @@ import SelectionRow from '../SelectionRow'
 import SingleSide from './SingleSide'
 
 export default {
-  name: 'Cart',
+  name: 'TwoSideSelect',
   components: {SelectionRow, SingleSide},
   props: {
     items: {
