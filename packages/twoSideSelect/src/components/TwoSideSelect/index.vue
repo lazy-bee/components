@@ -3,8 +3,10 @@
     <div class='left-wrapper'>
       <div class="top-box">
         <a class="item-checkbox">
-          <input type="checkbox" id="all">
-          <label for="all"><h3 class="box-title">Search Result</h3></label>
+          <input type="checkbox" id="poolSideId">
+          <label for="poolSideId">
+            <a class="box-title">Search Result</a>
+          </label>
         </a>
       </div>
       <div class="center-box">
@@ -15,8 +17,8 @@
           <SelectionRow
             :label='item.label'
             :value='item.value'
-            :onSelect='onAddPoolItem'
-            :onAddItem='onClickAddSingleHandler'
+            :onSelect='onSelectPoolHandler'
+            :onClickButtonHandler='onClickAddSingleHandler'
           />
         </div>
       </div>
@@ -32,8 +34,10 @@
     <div class='left-wrapper'>
       <div class="top-box">
         <a class="item-checkbox">
-          <input type="checkbox" id="all2">
-          <label for="all2"><h3 class="box-title">Selected Items</h3></label>
+          <input type="checkbox" id="selectedSideId">
+          <label for="selectedSideId">
+            <a class="box-title">Selected Items</a>
+          </label>
         </a>
       </div>
       <div class="center-box">
@@ -43,15 +47,17 @@
           v-for='(item, index) in innerItems'
           :key='item.value'
         >
-          <TextRow
+          <SelectionRow
             :label='item.label'
             :value='item.value'
-            :onRemove='onClickRemoveSingleHandler'
+            buttonChar='x'
+            :onSelect='onSelectItemHandler'
+            :onClickButtonHandler='onClickRemoveSingleHandler'
           />
         </div>
       </div>
       <div class="bottom-box">
-        <button class='main-btn remove-btn'>
+        <button class='main-btn remove-btn' @click='onClickRemoveAllItemsHandler'>
           <span class="btn-content">
             <span class="arrow"></span>
             <span class="text">Remove</span>
@@ -64,11 +70,11 @@
 
 <script>
 import SelectionRow from '../SelectionRow'
-import TextRow from '../TextRow'
+// import TextRow from '../TextRow'
 
 export default {
   name: 'Cart',
-  components: {SelectionRow, TextRow},
+  components: {SelectionRow},
   props: {
     items: {
       type: Array,
@@ -85,8 +91,9 @@ export default {
   },
   data: function(){
     const {items: innerItems, poolItems: innerPoolItems} = this
+    const selectedPoolItems = []
     const selectedItems = []
-    return {innerItems, innerPoolItems, selectedItems}
+    return {innerItems, innerPoolItems, selectedPoolItems, selectedItems}
   },
   watch: {
     poolItems: function(newVal = []){
@@ -94,22 +101,39 @@ export default {
     }
   },
   methods: {
-    // -=-=-=-=-=-=-=-=- selected items section -=-=-=-=-=-=-=-=-
-    onAddItem: function(_item){
-      const isExisted = this.innerItems.find(item => item.value === _item.value)
+    // -=-=-=-=-=-=-=-=- common list function -=-=-=-=-=-=-=-=-
+    removeFromList: function(field, _item){
+      const targetList = this[field]
+      const tList = targetList.filter(item => item.value !== _item.value)
+      this[field] = [...tList]
+    },
+    addToList: function(field, _item){
+      const targetList = this[field] || []
+      const isExisted = targetList.find(item => item.value === _item.value)
 
       if(!isExisted) {
-        this.innerItems.push(_item)
+        this[field].push(_item)
       }
+    },
+    // -=-=-=-=-=-=-=-=- items section -=-=-=-=-=-=-=-=-
+    onRemoveItem: function(_item){
+      return this.removeFromList('innerItems', _item)
+    },
+    onAddItem: function(_item){
+      return this.addToList('innerItems', _item)
+    },
+    onSelectItemHandler: function (_item) {
+      this.selectedItems.push(_item)
     },
     // -=-=-=-=-=-=-=-=- pool items section -=-=-=-=-=-=-=-=-
     onRemovePoolItem: function(_item){
-      const {innerPoolItems} = this
-      const newItemList = innerPoolItems.filter(item => item.value !== _item.value)
-      this.innerPoolItems = [...newItemList]
+      return this.removeFromList('innerPoolItems', _item)
     },
     onAddPoolItem: function(_item = {}){
-      this.selectedItems.push(_item)
+      return this.addToList('innerPoolItems', _item)
+    },
+    onSelectPoolHandler: function (_item) {
+      this.selectedPoolItems.push(_item)
     },
     // -=-=-=-=-=-=-=-=-interaction section -=-=-=-=-=-=-=-=-
     onClickAddSingleHandler: function(item){
@@ -118,17 +142,24 @@ export default {
       this.emitParentOnChange(this.innerItems)
     },
     onClickAddAllHandler: function(){
-      const {selectedItems} = this
-      for(const item of this.selectedItems) {
+      const {selectedPoolItems} = this
+      for(const item of this.selectedPoolItems) {
         this.onAddItem(item)
         this.onRemovePoolItem(item)
       }
       this.emitParentOnChange(this.innerItems)
     },
     onClickRemoveSingleHandler: function(_item){
-      const {innerItems} = this
-      const newItemList = innerItems.filter(item => item.value !== _item.value)
-      this.innerItems = [...newItemList]
+      this.onRemoveItem(_item)
+      this.onAddPoolItem(_item)
+      this.emitParentOnChange(this.innerItems)
+    },
+    onClickRemoveAllItemsHandler: function(_item){
+      const {selectedItems} = this
+      for(const item of this.selectedItems) {
+        this.onAddPoolItem(item)
+        this.onRemoveItem(item)
+      }
       this.emitParentOnChange(this.innerItems)
     },
     // -=-=-=-=-=-=-=-=- trigger parent onchange -=-=-=-=-=-=-=-=-
@@ -165,6 +196,7 @@ export default {
       .box-title {
         font-size: 16px;
         display: inline-block;
+        font-weight: 600;
       }
     }
 
