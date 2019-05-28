@@ -3,7 +3,7 @@
     <div class="top-box">
       <a class="item-checkbox" @click='onSelectAll'>
         <input type="checkbox" :name="id" :checked="isSelectedAll">
-        <label class="box-title">Search Result</label>
+        <label class="box-title"> {{label}} </label>
       </a>
     </div>
     <div class="center-box">
@@ -40,6 +40,10 @@ export default {
     id: {
       type: String,
       default: null
+    },
+    label: {
+      type: String,
+      default: 'Search Result'
     },
     itemList: {
       type: Array,
