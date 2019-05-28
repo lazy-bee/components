@@ -21,6 +21,7 @@
     <div class='left-wrapper'>
       <SingleSide
         buttonChar='x'
+        label='Selected Result'
         :itemList='innerItems'
         :selectedItemList='selectedItems'
         :onSelect='onSelectItemHandler'
