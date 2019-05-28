@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="list-wrp">
     <div class="top-box">
       <a class="item-checkbox" @click='onSelectAll'>
         <input type="checkbox" :name="id" :checked="isSelectedAll">
@@ -7,10 +7,13 @@
       </a>
     </div>
     <div class="center-box">
-      <div v-if='itemList.length<=0' class='empty-msg'>Empty</div>
+      <div v-if='itemList.length<=0' class='empty-msg'>
+        <p>Empty</p>
+      </div>
       <div
         v-for='(item, index) in itemList'
         :key='item.value || index'
+        class="item-wrp"
       >
         <SelectionRow
           :isDisable='isDisable(item)'
@@ -101,6 +104,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.list-wrp {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 .top-box {
   border-bottom: 1px solid rgba(0,0,0,0.05);
   padding: 10px 20px 10px 0;
@@ -116,10 +124,20 @@ export default {
   overflow-y: auto;
   min-height: 50px;
   color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  .item-wrp {
+    width: 100%;
+  }
   .empty-msg {
-    opacity: 0.3;
-    line-height: 50px;
-    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+      opacity: 0.3;
+    }
   }
 }
 </style>
