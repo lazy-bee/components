@@ -9,15 +9,20 @@
     <a @click="tapIndex = 1" class="componentTab" :class="tapIndex===1? 'active' : 'inactive'"> Null </a>
   </section>
 
-
     <section class="componentContainer" v-if="tapIndex === 0">
       <h1>Multi Select</h1>
+      <div class="btn-box"> 
+        <input @change='onChangeLeftLabelHandler' type='text' placeholder='leftLabel'/>
+        <input @change='onChangeRightLabelHandler' type='text' placeholder='rightLabel'/>
+      </div>
       <div class="btn-box"> 
         <button class='addItemsButton' @click='addSameItems'> add same Items</button>
         <button class='addItemsButton' @click='addRandomItems'> add random Items</button>
       </div>
       <div class="content-box">
         <TwoSideSelect
+          :leftLabel='label.left'
+          :rightLabel='label.right'
           :items='initTwoSideSelectItems'
           :poolItems='poolItems'
           :onChange='onChangeHandler'
@@ -78,12 +83,25 @@ export default {
         {label: 'label2', value: 'value2'},
         {label: 'label3', value: 'value3'},
       ],
-      poolItems: this.initPoolItems()
+      poolItems: this.initPoolItems(),
+      label: {
+        left: 'left',
+        right: 'right',
+      }
     };
   },
   methods: {
     onChangeHandler: function(value){
       console.log(' -=-=-=- onChangeHandler value:', value)
+    },
+    onChangeLabelHandler: function(labelName, e){
+      return this.label[labelName] = e.target.value
+    },
+    onChangeLeftLabelHandler: function(e){
+      return this.onChangeLabelHandler('left',e)
+    },
+    onChangeRightLabelHandler: function(e){
+      return this.onChangeLabelHandler('right',e)
     },
     addSameItems: function(){
       this.poolItems = [...DEFAULT_ITEMS]
@@ -109,6 +127,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+
+  input {
+    border: black 1px solid;
+    padding: 5px 10px;
+  }
 
   .componentContainer {
     border-top: 1px lightgray solid;

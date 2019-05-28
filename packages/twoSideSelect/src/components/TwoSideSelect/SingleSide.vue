@@ -79,7 +79,7 @@ export default {
       return this.id || getRndInteger(1000)
     },
     isSelectedAll: function(){
-      return (this.selectedItemList.length === this.itemList.length) 
+      return (this.selectedItemList.length === this.itemList.length) && this.itemList.length > 0
     }
   },
   methods: {
@@ -119,6 +119,7 @@ export default {
   .empty-msg {
     opacity: 0.3;
     line-height: 50px;
+    text-align: center;
   }
 }
 </style>

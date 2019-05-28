@@ -2,6 +2,7 @@
   <div class='main-wrapper'>
     <div class='left-wrapper'>
       <SingleSide
+        :label='leftLabel || "Selected Result"'
         :itemList='innerPoolItems'
         :disableItemList='innerItems'
         :selectedItemList='selectedPoolItems'
@@ -21,7 +22,7 @@
     <div class='left-wrapper'>
       <SingleSide
         buttonChar='x'
-        label='Selected Result'
+        :label='rightLabel || "Selected Result"'
         :itemList='innerItems'
         :selectedItemList='selectedItems'
         :onSelect='onSelectItemHandler'
@@ -48,6 +49,14 @@ export default {
   name: 'TwoSideSelect',
   components: {SelectionRow, SingleSide},
   props: {
+    leftLabel: {
+      type: String,
+      default: ''
+    },
+    rightLabel: {
+      type: String,
+      default: ''
+    },
     items: {
       type: Array,
       default: () => ([])

@@ -28,6 +28,8 @@ And we get the updated value by vue @event `@onChange="data=$event"`.
 |  Name  | Data Type  | Example  | Description  |
 |---|---|---|---|
 | items  |  Array | `[{label, value}]`  |   |
+| leftLabel  |  String | `LabelName`  |   |
+| rightLabel  |  String | `LabelName`  |   |
 | poolItems | Array  | `[{label, value}]`  |   |
 | onChange  |  Function | `(newItemList) => {}`   | updated value of items(right side)|
 

@@ -1,5 +1,5 @@
 {
-  "name": "@lazy-copilot/input-tag",
+  "name": "@lazy-bee/tinput-tag",
   "main": "./dist/input-tag.common.js",
   "module": "dist/input-tag.esm.js",
   "unpkg": "dist/input-tag.min.js",
