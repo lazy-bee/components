@@ -3,6 +3,7 @@
     <div class='left-wrapper'>
       <SingleSide
         :itemList='innerPoolItems'
+        :disableItemList='innerItems'
         :selectedItemList='selectedPoolItems'
         :onSelect='onSelectPoolHandler'
         :onSelectAll='onSelectAllPoolHandler'

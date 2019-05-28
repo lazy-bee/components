@@ -2,16 +2,18 @@
   <div>
     <div class="top-box">
       <a class="item-checkbox" @click='onSelectAll'>
-        <input type="checkbox" :name="label" :checked="isSelectedAll">
+        <input type="checkbox" :name="id" :checked="isSelectedAll">
         <label class="box-title">Search Result</label>
       </a>
     </div>
     <div class="center-box">
+      <div v-if='itemList.length<=0' class='empty-msg'>Empty</div>
       <div
         v-for='(item, index) in itemList'
         :key='item.value || index'
       >
         <SelectionRow
+          :isDisable='isDisable(item)'
           :isSelected='_isSelected(item)'
           :buttonChar='buttonChar'
           :label='item.label'
@@ -40,6 +42,10 @@ export default {
       default: null
     },
     itemList: {
+      type: Array,
+      default: () => ([])
+    },
+    disableItemList: {
       type: Array,
       default: () => ([])
     },
@@ -78,7 +84,14 @@ export default {
 
       if(!target) return false
       return true
-    }
+    },
+    isDisable: function(targetItem){
+      const {disableItemList} = this
+      const target = disableItemList.find(_item => _item.value === targetItem.value)
+
+      if(!target) return false
+      return true
+    },
   }
 }
 </script>
@@ -99,11 +112,9 @@ export default {
   overflow-y: auto;
   min-height: 50px;
   color: #2c3e50;
-  .empty {
+  .empty-msg {
     opacity: 0.3;
     line-height: 50px;
-    text-align: left;
-    padding: 0 0 0 20px;
   }
 }
 </style>

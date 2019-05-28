@@ -1,7 +1,7 @@
 <template>
-  <div class='item-box'>
+  <div :class='isDisable? "item-box disable" : "item-box"'>
     <a class="item-checkbox" @click='onSelectedItem'>
-      <input type="checkbox" :name="label" :checked="isSelected">
+      <input type="checkbox" :name="label" :checked="isSelected && !isDisable">
       <label>{{label}}</label>
     </a>
     <a @click='_onClickButtonHandler' class='sub-btn'>
@@ -26,6 +26,10 @@ export default {
       type: Boolean,
       default: false
     },
+    isDisable: {
+      type: Boolean,
+      default: false
+    },
     buttonChar: {
       type: String,
       default: '+'
@@ -41,12 +45,16 @@ export default {
   },
   methods: {
     onSelectedItem: function(){
-      const {label, value} = this
+      const {label, value, isDisable} = this
+      if(isDisable) return
+
       const item = {label, value}
       return this.onSelect(item)
     },
     _onClickButtonHandler: function(){
-      const {label, value} = this
+      const {label, value, isDisable} = this
+      if(isDisable) return
+
       const item = {label, value}
       return this.onClickButtonHandler(item)
     }
@@ -57,10 +65,15 @@ export default {
 <style scoped lang="scss">
 @import "../style/_variable.scss";
 
+.disable {
+  opacity: 0.2;
+}
+
 .item-box{
   display: flex;
   height: $item-height;
   align-items: center;
+  padding-right: 10px;
   transition: 0.2s;
   &:hover {
     background-color: rgba(0,0,0,0.015);
