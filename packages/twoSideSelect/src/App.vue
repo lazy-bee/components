@@ -5,7 +5,8 @@
     <p>A dropdown time picker for Vue 2.x with flexible time format support</p>
   </div>
   <section class="tapsContainer">
-    <a @click="tapIndex = 0" class="componentTab" :class="tapIndex===0? 'active' : 'inactive'">Left-Right Cart</a>
+    <a @click="tapIndex = 0" class="componentTab" :class="tapIndex===0? 'active' : 'inactive'"> General</a>
+    <a @click="tapIndex = 1" class="componentTab" :class="tapIndex===1? 'active' : 'inactive'"> Null </a>
   </section>
 
 
@@ -19,6 +20,22 @@
         <TwoSideSelect
           :items='initTwoSideSelectItems'
           :poolItems='poolItems'
+          :onChange='onChangeHandler'
+        />
+      </div>
+    </section>
+
+
+    <section class="componentContainer" v-if="tapIndex === 1">
+      <h1>Null Select</h1>
+      <div class="btn-box"> 
+        <button class='addItemsButton' @click='addSameItems'> add same Items</button>
+        <button class='addItemsButton' @click='addRandomItems'> add random Items</button>
+      </div>
+      <div class="content-box">
+        <TwoSideSelect
+          :items='[]'
+          :poolItems='[]'
           :onChange='onChangeHandler'
         />
       </div>
