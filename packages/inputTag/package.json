@@ -3,7 +3,7 @@
   "main": "./dist/input-tag.common.js",
   "module": "dist/input-tag.esm.js",
   "unpkg": "dist/input-tag.min.js",
-  "version": "0.1.40",
+  "version": "0.1.42",
   "scripts": {
     "precommit": "lint-staged; npm test",
     "dev": "npm run serve",
