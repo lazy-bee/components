@@ -1,9 +1,10 @@
 {
-  "name": "@lazy-bee/tinput-tag",
+  "name": "@lazy-bee/input-tag",
   "main": "./dist/input-tag.common.js",
   "module": "dist/input-tag.esm.js",
   "unpkg": "dist/input-tag.min.js",
   "version": "0.1.42",
+  "private": true,
   "scripts": {
     "precommit": "lint-staged; npm test",
     "dev": "npm run serve",
