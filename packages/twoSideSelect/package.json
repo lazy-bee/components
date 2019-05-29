@@ -6,7 +6,7 @@
   "browser": {
     "./sfc": "src/components/two-side-select/index.vue"
   },
-  "version": "0.1.45",
+  "version": "0.1.43",
   "scripts": {
     "precommit": "lint-staged; npm test",
     "dev": "npm run serve",
