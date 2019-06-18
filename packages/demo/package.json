@@ -1,6 +1,6 @@
 {
   "name": "demo",
-  "version": "0.1.44",
+  "version": "0.1.45",
   "private": true,
   "scripts": {
     "precommit": "lint-staged; npm test",
@@ -13,7 +13,7 @@
   "dependencies": {
     "@lazy-bee/basic": "^0.1.42",
     "@lazy-bee/tinput-tag": "^0.1.42",
-    "@lazy-bee/two-side-select": "^0.1.44",
+    "@lazy-bee/two-side-select": "^0.1.45",
     "@lazy-copilot/datetimepicker": "^0.1.40",
     "node-sass": "^4.11.0",
     "register-service-worker": "^1.5.2",
