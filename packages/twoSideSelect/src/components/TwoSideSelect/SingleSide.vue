@@ -21,6 +21,7 @@
           :buttonChar='buttonChar'
           :label='item.label'
           :value='item.value'
+          :isHtml='item.isHtml'
           :onSelect='onSelect'
           :onClickButtonHandler='onClickAddSingleHandler'
         />

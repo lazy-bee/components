@@ -2,7 +2,8 @@
   <div :class='isDisable? "item-box disable" : "item-box"'>
     <a class="item-checkbox" @click='onSelectedItem'>
       <input type="checkbox" :name="label" :checked="isSelected && !isDisable">
-      <label>{{label}}</label>
+      <label v-if='!isHtml'>{{label}}</label>
+      <label v-if='isHtml' v-html="label"></label>
     </a>
     <a @click='_onClickButtonHandler' class='sub-btn'>
       <span> {{buttonChar}} </span>
@@ -21,6 +22,10 @@ export default {
     value: {
       type: String,
       default: ''
+    },
+    isHtml: {
+      type: Boolean,
+      default: false
     },
     isSelected: {
       type: Boolean,
@@ -45,17 +50,17 @@ export default {
   },
   methods: {
     onSelectedItem: function(){
-      const {label, value, isDisable} = this
+      const {label, value, isDisable, isHtml} = this
       if(isDisable) return
 
-      const item = {label, value}
+      const item = {label, value, isHtml}
       return this.onSelect(item)
     },
     _onClickButtonHandler: function(){
-      const {label, value, isDisable} = this
+      const {label, value, isDisable, isHtml} = this
       if(isDisable) return
 
-      const item = {label, value}
+      const item = {label, value, isHtml}
       return this.onClickButtonHandler(item)
     }
   }

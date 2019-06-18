@@ -7,15 +7,20 @@
   <section class="tapsContainer">
     <a @click="tapIndex = 0" class="componentTab" :class="tapIndex===0? 'active' : 'inactive'"> General</a>
     <a @click="tapIndex = 1" class="componentTab" :class="tapIndex===1? 'active' : 'inactive'"> Null </a>
+    <a @click="tapIndex = 2" class="componentTab" :class="tapIndex===2? 'active' : 'inactive'"> RawHTML </a>
   </section>
 
     <section class="componentContainer" v-if="tapIndex === 0">
       <h1>Multi Select</h1>
-      <div class="btn-box"> 
+      <div class="row">
+        <label>Left Label</label>
         <input @change='onChangeLeftLabelHandler' type='text' placeholder='leftLabel'/>
+      </div>
+      <div class="row"> 
+        <label>Right Label</label>
         <input @change='onChangeRightLabelHandler' type='text' placeholder='rightLabel'/>
       </div>
-      <div class="btn-box"> 
+      <div class="row"> 
         <button class='addItemsButton' @click='addSameItems'> add same Items</button>
         <button class='addItemsButton' @click='addRandomItems'> add random Items</button>
       </div>
@@ -33,7 +38,7 @@
 
     <section class="componentContainer" v-if="tapIndex === 1">
       <h1>Null Select</h1>
-      <div class="btn-box"> 
+      <div class="row"> 
         <button class='addItemsButton' @click='addSameItems'> add same Items</button>
         <button class='addItemsButton' @click='addRandomItems'> add random Items</button>
       </div>
@@ -46,6 +51,21 @@
       </div>
     </section>
 
+    <section class="componentContainer" v-if="tapIndex === 2">
+      <h1>RawHtml</h1>
+      <div class="row"> 
+        <label>Html</label>
+        <input v-model='htmlTitle' type='text' placeholder='htmlLabel'/>
+        <button class='addHtmlButton' @click='addHtmlItem(htmlTitle)'> Add Html</button>
+      </div>
+      <div class="content-box">
+        <TwoSideSelect
+          :items='[]'
+          :poolItems='poolItems'
+          :onChange='onChangeHandler'
+        />
+      </div>
+    </section>
   </div>
 </template>
 
@@ -77,12 +97,13 @@ export default {
   },
   data: function() {
     return {
-      tapIndex: '',
+      tapIndex: 0,
       initTwoSideSelectItems: [
         {label: 'label1', value: 'value1'},
         {label: 'label2', value: 'value2'},
         {label: 'label3', value: 'value3'},
       ],
+      htmlTitle: '<span>foo</span>',
       poolItems: this.initPoolItems(),
       label: {
         left: 'left',
@@ -102,6 +123,17 @@ export default {
     },
     onChangeRightLabelHandler: function(e){
       return this.onChangeLabelHandler('right',e)
+    },
+    addHtmlItem: function (rawHtml) {
+      console.log('addHtmlItem -=-=-= , ', rawHtml)
+      this.poolItems = [
+        ...this.poolItems,
+        {
+          isHtml: true,
+          label: rawHtml,
+          value: randomStr(),
+        }
+      ]
     },
     addSameItems: function(){
       this.poolItems = [...DEFAULT_ITEMS]
@@ -202,8 +234,12 @@ export default {
     }
   }
 
-  .btn-box {
+  .row {
     padding: 20px 0 30px 0;
+
+    label {
+      padding: 0 10px;
+    }
   }
 
   .content-box {
