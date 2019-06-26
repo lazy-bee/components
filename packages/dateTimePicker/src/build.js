@@ -18,8 +18,8 @@ export function install(Vue) {
   if (install.installed) return;
   install.installed = true;
 
-  Components.forEach(component => {
-    Vue.component(component.name, component);
+  Object.values(Components).forEach(Component => {
+    Vue.component(Component.name, Component);
   });
 }
 
