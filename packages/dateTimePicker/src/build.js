@@ -18,9 +18,9 @@ export function install(Vue) {
   if (install.installed) return;
   install.installed = true;
 
-  Components.forEach(component => {
-    Vue.component(component.name, component);
-  });
+  for(const Key in Components) {
+    Vue.component(Components[Key].name, Components[Key]);
+  }
 }
 
 // Create module definition for Vue.use()
