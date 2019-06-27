@@ -1,6 +1,6 @@
 {
   "name": "@lazy-bee/basic",
-  "version": "0.1.42",
+  "version": "0.1.47",
   "description": "## Project setup ``` npm install ```",
   "author": "oriente",
   "scripts": {
@@ -42,7 +42,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.7.1",
     "@fortawesome/free-solid-svg-icons": "^5.7.1",
     "@fortawesome/vue-fontawesome": "^0.1.5",
-    "@lazy-copilot/datetimepicker": "^0.1.40",
+    "@lazy-copilot/datetimepicker": "^0.1.47",
     "element-ui": "^2.3.6",
     "js-base64": "^2.4.5",
     "material-design-icons-iconfont": "^4.0.2",
