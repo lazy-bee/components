@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@lazy-bee/basic": "^0.1.47",
-    "@lazy-bee/tinput-tag": "^0.1.42",
     "@lazy-bee/two-side-select": "^0.1.46",
     "@lazy-copilot/datetimepicker": "^0.1.47",
     "node-sass": "^4.11.0",
