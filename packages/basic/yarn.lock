@@ -759,9 +759,10 @@
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/@fortawesome/vue-fontawesome/-/vue-fontawesome-0.1.5.tgz#ea70a4d4ad0d6d617048a5b2a2ff33e21fe47d61"
 
-"@lazy-copilot/datetimepicker@^0.1.32":
-  version "0.1.32"
-  resolved "https://registry.yarnpkg.com/@lazy-copilot/datetimepicker/-/datetimepicker-0.1.32.tgz#dc4aa02c64059383002151c26bf01233521d9abe"
+"@lazy-copilot/datetimepicker@^0.1.47":
+  version "0.1.47"
+  resolved "https://registry.yarnpkg.com/@lazy-copilot/datetimepicker/-/datetimepicker-0.1.47.tgz#9f9cc0199c921ea9985036a5668933cd4c54fdff"
+  integrity sha512-9QWZjKwW5Nn1JgnYAidCPjTWC6+mlxqpreZmlLXiIR/CPXBWEUr8jLRVZpLQBVWB2DzbGBh4BFamNVQQMsqrSg==
   dependencies:
     node-sass "^4.11.0"
     sass-loader "^7.1.0"
