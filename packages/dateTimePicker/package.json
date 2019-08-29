@@ -17,7 +17,7 @@
     "test": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
     "vue": "^2.5.17"
   },
@@ -30,7 +30,7 @@
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
-    "babel-jest": "^23.6.0",
+    "babel-jest": "^25.0.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0-0",
     "lint-staged": "^7.2.2",
