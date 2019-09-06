@@ -1,5 +1,5 @@
 {
-  "name": "@lazy-bee/datetimepicker",
+  "name": "@lazy-copilot/datetimepicker",
   "main": "./dist/datetimepicker.common.js",
   "module": "dist/datetimepicker.esm.js",
   "unpkg": "dist/datetimepicker.min.js",
