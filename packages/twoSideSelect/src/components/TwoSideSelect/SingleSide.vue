@@ -1,7 +1,7 @@
 <template>
   <div class="list-wrp">
     <div class="top-box">
-      <a class="item-checkbox" @click="onSelectAll">
+      <a class="item-checkbox" @click="selectAll">
         <input type="checkbox" :name="id" :checked="isSelectedAll" />
         <label class="box-title"> {{ label }} </label>
       </a>
@@ -22,8 +22,8 @@
           :label="item.label"
           :value="item.value"
           :isHtml="item.isHtml"
-          :onSelect="onSelect"
-          :onClickButtonHandler="onClickAddSingleHandler"
+          :select="select"
+          :clickButtonHandler="clickAddSingleHandler"
         />
       </div>
     </div>
@@ -61,15 +61,15 @@ export default {
       type: Array,
       default: () => []
     },
-    onSelect: {
+    select: {
       type: Function,
       default: null
     },
-    onSelectAll: {
+    selectAll: {
       type: Function,
       default: null
     },
-    onClickAddSingleHandler: {
+    clickAddSingleHandler: {
       type: Function,
       default: null
     },

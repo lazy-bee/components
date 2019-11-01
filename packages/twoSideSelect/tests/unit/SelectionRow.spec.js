@@ -2,13 +2,13 @@ import { shallowMount } from "@vue/test-utils";
 import SelectionRow from "@/components/SelectionRow.vue";
 
 describe("SelectionRow.vue", () => {
-  it("renders props.label, buttonChar; with function, onSelect", done => {
+  it("renders props.label, buttonChar; with function, select", done => {
     const wrapper = shallowMount(SelectionRow, {
       propsData: {
         label: "foo",
         buttonChar: "@",
         value: "fooValue",
-        onSelect: function(val) {
+        select: function(val) {
           expect(val.value).toBe("fooValue");
           expect(val.label).toBe("foo");
           done();
@@ -25,13 +25,13 @@ describe("SelectionRow.vue", () => {
     buttonEle.trigger("click");
   });
 
-  it("renders props.label, buttonChar; with function, onClickButtonHandler", done => {
+  it("renders props.label, buttonChar; with function, clickButtonHandler", done => {
     const wrapper = shallowMount(SelectionRow, {
       propsData: {
         label: "foo",
         buttonChar: "@",
         value: "fooValue",
-        onClickButtonHandler: function(val) {
+        clickButtonHandler: function(val) {
           expect(val.value).toBe("fooValue");
           expect(val.label).toBe("foo");
           done();
@@ -57,7 +57,7 @@ describe("SelectionRow.vue rawHtml", () => {
         isHtml: true,
         buttonChar: "@",
         value: "fooValue",
-        onSelect: function(val) {
+        select: function(val) {
           expect(val.value).toBe("fooValue");
           expect(val.label).toBe(rawHtml);
           done();
@@ -79,7 +79,7 @@ describe("SelectionRow.vue rawHtml", () => {
         isHtml: true,
         buttonChar: "@",
         value: "fooValue",
-        onSelect: function(val) {
+        select: function(val) {
           expect(val.value).toBe("fooValue");
           expect(val.label).toBe(rawHtml);
           done();

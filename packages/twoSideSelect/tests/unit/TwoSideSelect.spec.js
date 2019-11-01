@@ -13,7 +13,7 @@ describe("TwoSideSelect.vue", () => {
     });
 
     expect(wrapper.vm.$data.selectedPoolItems.length).toBe(0);
-    wrapper.vm.onSelectPoolHandler({ value: "fooValue" });
+    wrapper.vm.selectPoolHandler({ value: "fooValue" });
     expect(wrapper.vm.$data.selectedPoolItems.length).toBe(1);
     wrapper.setProps({ poolItems: [...poolItem2] });
     expect(wrapper.vm.$data.selectedPoolItems.length).toBe(0);

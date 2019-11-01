@@ -35,7 +35,7 @@
       <div class="row">
         <label>Left Label</label>
         <input
-          @change="onChangeLeftLabelHandler"
+          @change="changeLeftLabelHandler"
           type="text"
           placeholder="leftLabel"
         />
@@ -43,7 +43,7 @@
       <div class="row">
         <label>Right Label</label>
         <input
-          @change="onChangeRightLabelHandler"
+          @change="changeRightLabelHandler"
           type="text"
           placeholder="rightLabel"
         />
@@ -62,7 +62,7 @@
           :rightLabel="label.right"
           :items="initTwoSideSelectItems"
           :poolItems="poolItems"
-          :onChange="onChangeHandler"
+          :change="changeHandler"
         />
       </div>
     </section>
@@ -81,7 +81,7 @@
         <TwoSideSelect
           :items="[]"
           :poolItems="[]"
-          :onChange="onChangeHandler"
+          :change="changeHandler"
         />
       </div>
     </section>
@@ -99,7 +99,7 @@
         <TwoSideSelect
           :items="[]"
           :poolItems="poolItems"
-          :onChange="onChangeHandler"
+          :change="changeHandler"
         />
       </div>
     </section>
@@ -146,17 +146,17 @@ export default {
     };
   },
   methods: {
-    onChangeHandler: function(value) {
-      console.log(" -=-=-=- onChangeHandler value:", value);
+    changeHandler: function(value) {
+      console.log(" -=-=-=- changeHandler value:", value);
     },
-    onChangeLabelHandler: function(labelName, e) {
+    changeLabelHandler: function(labelName, e) {
       return (this.label[labelName] = e.target.value);
     },
-    onChangeLeftLabelHandler: function(e) {
-      return this.onChangeLabelHandler("left", e);
+    changeLeftLabelHandler: function(e) {
+      return this.changeLabelHandler("left", e);
     },
-    onChangeRightLabelHandler: function(e) {
-      return this.onChangeLabelHandler("right", e);
+    changeRightLabelHandler: function(e) {
+      return this.changeLabelHandler("right", e);
     },
     addHtmlItem: function(rawHtml) {
       console.log("addHtmlItem -=-=-= , ", rawHtml);

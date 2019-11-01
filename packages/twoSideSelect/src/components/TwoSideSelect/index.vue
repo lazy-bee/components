@@ -6,12 +6,12 @@
         :itemList="innerPoolItems"
         :disableItemList="innerItems"
         :selectedItemList="selectedPoolItems"
-        :onSelect="onSelectPoolHandler"
-        :onSelectAll="onSelectAllPoolHandler"
-        :onClickAddSingleHandler="onClickAddSingleHandler"
+        :select="selectPoolHandler"
+        :selectAll="selectAllPoolHandler"
+        :clickAddSingleHandler="clickAddSingleHandler"
       />
       <div class="bottom-box">
-        <button class="main-btn add-btn" @click="onClickAddAllHandler">
+        <button class="main-btn add-btn" @click="clickAddAllHandler">
           <span class="btn-content">
             <span class="text">Add</span>
             <span class="arrow"></span>
@@ -25,14 +25,14 @@
         :label="rightLabel || 'Selected Result'"
         :itemList="innerItems"
         :selectedItemList="selectedItems"
-        :onSelect="onSelectItemHandler"
-        :onSelectAll="onSelectAllItemHandler"
-        :onClickAddSingleHandler="onClickRemoveSingleHandler"
+        :select="selectItemHandler"
+        :selectAll="selectAllItemHandler"
+        :clickAddSingleHandler="clickRemoveSingleHandler"
       />
       <div class="bottom-box">
         <button
           class="main-btn remove-btn"
-          @click="onClickRemoveAllItemsHandler"
+          @click="clickRemoveAllItemsHandler"
         >
           <span class="btn-content">
             <span class="arrow"></span>
@@ -67,7 +67,7 @@ export default {
       type: Array,
       default: () => []
     },
-    onChange: {
+    change: {
       type: Function,
       default: null
     }
@@ -99,7 +99,7 @@ export default {
         this[field].push(_item);
       }
     },
-    onSelect: function(field, _item) {
+    select: function(field, _item) {
       const targetList = this[field] || [];
       const isExisted = targetList.find(item => item.value === _item.value);
 
@@ -111,34 +111,34 @@ export default {
       return (this[field] = [...tList]);
     },
     // -=-=-=-=-=-=-=-=- items section -=-=-=-=-=-=-=-=-
-    onRemoveItem: function(_item) {
+    removeItem: function(_item) {
       return this.removeFromList("innerItems", _item);
     },
-    onAddItem: function(_item) {
+    addItem: function(_item) {
       return this.addToList("innerItems", _item);
     },
-    onSelectItemHandler: function(_item) {
+    selectItemHandler: function(_item) {
       // this.selectedItems.push(_item)
-      return this.onSelect("selectedItems", _item);
+      return this.select("selectedItems", _item);
     },
     // -=-=-=-=-=-=-=-=- pool items section -=-=-=-=-=-=-=-=-
-    onRemovePoolItem: function(_item) {
+    removePoolItem: function(_item) {
       return this.removeFromList("innerPoolItems", _item);
     },
-    onAddPoolItem: function(_item = {}) {
+    addPoolItem: function(_item = {}) {
       return this.addToList("innerPoolItems", _item);
     },
-    onSelectPoolHandler: function(_item) {
-      return this.onSelect("selectedPoolItems", _item);
+    selectPoolHandler: function(_item) {
+      return this.select("selectedPoolItems", _item);
     },
     // -=-=-=-=-=-=-=-=-select all section -=-=-=-=-=-=-=-=-
-    onSelectAllPoolHandler: function() {
+    selectAllPoolHandler: function() {
       if (this.selectedPoolItems.length === this.innerPoolItems.length) {
         return (this.selectedPoolItems = []);
       }
       return (this.selectedPoolItems = [...this.innerPoolItems]);
     },
-    onSelectAllItemHandler: function() {
+    selectAllItemHandler: function() {
       if (this.selectedItems.length === this.innerItems.length) {
         return (this.selectedItems = []);
       }
@@ -146,42 +146,42 @@ export default {
       return (this.selectedItems = [...this.innerItems]);
     },
     // -=-=-=-=-=-=-=-=-interaction section -=-=-=-=-=-=-=-=-
-    onClickAddSingleHandler: function(item) {
-      this.onAddItem(item);
-      this.onRemovePoolItem(item);
+    clickAddSingleHandler: function(item) {
+      this.addItem(item);
+      this.removePoolItem(item);
       this.removeFromList("selectedPoolItems", item);
       this.emitParentOnChange(this.innerItems);
     },
-    onClickRemoveSingleHandler: function(_item) {
-      this.onRemoveItem(_item);
-      this.onAddPoolItem(_item);
+    clickRemoveSingleHandler: function(_item) {
+      this.removeItem(_item);
+      this.addPoolItem(_item);
       this.removeFromList("selectedItems", _item);
       this.emitParentOnChange(this.innerItems);
     },
-    onClickAddAllHandler: function() {
+    clickAddAllHandler: function() {
       for (const item of this.selectedPoolItems) {
-        this.onAddItem(item);
-        this.onRemovePoolItem(item);
+        this.addItem(item);
+        this.removePoolItem(item);
       }
       this.selectedPoolItems = [];
       this.emitParentOnChange(this.innerItems);
     },
-    onClickRemoveAllItemsHandler: function() {
+    clickRemoveAllItemsHandler: function() {
       for (const item of this.selectedItems) {
-        this.onAddPoolItem(item);
-        this.onRemoveItem(item);
+        this.addPoolItem(item);
+        this.removeItem(item);
       }
       this.selectedItems = [];
       this.emitParentOnChange(this.innerItems);
     },
     // -=-=-=-=-=-=-=-=- trigger parent onchange -=-=-=-=-=-=-=-=-
     emitParentOnChange: function(data) {
-      if (this.$listeners.onChange) {
-        return this.$emit("onChange", data);
+      if (this.$listeners.change) {
+        return this.$emit("change", data);
       }
 
-      if (this.onChange) {
-        return this.onChange(data);
+      if (this.change) {
+        return this.change(data);
       }
     }
   }
