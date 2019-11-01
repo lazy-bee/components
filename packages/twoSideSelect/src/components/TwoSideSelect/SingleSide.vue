@@ -1,29 +1,29 @@
 <template>
   <div class="list-wrp">
     <div class="top-box">
-      <a class="item-checkbox" @click='onSelectAll'>
-        <input type="checkbox" :name="id" :checked="isSelectedAll">
-        <label class="box-title"> {{label}} </label>
+      <a class="item-checkbox" @click="onSelectAll">
+        <input type="checkbox" :name="id" :checked="isSelectedAll" />
+        <label class="box-title"> {{ label }} </label>
       </a>
     </div>
     <div class="center-box">
-      <div v-if='itemList.length<=0' class='empty-msg'>
+      <div v-if="itemList.length <= 0" class="empty-msg">
         <p>Empty</p>
       </div>
       <div
-        v-for='(item, index) in itemList'
-        :key='item.value || index'
+        v-for="(item, index) in itemList"
+        :key="item.value || index"
         class="item-wrp"
       >
         <SelectionRow
-          :isDisable='isDisable(item)'
-          :isSelected='_isSelected(item)'
-          :buttonChar='buttonChar'
-          :label='item.label'
-          :value='item.value'
-          :isHtml='item.isHtml'
-          :onSelect='onSelect'
-          :onClickButtonHandler='onClickAddSingleHandler'
+          :isDisable="isDisable(item)"
+          :isSelected="_isSelected(item)"
+          :buttonChar="buttonChar"
+          :label="item.label"
+          :value="item.value"
+          :isHtml="item.isHtml"
+          :onSelect="onSelect"
+          :onClickButtonHandler="onClickAddSingleHandler"
         />
       </div>
     </div>
@@ -31,15 +31,15 @@
 </template>
 
 <script>
-import SelectionRow from '../SelectionRow'
+import SelectionRow from "../SelectionRow";
 
 function getRndInteger(min = 0, max = 9999) {
-  return Math.floor(Math.random() * (max - min) ) + min;
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 
 export default {
-  name: 'SingleSide',
-  components: {SelectionRow},
+  name: "SingleSide",
+  components: { SelectionRow },
   props: {
     id: {
       type: String,
@@ -47,19 +47,19 @@ export default {
     },
     label: {
       type: String,
-      default: 'Search Result'
+      default: "Search Result"
     },
     itemList: {
       type: Array,
-      default: () => ([])
+      default: () => []
     },
     disableItemList: {
       type: Array,
-      default: () => ([])
+      default: () => []
     },
     selectedItemList: {
       type: Array,
-      default: () => ([])
+      default: () => []
     },
     onSelect: {
       type: Function,
@@ -75,33 +75,40 @@ export default {
     },
     buttonChar: {
       type: String,
-      default: '+'
+      default: "+"
     }
   },
   computed: {
-    _id: function(){
-      return this.id || getRndInteger(1000)
+    _id: function() {
+      return this.id || getRndInteger(1000);
     },
-    isSelectedAll: function(){
-      return (this.selectedItemList.length === this.itemList.length) && this.itemList.length > 0
+    isSelectedAll: function() {
+      return (
+        this.selectedItemList.length === this.itemList.length &&
+        this.itemList.length > 0
+      );
     }
   },
   methods: {
-    _isSelected: function(_item){
-      const target = this.selectedItemList.find( item => _item.value === item.value)
+    _isSelected: function(_item) {
+      const target = this.selectedItemList.find(
+        item => _item.value === item.value
+      );
 
-      if(!target) return false
-      return true
+      if (!target) return false;
+      return true;
     },
-    isDisable: function(targetItem){
-      const {disableItemList} = this
-      const target = disableItemList.find(_item => _item.value === targetItem.value)
+    isDisable: function(targetItem) {
+      const { disableItemList } = this;
+      const target = disableItemList.find(
+        _item => _item.value === targetItem.value
+      );
 
-      if(!target) return false
-      return true
-    },
+      if (!target) return false;
+      return true;
+    }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -111,7 +118,7 @@ export default {
   flex: 1;
 }
 .top-box {
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   padding: 10px 20px 10px 0;
   .box-title {
     font-size: 16px;

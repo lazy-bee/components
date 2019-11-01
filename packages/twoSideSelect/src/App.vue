@@ -1,68 +1,105 @@
 <template>
   <div id="app">
-  <div class="mainHeader">
-    <h1>@lazy-copilot/leftrightcart</h1>
-    <p>A dropdown time picker for Vue 2.x with flexible time format support</p>
-  </div>
-  <section class="tapsContainer">
-    <a @click="tapIndex = 0" class="componentTab" :class="tapIndex===0? 'active' : 'inactive'"> General</a>
-    <a @click="tapIndex = 1" class="componentTab" :class="tapIndex===1? 'active' : 'inactive'"> Null </a>
-    <a @click="tapIndex = 2" class="componentTab" :class="tapIndex===2? 'active' : 'inactive'"> RawHTML </a>
-  </section>
+    <div class="mainHeader">
+      <h1>@lazy-copilot/leftrightcart</h1>
+      <p>
+        A dropdown time picker for Vue 2.x with flexible time format support
+      </p>
+    </div>
+    <section class="tapsContainer">
+      <a
+        @click="tapIndex = 0"
+        class="componentTab"
+        :class="tapIndex === 0 ? 'active' : 'inactive'"
+      >
+        General</a
+      >
+      <a
+        @click="tapIndex = 1"
+        class="componentTab"
+        :class="tapIndex === 1 ? 'active' : 'inactive'"
+      >
+        Null
+      </a>
+      <a
+        @click="tapIndex = 2"
+        class="componentTab"
+        :class="tapIndex === 2 ? 'active' : 'inactive'"
+      >
+        RawHTML
+      </a>
+    </section>
 
     <section class="componentContainer" v-if="tapIndex === 0">
       <h1>Multi Select</h1>
       <div class="row">
         <label>Left Label</label>
-        <input @change='onChangeLeftLabelHandler' type='text' placeholder='leftLabel'/>
+        <input
+          @change="onChangeLeftLabelHandler"
+          type="text"
+          placeholder="leftLabel"
+        />
       </div>
-      <div class="row"> 
+      <div class="row">
         <label>Right Label</label>
-        <input @change='onChangeRightLabelHandler' type='text' placeholder='rightLabel'/>
+        <input
+          @change="onChangeRightLabelHandler"
+          type="text"
+          placeholder="rightLabel"
+        />
       </div>
-      <div class="row"> 
-        <button class='addItemsButton' @click='addSameItems'> add same Items</button>
-        <button class='addItemsButton' @click='addRandomItems'> add random Items</button>
+      <div class="row">
+        <button class="addItemsButton" @click="addSameItems">
+          add same Items
+        </button>
+        <button class="addItemsButton" @click="addRandomItems">
+          add random Items
+        </button>
       </div>
       <div class="content-box">
         <TwoSideSelect
-          :leftLabel='label.left'
-          :rightLabel='label.right'
-          :items='initTwoSideSelectItems'
-          :poolItems='poolItems'
-          :onChange='onChangeHandler'
+          :leftLabel="label.left"
+          :rightLabel="label.right"
+          :items="initTwoSideSelectItems"
+          :poolItems="poolItems"
+          :onChange="onChangeHandler"
         />
       </div>
     </section>
 
-
     <section class="componentContainer" v-if="tapIndex === 1">
       <h1>Null Select</h1>
-      <div class="row"> 
-        <button class='addItemsButton' @click='addSameItems'> add same Items</button>
-        <button class='addItemsButton' @click='addRandomItems'> add random Items</button>
+      <div class="row">
+        <button class="addItemsButton" @click="addSameItems">
+          add same Items
+        </button>
+        <button class="addItemsButton" @click="addRandomItems">
+          add random Items
+        </button>
       </div>
       <div class="content-box">
         <TwoSideSelect
-          :items='[]'
-          :poolItems='[]'
-          :onChange='onChangeHandler'
+          :items="[]"
+          :poolItems="[]"
+          :onChange="onChangeHandler"
         />
       </div>
     </section>
 
     <section class="componentContainer" v-if="tapIndex === 2">
       <h1>RawHtml</h1>
-      <div class="row"> 
+      <div class="row">
         <label>Html</label>
-        <input v-model='htmlTitle' type='text' placeholder='htmlLabel'/>
-        <button class='addHtmlButton' @click='addHtmlItem(htmlTitle)'> Add Html</button>
+        <input v-model="htmlTitle" type="text" placeholder="htmlLabel" />
+        <button class="addHtmlButton" @click="addHtmlItem(htmlTitle)">
+          Add Html
+        </button>
       </div>
       <div class="content-box">
         <TwoSideSelect
-          :items='[]'
-          :poolItems='poolItems'
-          :onChange='onChangeHandler'
+          :items="[]"
+          :poolItems="poolItems"
+          :onChange="onChangeHandler"
         />
       </div>
     </section>
@@ -70,28 +107,25 @@
 </template>
 
 <script>
-import TwoSideSelect from './components/TwoSideSelect'
+import TwoSideSelect from "./components/TwoSideSelect";
 
 const DEFAULT_ITEMS = [
-        {label: 'pool1', value: 'poolVal1'},
-        {label: 'pool2', value: 'poolVal2'},
-        {label: 'pool3', value: 'poolVal3'},
-      ]
+  { label: "pool1", value: "poolVal1" },
+  { label: "pool2", value: "poolVal2" },
+  { label: "pool3", value: "poolVal3" }
+];
 
 function getRndInteger(min = 0, max = 9999) {
-  return Math.floor(Math.random() * (max - min) ) + min;
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 
-const randomStr = (pre = '') => {
-  return `${pre}-${getRndInteger()}`
-}
+const randomStr = (pre = "") => {
+  return `${pre}-${getRndInteger()}`;
+};
 
 export default {
   name: "app",
-  computed: {
-  },
-  methods: {
-  },
+  computed: {},
   components: {
     TwoSideSelect
   },
@@ -99,53 +133,53 @@ export default {
     return {
       tapIndex: 0,
       initTwoSideSelectItems: [
-        {label: 'label1', value: 'value1'},
-        {label: 'label2', value: 'value2'},
-        {label: 'label3', value: 'value3'},
+        { label: "label1", value: "value1" },
+        { label: "label2", value: "value2" },
+        { label: "label3", value: "value3" }
       ],
-      htmlTitle: '<span>foo</span>',
+      htmlTitle: "<span>foo</span>",
       poolItems: this.initPoolItems(),
       label: {
-        left: 'left',
-        right: 'right',
+        left: "left",
+        right: "right"
       }
     };
   },
   methods: {
-    onChangeHandler: function(value){
-      console.log(' -=-=-=- onChangeHandler value:', value)
+    onChangeHandler: function(value) {
+      console.log(" -=-=-=- onChangeHandler value:", value);
     },
-    onChangeLabelHandler: function(labelName, e){
-      return this.label[labelName] = e.target.value
+    onChangeLabelHandler: function(labelName, e) {
+      return (this.label[labelName] = e.target.value);
     },
-    onChangeLeftLabelHandler: function(e){
-      return this.onChangeLabelHandler('left',e)
+    onChangeLeftLabelHandler: function(e) {
+      return this.onChangeLabelHandler("left", e);
     },
-    onChangeRightLabelHandler: function(e){
-      return this.onChangeLabelHandler('right',e)
+    onChangeRightLabelHandler: function(e) {
+      return this.onChangeLabelHandler("right", e);
     },
-    addHtmlItem: function (rawHtml) {
-      console.log('addHtmlItem -=-=-= , ', rawHtml)
+    addHtmlItem: function(rawHtml) {
+      console.log("addHtmlItem -=-=-= , ", rawHtml);
       this.poolItems = [
         ...this.poolItems,
         {
           isHtml: true,
           label: rawHtml,
-          value: randomStr(),
+          value: randomStr()
         }
-      ]
+      ];
     },
-    addSameItems: function(){
-      this.poolItems = [...DEFAULT_ITEMS]
+    addSameItems: function() {
+      this.poolItems = [...DEFAULT_ITEMS];
     },
-    addRandomItems: function(){
-      return this.poolItems = [1,2,3,4].map(()=> ({
+    addRandomItems: function() {
+      return (this.poolItems = [1, 2, 3, 4].map(() => ({
         label: randomStr(),
-        value: randomStr(),
-      }))
+        value: randomStr()
+      })));
     },
-    initPoolItems: function(){
-      return [...DEFAULT_ITEMS]
+    initPoolItems: function() {
+      return [...DEFAULT_ITEMS];
     }
   }
 };
@@ -169,7 +203,7 @@ export default {
     border-top: 1px lightgray solid;
     padding: 20px 0;
 
-    .addItemsButton{
+    .addItemsButton {
       border: 1px black solid;
       padding: 10px 20px;
       margin: 5px;
@@ -204,11 +238,11 @@ export default {
     justify-content: center;
 
     a {
-      color: hsla(0,0%,100%,.5);
+      color: hsla(0, 0%, 100%, 0.5);
       display: block;
-      padding: .8em .5em;
+      padding: 0.8em 0.5em;
       border-radius: 5px;
-      transition: color .3s;
+      transition: color 0.3s;
       position: relative;
       overflow: hidden;
       z-index: 1;
@@ -216,12 +250,12 @@ export default {
       cursor: pointer;
     }
 
-    .active{
+    .active {
       color: #51c28f;
     }
 
     a.active:after {
-      content: '';
+      content: "";
       display: block;
       width: 0;
       height: 0;
@@ -247,7 +281,4 @@ export default {
     margin: 0 auto;
   }
 }
-
-
-
 </style>

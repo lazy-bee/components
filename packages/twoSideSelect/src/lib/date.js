@@ -25,8 +25,20 @@ const monthConfig = [
   "December"
 ];
 
-const monthShortConfig = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-
+const monthShortConfig = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec"
+];
 
 export const daysInMonth = (year, month) => {
   return 32 - new Date(year, month, 32).getDate();
@@ -71,7 +83,7 @@ export const format = (date, formatString) => {
 };
 
 export const getDayAfter = (fromDay, n) => {
-  const _fromDay = !fromDay ? new Date : fromDay
+  const _fromDay = !fromDay ? new Date() : fromDay;
   const otherDay = new Date(_fromDay);
   otherDay.setDate(_fromDay.getDate() + n);
   return otherDay;

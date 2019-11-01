@@ -1,4 +1,4 @@
-import TwoSideSelect from '@/components/TwoSideSelect/index.vue'
+import TwoSideSelect from "@/components/TwoSideSelect/index.vue";
 const Components = {
   TwoSideSelect
 };

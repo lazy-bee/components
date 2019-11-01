@@ -1,27 +1,31 @@
 <template>
-  <div :class='isDisable? "item-box disable" : "item-box"'>
-    <a class="item-checkbox" @click='onSelectedItem'>
-      <input type="checkbox" :name="label" :checked="isSelected && !isDisable">
-      <label v-if='!isHtml'>{{label}}</label>
-      <label v-if='isHtml' v-html="label"></label>
+  <div :class="isDisable ? 'item-box disable' : 'item-box'">
+    <a class="item-checkbox" @click="onSelectedItem">
+      <input
+        type="checkbox"
+        :name="label"
+        :checked="isSelected && !isDisable"
+      />
+      <label v-if="!isHtml">{{ label }}</label>
+      <label v-if="isHtml" v-html="label"></label>
     </a>
-    <a @click='_onClickButtonHandler' class='sub-btn'>
-      <span> {{buttonChar}} </span>
+    <a @click="_onClickButtonHandler" class="sub-btn">
+      <span> {{ buttonChar }} </span>
     </a>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'SelectionRow',
+  name: "SelectionRow",
   props: {
     label: {
       type: String,
-      default: ''
+      default: ""
     },
     value: {
       type: String,
-      default: ''
+      default: ""
     },
     isHtml: {
       type: Boolean,
@@ -37,7 +41,7 @@ export default {
     },
     buttonChar: {
       type: String,
-      default: '+'
+      default: "+"
     },
     onSelect: {
       type: Function,
@@ -46,25 +50,25 @@ export default {
     onClickButtonHandler: {
       type: Function,
       default: null
-    },
+    }
   },
   methods: {
-    onSelectedItem: function(){
-      const {label, value, isDisable, isHtml} = this
-      if(isDisable) return
+    onSelectedItem: function() {
+      const { label, value, isDisable, isHtml } = this;
+      if (isDisable) return;
 
-      const item = {label, value, isHtml}
-      return this.onSelect(item)
+      const item = { label, value, isHtml };
+      return this.onSelect(item);
     },
-    _onClickButtonHandler: function(){
-      const {label, value, isDisable, isHtml} = this
-      if(isDisable) return
+    _onClickButtonHandler: function() {
+      const { label, value, isDisable, isHtml } = this;
+      if (isDisable) return;
 
-      const item = {label, value, isHtml}
-      return this.onClickButtonHandler(item)
+      const item = { label, value, isHtml };
+      return this.onClickButtonHandler(item);
     }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -74,14 +78,14 @@ export default {
   opacity: 0.2;
 }
 
-.item-box{
+.item-box {
   display: flex;
   height: $item-height;
   align-items: center;
   padding-right: 10px;
   transition: 0.2s;
   &:hover {
-    background-color: rgba(0,0,0,0.015);
+    background-color: rgba(0, 0, 0, 0.015);
   }
 
   a.sub-btn {
@@ -93,9 +97,7 @@ export default {
     padding: 0 16px;
     cursor: pointer;
     span {
-
     }
   }
 }
-
 </style>

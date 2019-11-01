@@ -1,17 +1,17 @@
 <template>
-  <div class='main-wrapper'>
-    <div class='left-wrapper'>
+  <div class="main-wrapper">
+    <div class="left-wrapper">
       <SingleSide
-        :label='leftLabel || "Selected Result"'
-        :itemList='innerPoolItems'
-        :disableItemList='innerItems'
-        :selectedItemList='selectedPoolItems'
-        :onSelect='onSelectPoolHandler'
-        :onSelectAll='onSelectAllPoolHandler'
-        :onClickAddSingleHandler='onClickAddSingleHandler'
+        :label="leftLabel || 'Selected Result'"
+        :itemList="innerPoolItems"
+        :disableItemList="innerItems"
+        :selectedItemList="selectedPoolItems"
+        :onSelect="onSelectPoolHandler"
+        :onSelectAll="onSelectAllPoolHandler"
+        :onClickAddSingleHandler="onClickAddSingleHandler"
       />
       <div class="bottom-box">
-        <button class='main-btn add-btn' @click='onClickAddAllHandler'>
+        <button class="main-btn add-btn" @click="onClickAddAllHandler">
           <span class="btn-content">
             <span class="text">Add</span>
             <span class="arrow"></span>
@@ -19,18 +19,21 @@
         </button>
       </div>
     </div>
-    <div class='left-wrapper'>
+    <div class="left-wrapper">
       <SingleSide
-        buttonChar='x'
-        :label='rightLabel || "Selected Result"'
-        :itemList='innerItems'
-        :selectedItemList='selectedItems'
-        :onSelect='onSelectItemHandler'
-        :onSelectAll='onSelectAllItemHandler'
-        :onClickAddSingleHandler='onClickRemoveSingleHandler'
+        buttonChar="x"
+        :label="rightLabel || 'Selected Result'"
+        :itemList="innerItems"
+        :selectedItemList="selectedItems"
+        :onSelect="onSelectItemHandler"
+        :onSelectAll="onSelectAllItemHandler"
+        :onClickAddSingleHandler="onClickRemoveSingleHandler"
       />
       <div class="bottom-box">
-        <button class='main-btn remove-btn' @click='onClickRemoveAllItemsHandler'>
+        <button
+          class="main-btn remove-btn"
+          @click="onClickRemoveAllItemsHandler"
+        >
           <span class="btn-content">
             <span class="arrow"></span>
             <span class="text">Remove</span>
@@ -42,140 +45,137 @@
 </template>
 
 <script>
-import SelectionRow from '../SelectionRow'
-import SingleSide from './SingleSide'
+import SingleSide from "./SingleSide";
 
 export default {
-  name: 'TwoSideSelect',
-  components: {SelectionRow, SingleSide},
+  name: "TwoSideSelect",
+  components: { SingleSide },
   props: {
     leftLabel: {
       type: String,
-      default: ''
+      default: ""
     },
     rightLabel: {
       type: String,
-      default: ''
+      default: ""
     },
     items: {
       type: Array,
-      default: () => ([])
+      default: () => []
     },
     poolItems: {
       type: Array,
-      default: () => ([])
+      default: () => []
     },
     onChange: {
       type: Function,
       default: null
-    },
+    }
   },
-  data: function(){
-    const {items: innerItems, poolItems: innerPoolItems} = this
-    const selectedPoolItems = []
-    const selectedItems = []
-    return {innerItems, innerPoolItems, selectedPoolItems, selectedItems}
+  data: function() {
+    const { items: innerItems, poolItems: innerPoolItems } = this;
+    const selectedPoolItems = [];
+    const selectedItems = [];
+    return { innerItems, innerPoolItems, selectedPoolItems, selectedItems };
   },
   watch: {
-    poolItems: function(newVal = []){
-      this.innerPoolItems = [...newVal]
-      this.selectedPoolItems = []
+    poolItems: function(newVal = []) {
+      this.innerPoolItems = [...newVal];
+      this.selectedPoolItems = [];
     }
   },
   methods: {
     // -=-=-=-=-=-=-=-=- common list function -=-=-=-=-=-=-=-=-
-    removeFromList: function(field, _item){
-      const targetList = this[field]
-      const tList = targetList.filter(item => item.value !== _item.value)
-      this[field] = [...tList]
+    removeFromList: function(field, _item) {
+      const targetList = this[field];
+      const tList = targetList.filter(item => item.value !== _item.value);
+      this[field] = [...tList];
     },
-    addToList: function(field, _item){
-      const targetList = this[field] || []
-      const isExisted = targetList.find(item => item.value === _item.value)
+    addToList: function(field, _item) {
+      const targetList = this[field] || [];
+      const isExisted = targetList.find(item => item.value === _item.value);
 
-      if(!isExisted) {
-        this[field].push(_item)
+      if (!isExisted) {
+        this[field].push(_item);
       }
     },
-    onSelect: function(field, _item){
-      const targetList = this[field] || []
-      const isExisted = targetList.find(item => item.value === _item.value)
+    onSelect: function(field, _item) {
+      const targetList = this[field] || [];
+      const isExisted = targetList.find(item => item.value === _item.value);
 
-      if(!isExisted) {
-        return this[field].push(_item)
+      if (!isExisted) {
+        return this[field].push(_item);
       }
 
-      const tList = targetList.filter(item => item.value !== _item.value)
-      return this[field] = [...tList]
+      const tList = targetList.filter(item => item.value !== _item.value);
+      return (this[field] = [...tList]);
     },
     // -=-=-=-=-=-=-=-=- items section -=-=-=-=-=-=-=-=-
-    onRemoveItem: function(_item){
-      return this.removeFromList('innerItems', _item)
+    onRemoveItem: function(_item) {
+      return this.removeFromList("innerItems", _item);
     },
-    onAddItem: function(_item){
-      return this.addToList('innerItems', _item)
+    onAddItem: function(_item) {
+      return this.addToList("innerItems", _item);
     },
-    onSelectItemHandler: function (_item) {
+    onSelectItemHandler: function(_item) {
       // this.selectedItems.push(_item)
-      return this.onSelect('selectedItems', _item)
+      return this.onSelect("selectedItems", _item);
     },
     // -=-=-=-=-=-=-=-=- pool items section -=-=-=-=-=-=-=-=-
-    onRemovePoolItem: function(_item){
-      return this.removeFromList('innerPoolItems', _item)
+    onRemovePoolItem: function(_item) {
+      return this.removeFromList("innerPoolItems", _item);
     },
-    onAddPoolItem: function(_item = {}){
-      return this.addToList('innerPoolItems', _item)
+    onAddPoolItem: function(_item = {}) {
+      return this.addToList("innerPoolItems", _item);
     },
-    onSelectPoolHandler: function (_item) {
-      return this.onSelect('selectedPoolItems', _item)
+    onSelectPoolHandler: function(_item) {
+      return this.onSelect("selectedPoolItems", _item);
     },
     // -=-=-=-=-=-=-=-=-select all section -=-=-=-=-=-=-=-=-
-    onSelectAllPoolHandler: function () {
-      if(this.selectedPoolItems.length === this.innerPoolItems.length) {
-        return this.selectedPoolItems = []
+    onSelectAllPoolHandler: function() {
+      if (this.selectedPoolItems.length === this.innerPoolItems.length) {
+        return (this.selectedPoolItems = []);
       }
-      return this.selectedPoolItems = [...this.innerPoolItems]
+      return (this.selectedPoolItems = [...this.innerPoolItems]);
     },
-    onSelectAllItemHandler: function () {
-      if(this.selectedItems.length === this.innerItems.length) {
-        return this.selectedItems = []
+    onSelectAllItemHandler: function() {
+      if (this.selectedItems.length === this.innerItems.length) {
+        return (this.selectedItems = []);
       }
 
-      return this.selectedItems = [...this.innerItems]
+      return (this.selectedItems = [...this.innerItems]);
     },
     // -=-=-=-=-=-=-=-=-interaction section -=-=-=-=-=-=-=-=-
-    onClickAddSingleHandler: function(item){
-      this.onAddItem(item)
-      this.onRemovePoolItem(item)
-      this.removeFromList('selectedPoolItems', item)
-      this.emitParentOnChange(this.innerItems)
+    onClickAddSingleHandler: function(item) {
+      this.onAddItem(item);
+      this.onRemovePoolItem(item);
+      this.removeFromList("selectedPoolItems", item);
+      this.emitParentOnChange(this.innerItems);
     },
-    onClickRemoveSingleHandler: function(_item){
-      this.onRemoveItem(_item)
-      this.onAddPoolItem(_item)
-      this.removeFromList('selectedItems', _item)
-      this.emitParentOnChange(this.innerItems)
+    onClickRemoveSingleHandler: function(_item) {
+      this.onRemoveItem(_item);
+      this.onAddPoolItem(_item);
+      this.removeFromList("selectedItems", _item);
+      this.emitParentOnChange(this.innerItems);
     },
-    onClickAddAllHandler: function(){
-      const {selectedPoolItems} = this
-      for(const item of this.selectedPoolItems) {
-        this.onAddItem(item)
-        this.onRemovePoolItem(item)
+    onClickAddAllHandler: function() {
+      for (const item of this.selectedPoolItems) {
+        this.onAddItem(item);
+        this.onRemovePoolItem(item);
       }
-      this.selectedPoolItems = []
-      this.emitParentOnChange(this.innerItems)
+      this.selectedPoolItems = [];
+      this.emitParentOnChange(this.innerItems);
     },
-    onClickRemoveAllItemsHandler: function(_item){
-      const {selectedItems} = this
-      for(const item of this.selectedItems) {
-        this.onAddPoolItem(item)
-        this.onRemoveItem(item)
+    onClickRemoveAllItemsHandler: function() {
+      for (const item of this.selectedItems) {
+        this.onAddPoolItem(item);
+        this.onRemoveItem(item);
       }
-      this.selectedItems = []
-      this.emitParentOnChange(this.innerItems)
+      this.selectedItems = [];
+      this.emitParentOnChange(this.innerItems);
     },
     // -=-=-=-=-=-=-=-=- trigger parent onchange -=-=-=-=-=-=-=-=-
-    emitParentOnChange: function(data){
+    emitParentOnChange: function(data) {
       if (this.$listeners.onChange) {
         return this.$emit("onChange", data);
       }
@@ -185,7 +185,7 @@ export default {
       }
     }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -193,17 +193,17 @@ export default {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  color: rgba(0,0,0,.87);
+  color: rgba(0, 0, 0, 0.87);
 
   > div {
     flex: 0 1 49%;
     border-radius: 4px;
-    box-shadow: 0 0 18px hsla(0,0%,57%,.1);
+    box-shadow: 0 0 18px hsla(0, 0%, 57%, 0.1);
     display: flex;
     flex-direction: column;
 
     .bottom-box {
-      border-top: 1px solid rgba(0,0,0,0.05);
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
       margin-top: auto;
 
       .arrow {
@@ -235,10 +235,10 @@ export default {
         font-size: 15px;
         .btn-content {
           display: inline-block;
-          transition:0.3s;
+          transition: 0.3s;
         }
         &:hover {
-          background-color: rgba(0,0,0,0.015);
+          background-color: rgba(0, 0, 0, 0.015);
         }
         &:focus {
           outline: none;
@@ -249,7 +249,7 @@ export default {
           }
           &:hover {
             .btn-content {
-              transition:0.3s;
+              transition: 0.3s;
               transform: translateX(4px);
             }
           }
@@ -261,7 +261,7 @@ export default {
           }
           &:hover {
             .btn-content {
-              transition:0.3s;
+              transition: 0.3s;
               transform: translateX(-4px);
             }
           }
@@ -270,7 +270,6 @@ export default {
     }
   }
 }
-
 </style>
 
 <style lang="scss">
@@ -287,7 +286,7 @@ a.item-checkbox {
   $checkboxColor: hsl(hue(#0149ff), saturation(#0149ff), 50%);
   $checkboxSize: 18px;
   font-size: 15px;
-  input[type='checkbox'] {
+  input[type="checkbox"] {
     margin: 0;
     font-size: 1.25em;
     z-index: -1;
@@ -323,7 +322,7 @@ a.item-checkbox {
     line-height: 42px;
     overflow: hidden;
     &::before {
-      content: '';
+      content: "";
       display: inline-block;
       width: $checkboxSize;
       height: $checkboxSize;
@@ -334,7 +333,7 @@ a.item-checkbox {
       transition: border-color 0.2s, background-color 0.2s;
     }
     &::after {
-      content: '';
+      content: "";
       display: inline-block;
       position: absolute;
       top: 0;
@@ -346,7 +345,7 @@ a.item-checkbox {
       border: solid 2px transparent;
       border-left: none;
       border-top: none;
-      transform: translate(26px,13px) rotate(45deg)
+      transform: translate(26px, 13px) rotate(45deg);
     }
   }
 }

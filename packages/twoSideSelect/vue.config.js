@@ -2,7 +2,7 @@ module.exports = {
   lintOnSave: false,
   configureWebpack: {
     output: {
-      libraryExport: 'default'
+      libraryExport: "default"
     }
   }
 };
