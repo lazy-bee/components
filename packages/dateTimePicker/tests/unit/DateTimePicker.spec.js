@@ -1,8 +1,7 @@
 import { mount } from "@vue/test-utils";
 import DateTimePicker from "@/components/DateTimePicker.vue";
-import { getTimeObjectFromDate } from "@/lib/time";
 
-describe("DateTimePicker.vue: selected days", () => {
+describe("DateTimePicker.vue: selected start days", () => {
   it("Should return 2018/12/13 00:01 Date, when given GM +0 Zone", () => {
     const wrapper = mount(DateTimePicker, {
       propsData: {
@@ -21,6 +20,30 @@ describe("DateTimePicker.vue: selected days", () => {
       }
     });
     expect(wrapper.vm.$data.selectDateString).toBe("2018 Dec 13  08:01 AM");
+  });
+});
+
+describe("DateTimePicker.vue: selected days & end days", () => {
+  it("Should return 2018/12/13 00:01 Date, when given GM +0 Zone", () => {
+    const wrapper = mount(DateTimePicker, {
+      propsData: {
+        startDate: new Date("2018-12-13T00:01"),
+        endDate: new Date("2018-12-14T00:01"),
+        singleDate: false
+      }
+    });
+    expect(wrapper.vm.$data.selectDateString).toBe("2018 Dec 13  00:01 AM - 2018 Dec 14  00:01 AM")
+  });
+
+  it("Should return 2018/12/13 00:01 Date, when given GM +8 Zone", () => {
+    const wrapper = mount(DateTimePicker, {
+      propsData: {
+        startDate: new Date("2018-12-13T00:01Z"),
+        endDate: new Date("2018-12-14T00:01"),
+        singleDate: false
+      }
+    });
+    expect(wrapper.vm.$data.selectDateString).toBe("2018 Dec 13  08:01 AM - 2018 Dec 14  00:01 AM");
   });
 });
 
