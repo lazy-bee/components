@@ -253,7 +253,7 @@
     "through2": "^2.0.5",
     "timed-out": "^4.0.1",
     "tmp": "^0.0.33",
-    "trim-newlines": "^2.0.0",
+    "trim-newlines": "^3.0.1",
     "trim-off-newlines": "^1.0.1",
     "typedarray": "^0.0.6",
     "uglify-js": "^3.4.9",
