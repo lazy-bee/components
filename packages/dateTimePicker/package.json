@@ -17,7 +17,7 @@
     "test": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "sass-loader": "^7.1.0",
     "vue": "^2.5.17"
   },
