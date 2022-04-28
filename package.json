@@ -34,7 +34,7 @@
     "array-union": "^1.0.2",
     "array-uniq": "^1.0.3",
     "arrify": "^1.0.1",
-    "async": "^1.5.2",
+    "async": "^2.6.4",
     "balanced-match": "^1.0.0",
     "brace-expansion": "^1.1.11",
     "buffer-from": "^1.1.1",
